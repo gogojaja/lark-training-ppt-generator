@@ -37,11 +37,50 @@ py -3 gen_flowchart.py --steps "预约叫号;身份识别;资料录入;业务开
 - 输出为**一页 16:9 纵向流程图**：开始（红）→ 步骤（蓝）→ 结束（绿），方框 + 下箭头。
 - 不依赖 node/python-pptx/pip，仅用 Python 标准库（zipfile+ElementTree 手写 PPTX XML）。
 
+## 分支流程图（gen_flowchart_branch.py，语义模式）
+
+```bat
+:: 语义模式：JSON 只写步骤与分支，脚本自动排版 + 配色，无需手算坐标
+py -3 gen_flowchart_branch.py flow.json --out 流程图.pptx
+```
+
+`flow.json` 结构：
+
+```json
+{
+  "title": "个人批量开户业务办理流程（纵向）",
+  "steps": [
+    {"text": "登录系统进入场景"},
+    {"text": "客户信息是否齐全",
+     "branch": {"text": "跳转客户信息维护", "label": "否", "kind": "err"}}
+  ]
+}
+```
+
+- 含 `branch` 的步骤自动变为**菱形判断**，右侧生成**分支框**（肘形连线 + 是/否标签）。
+- `branch.kind`: `err` = 异常分支（浅红）、`br` = 正常分支（浅蓝）。
+
+**固化配色规范**（脚本常量，可在高级模式 JSON 中覆盖）：
+
+| 节点 | 填充色 | 文字色 |
+|------|--------|--------|
+| 主流程框 | 浅绿 `C6EFCE` | 深绿 `006100` |
+| 菱形判断 | 浅黄 `FFF2CC` | 深黄 `7F6000` |
+| 正常分支 | 浅蓝 `DDEBF7` | 深蓝 `1F3864` |
+| 异常分支 | 浅红 `FCE4EC` | 红 `C00000` |
+
+**固化纵向布局参数**（`gen_flowchart_branch.py` 顶部常量）：主流程列 X=900000、框宽 2600000、框高 216000（0.6cm）、行距 275000、分支宽 2700000、分支间距 300000。
+
+**高级模式**（完全控制坐标/连线/颜色）：JSON 含 `nodes` + `edges` 字段，节点用 `kind: box/short/diamond`，连线用 `style: v/h/el/el-right/el-left`，并支持 `label` 标注。
+
+> **设计目标（模型无关）**：排版坐标、配色、连线逻辑全部固化在脚本常量中，**模型只负责提供步骤语义内容**，不参与任何像素/坐标/色值计算；切换模型后同一 JSON 输出完全一致。
+
 ## 输出
 
 - `generate.js` → `综合个人开户_柜面操作培训.pptx`
 - `generate_style_samples.js` → `style_samples.pptx`（风格变体预览）
 - `gen_flowchart.py` → 指定 `--out` 的一页流程图 PPTX
+- `gen_flowchart_branch.py` → 指定 `--out` 的带分支流程图 PPTX（语义/高级模式）
 
 ## 与本机现状
 
@@ -54,4 +93,4 @@ py -3 gen_flowchart.py --steps "预约叫号;身份识别;资料录入;业务开
 
 ---
 
-**文档版本**：v1.0.0　**最后更新**：2026-08-06
+**文档版本**：v1.1.0　**最后更新**：2026-08-06
