@@ -1,13 +1,13 @@
 ---
-name: lark-workflow-handbook-deck
+name: lark-training-ppt-generator
 version: 4.1.0
-description: "制度手册转宣讲 PPT 工作流：深度解析多格式素材（制度文档、操作手册、业务规范、会议纪要、演讲稿），结构化提炼后生成对内宣讲用的演示文稿。支持联网事实校验、AI 素材生成、自然语言修订、多格式导出与团队协作审阅。"
+description: "培训课程设计与宣讲 PPT 生成工作流：深度解析多格式素材（制度文档、操作手册、业务规范、会议纪要、演讲稿），结构化提炼后生成对内宣讲用的演示文稿（PPT），并支持培训课程内容设计与编排。支持联网事实校验、AI 素材生成、自然语言修订、多格式导出与团队协作审阅。"
 metadata:
   requires:
     bins: ["lark-cli"]
 ---
 
-# 制度手册转宣讲 PPT 工作流
+# 培训课程设计与宣讲 PPT 生成工作流
 
 **CRITICAL — 开始前 MUST 先用 Read 工具读取 [`../lark-shared/SKILL.md`](../lark-shared/SKILL.md)，其中包含认证、权限处理、JSON 输出契约、高风险操作审批协议。**
 
@@ -587,7 +587,7 @@ lark-cli slides +media-upload --as user --presentation "<xml_presentation_id>" -
 lark-cli slides xml_presentations get --as user --params '{"xml_presentation_id":"<YOUR_ID>"}'
 
 # 2. 静态检查文本重叠（优先用脚本）
-py -3 D:/trae/lark-slides/scripts/xml_text_overlap_check.py D:/trae/lark-workflow-handbook-deck/生成脚本
+py -3 D:/trae/lark-slides/scripts/xml_text_overlap_check.py D:/trae/lark-training-ppt-generator/生成脚本
 ```
 
 **版面验证清单**：

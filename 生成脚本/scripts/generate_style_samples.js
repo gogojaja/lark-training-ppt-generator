@@ -1,7 +1,7 @@
 /**
  * generate_style_samples.js — 风格样例预览脚本
  *
- * 参考 lark-workflow-handbook-deck/SKILL.md Step 2.5.3。
+ * 参考 lark-training-ppt-generator/SKILL.md Step 2.5.3。
  *
  * 接收一份样例页内容（JSON 格式），生成 3 种风格变体的 PPTX 样例页，
  * 每页一种风格，填充同一份真实内容方便用户对比选择。
@@ -623,7 +623,7 @@ if (wanted.length === 0) {
 }
 
 const pres = new pptxgen();
-pres.author = "lark-workflow-handbook-deck";
+pres.author = "lark-training-ppt-generator";
 pres.title = "风格样例预览";
 pres.subject = "Step 2.5.3 风格样例对比";
 pres.layout = "LAYOUT_16x9";

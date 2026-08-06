@@ -2,7 +2,7 @@
 @echo off
 chcp 65001 >nul
 echo ============================================
-echo   lark-workflow-handbook-deck 生成脚本环境准备
+echo   lark-training-ppt-generator 生成脚本环境准备
 echo ============================================
 echo.
 

@@ -1,12 +1,12 @@
 ---
-name: lark-workflow-handbook-deck
+name: lark-training-ppt-generator
 version: 4.1.0
 description: "【归档副本】本目录为历史归档副本，权威入口为项目根 `../SKILL.md`（v4.1.0）。相对路径引用已按根目录重新解析，请勿直接引用本副本。"
 ---
 
 # 归档副本说明
 
-此目录为 `lark-workflow-handbook-deck` 技能的**历史归档副本**，不再作为权威入口维护。
+此目录为 `lark-training-ppt-generator` 技能的**历史归档副本**，不再作为权威入口维护。
 
 **权威入口**：项目根目录 `../SKILL.md`（v4.1.0，2026-08-06 统一）。
 
