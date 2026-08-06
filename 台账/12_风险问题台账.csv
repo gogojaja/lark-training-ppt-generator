@@ -1,0 +1,3 @@
+风险编号,风险描述,等级,应对方案,状态
+R1,lark-cli 二进制未安装，飞书侧命令无法实际执行,高,交付时登记；安装 lark-cli 后可运行,已登记
+R2,node 未安装，本地 PPTX 生成依赖 node+pptxgenjs,中,提供 setup_environment.bat 一键准备,已登记

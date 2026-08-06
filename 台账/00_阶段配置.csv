@@ -1,0 +1,9 @@
+阶段,保留或裁剪,裁剪理由,责任方
+0_启动,保留,强制保留（台账与基线初始化）,role-project-init
+1_需求,保留,技能工作流需结构化提炼需求能力,role-requirements-analysis
+2_架构,裁剪,本任务为技能完善（Skill 维护）非软件架构项目,-
+3_开发,保留,生成脚本/SKILL.md 内容修正,role-development
+4_测试,保留,脚本运行验证与工作流自查,role-testing
+5_投产,裁剪,技能完善不涉及生产发布,-
+6_收尾归档,保留,交接文档与台账固化,role-governance
+7_总控保障,保留,强制保留（台账/评审/门禁/审计）,role-governance

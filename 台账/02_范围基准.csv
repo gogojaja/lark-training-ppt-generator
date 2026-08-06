@@ -1,0 +1,6 @@
+范围编号,功能明细,禁止项,交付物
+S1,补齐 lark-shared/lark-slides/lark-doc/lark-wiki/lark-base 外部技能骨架,不实现真实 lark-cli 内部实现（仅骨架）,"D:\trae\lark-\* 技能目录"
+S2,统一 SKILL.md 版本与入口,不删除历史文件（归档保留）,根目录 SKILL.md v4.1.0
+S3,建立项目台账与交接文档,不产生新的 .xlsx,台账/*.csv + 交接文档.md
+S4,完善生成脚本运行环境(environment)，补充环境准备说明,不强制本机安装 node,环境准备脚本/说明
+S5,工作流内容自查与修正,不篡改制度原文强信息点,一致性修正结果记录

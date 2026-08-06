@@ -1,0 +1,8 @@
+编号,交付物,类型,位置,状态
+D1,技能总入口 SKILL.md v4.1.0,文档,根目录 SKILL.md,已交付
+D2,lark-shared/lark-slides/lark-doc/lark-wiki/lark-base 技能骨架,技能,D:\trae\lark-* 5 目录,已交付
+D3,自包含打包脚本,脚本,tools/package_with_deps.py,已交付
+D4,自包含分发产物,打包,dist/*_自包含(.zip),已交付
+D5,完整版归档包,归档,D:\trae\制度手册转宣讲PPT工作流_完整版_v4.1.0_自包含.zip,已交付
+D6,项目台账,台账,台账/ 6 个 CSV,已交付
+D7,交接文档,文档,交接文档.md,已交付

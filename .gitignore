@@ -1,0 +1,17 @@
+# 打包产物与归档（可经 tools/package_with_deps.py 重新生成，不入库）
+dist/
+*.zip
+
+# 固化快照（可重新生成，不入库）
+skills_backup_*/
+
+# 临时/内部目录
+.lark-internal/
+.lark-slides/
+
+# 运行依赖
+node_modules/
+
+# 系统文件
+.DS_Store
+Thumbs.db
