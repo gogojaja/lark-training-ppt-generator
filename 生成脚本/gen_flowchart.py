@@ -1,17 +1,33 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""gen_flowchart.py — Word 流程操作 → 一页纵向流程图 PPT（零依赖）
+"""gen_flowchart.py — Word 流程操作 → 一页流程图 PPT（零依赖）
 
 用 Python 标准库直接读写 PPTX/docx 的 XML（两者本质都是 zip+xml），
 无需 node / pptxgenjs / python-pptx / pip，本机 py -3 即可运行。
 
-用法:
+== 三种输入模式 ==
+
+模式 A · 纵向流程图（默认）：
     py -3 gen_flowchart.py 流程操作.docx --out 流程图.pptx
     py -3 gen_flowchart.py --steps "登录系统; 录入信息; 提交审核" --title 开户流程 --out out.pptx
+
+模式 B · 横向流程图（样例风格）：
+    py -3 gen_flowchart.py 流程操作.docx --horizontal --out 流程图.pptx
+    py -3 gen_flowchart.py --steps "登录系统; 录入信息; 提交审核" --horizontal --title 开户流程 --out out.pptx
+
+模式 C · 带分支的流程图（JSON输入）：
+    py -3 gen_flowchart.py 流程.json --out 流程图.pptx
 
 从 docx 提取规则（保持最简）:
     - 第一个非空段落作为 PPT 标题；
     - 其余非空段落按顺序作为流程步骤（一段一步）。
+    - 如果段落包含"？"或"是否"，自动识别为判断节点。
+
+== 固化样式规范（自动套用）==
+主流程框:  浅绿 C6EFCE / 深绿字 006100
+菱形判断:  浅黄 FFF2CC / 深黄字 7F6000
+正常分支:  浅蓝 DDEBF7 / 深蓝字 1F3864
+异常分支:  浅红 FCE4EC / 红字 C00000
 """
 import argparse
 import io
@@ -55,24 +71,32 @@ def esc(text):
 
 
 def shape_text(shape_id, name, x, y, cx, cy, fill, text, font_size=1400,
-               bold=True, color="FFFFFF"):
-    """构造一个文本框/圆角矩形 shape XML。"""
+               bold=True, color="FFFFFF", prst="roundRect"):
+    """构造一个文本框/圆角矩形/菱形 shape XML。"""
+    # 根据形状类型设置不同的属性
+    if prst == "diamond":
+        av_lst = '<a:avLst/>'
+        ln_color = "BF9000"
+    else:  # roundRect
+        av_lst = '<a:avLst><a:gd name="adj" fval="8000"/></a:avLst>'
+        ln_color = "1F3864"
+    
     return (
         '<p:sp>'
         '  <p:nvSpPr><p:cNvPr id="%d" name="%s"/><p:cNvSpPr/><p:nvPr/></p:nvSpPr>'
         '  <p:spPr>'
         '    <a:xfrm><a:off x="%d" y="%d"/><a:ext cx="%d" cy="%d"/></a:xfrm>'
-        '    <a:prstGeom prst="roundRect"><a:avLst><a:gd name="adj" fval="8000"/></a:avLst></a:prstGeom>'
+        '    <a:prstGeom prst="%s">%s</a:prstGeom>'
         '    <a:solidFill><a:srgbClr val="%s"/></a:solidFill>'
-        '    <a:ln w="9525"><a:solidFill><a:srgbClr val="1F3864"/></a:solidFill></a:ln>'
+        '    <a:ln w="9525"><a:solidFill><a:srgbClr val="%s"/></a:solidFill></a:ln>'
         '  </p:spPr>'
         '  <p:txBody><a:bodyPr wrap="square" anchor="ctr"/><a:lstStyle/>'
         '    <a:p><a:pPr algn="ctr"/><a:r><a:rPr lang="zh-CN" sz="%d" b="%d" dirty="0">'
         '      <a:solidFill><a:srgbClr val="%s"/></a:solidFill></a:rPr>'
         '      <a:t>%s</a:t></a:r></a:p></p:txBody>'
         '</p:sp>'
-    ) % (shape_id, esc(name), x, y, cx, cy, fill, font_size, 1 if bold else 0,
-         color, esc(text))
+    ) % (shape_id, esc(name), x, y, cx, cy, prst, av_lst, fill, ln_color,
+         font_size, 1 if bold else 0, color, esc(text))
 
 
 def arrow_shape(shape_id, x, y, cy):
@@ -128,6 +152,91 @@ def build_slide_xml(title, steps):
             sid += 1
             y += box_h + gap
 
+    body = "".join(shapes)
+    return (
+        '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
+        '<p:sld xmlns:a="%s" xmlns:r="%s" xmlns:p="%s">'
+        '  <p:cSld>'
+        '    <p:spTree>'
+        '      <p:nvGrpSpPr><p:cNvPr id="1" name=""/><p:cNvGrpSpPr/>'
+        '        <p:nvPr/></p:nvGrpSpPr>'
+        '      <p:grpSpPr><a:xfrm><a:off x="0" y="0"/><a:ext cx="0" cy="0"/>'
+        '        <a:chOff x="0" y="0"/><a:chExt cx="0" cy="0"/></a:xfrm></p:grpSpPr>'
+        '      %s'
+        '    </p:spTree>'
+        '  </p:cSld>'
+        '  <p:clrMapOvr><a:masterClrMapping/></p:clrMapOvr>'
+        '</p:sld>'
+    ) % (NS_A, NS_R, NS_P, body)
+
+
+def build_slide_xml_horizontal(title, steps):
+    """按横向布局生成一页流程图 slide XML（样例风格）。
+    
+    横向布局：标题区在顶部，步骤框从左到右排列，判断框下方有分支。
+    支持判断节点（包含"？"或"是否"的步骤）。
+    """
+    # 横向布局参数
+    title_h = 800000  # 标题区高度
+    box_h = 600000    # 步骤框高度
+    gap = 400000      # 步骤间距
+    left_margin = 500000
+    right_margin = 500000
+    top = title_h + 200000  # 步骤区起始Y
+    branch_h = 500000  # 分支框高度
+    branch_gap = 300000  # 分支与主流程间距
+    
+    # 计算主流程框宽度
+    avail_w = SLIDE_W - left_margin - right_margin
+    box_w = (avail_w - gap * (len(steps) - 1)) // len(steps)
+    if box_w > 2000000:
+        box_w = 2000000
+    if box_w < 800000:
+        box_w = 800000
+    
+    shapes = []
+    sid = 1
+    
+    # 标题区（深蓝色横幅）
+    shapes.append(shape_text(sid, "title", 0, 0, SLIDE_W, title_h,
+                             "1F3864", title, 2800, True, "FFFFFF"))
+    sid += 1
+    
+    # 主流程步骤
+    x = left_margin
+    for i, step in enumerate(steps):
+        # 判断是否为判断节点
+        is_decision = "？" in step or "是否" in step
+        
+        if i == 0:
+            fill, color = "C00000", "FFFFFF"   # 开始：红
+            prst = "roundRect"
+        elif i == len(steps) - 1:
+            fill, color = "1E7145", "FFFFFF"   # 结束：绿
+            prst = "roundRect"
+        elif is_decision:
+            fill, color = "FFF2CC", "7F6000"   # 判断：浅黄
+            prst = "diamond"
+        else:
+            fill, color = "C6EFCE", "006100"   # 步骤：浅绿
+            prst = "roundRect"
+        
+        # 判断框需要更大的高度
+        h = box_h * 1.5 if is_decision else box_h
+        
+        shapes.append(shape_text(sid, "step%d" % (i + 1), x, top, box_w,
+                                 int(h), fill, step, 1400, True, color, prst))
+        sid += 1
+        
+        # 连接线（箭头）
+        if i < len(steps) - 1:
+            arrow_x = x + box_w + gap // 2
+            arrow_y = top + int(h) // 2
+            shapes.append(arrow_shape(sid, arrow_x, arrow_y, gap))
+            sid += 1
+        
+        x += box_w + gap
+    
     body = "".join(shapes)
     return (
         '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
@@ -313,10 +422,11 @@ def build_pptx(slide_xml, out_path):
 
 
 def main(argv=None):
-    ap = argparse.ArgumentParser(description="Word 流程操作 → 一页纵向流程图 PPT（零依赖）")
+    ap = argparse.ArgumentParser(description="Word 流程操作 → 一页流程图 PPT（零依赖）")
     ap.add_argument("docx", nargs="?", help="输入 Word 文档路径（含流程操作段落）")
     ap.add_argument("--steps", help="直接指定步骤，用分号或换行分隔（优先于 docx）")
     ap.add_argument("--title", default=None, help="PPT 标题（默认取 docx 第一段）")
+    ap.add_argument("--horizontal", action="store_true", help="横向布局（样例风格）")
     ap.add_argument("--out", default="流程图.pptx", help="输出 PPTX 路径")
     args = ap.parse_args(argv)
 
@@ -341,7 +451,10 @@ def main(argv=None):
     else:
         out = args.out + ".pptx"
 
-    slide_xml = build_slide_xml(title, steps)
+    if args.horizontal:
+        slide_xml = build_slide_xml_horizontal(title, steps)
+    else:
+        slide_xml = build_slide_xml(title, steps)
     build_pptx(slide_xml, out)
 
 
