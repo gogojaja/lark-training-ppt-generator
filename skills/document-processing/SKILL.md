@@ -9,7 +9,7 @@ description: "文档处理技能包：Word文档章节拆分、结构分析、�
 
 ## 1. 元数据
 
-- **技能版本**：v1.0.0
+- **技能版本**：v1.1.0
 - **发布日期**：2026-08-07
 - **参考标准**：OOXML (ISO/IEC 29500) · IEEE 830 · BABOK v3
 
@@ -30,28 +30,28 @@ description: "文档处理技能包：Word文档章节拆分、结构分析、�
 
 ### 4.1 Word文档章节拆分
 
-根据Word文档的标题层级（Heading 1/2/3...）进行智能拆分：
+根据Word文档的大纲级别（outlineLvl）进行智能拆分：
 
 ```bash
-# 查看文档结构
-py -3 tools/docx_splitter.py --structure input.docx
+# 拆分所有level=1的章节（默认）
+py -3 tools/split_docx_by_level.py input.docx output_dir
 
-# 按指定层级拆分
-py -3 tools/docx_splitter.py --split input.docx --level 2
+# 只拆分第3个level=1章节
+py -3 tools/split_docx_by_level.py input.docx output_dir 1 3
 
-# 拆分并生成报告
-py -3 tools/docx_splitter.py --split input.docx --level 2 --report
+# 按level=2拆分
+py -3 tools/split_docx_by_level.py input.docx output_dir 2
 ```
 
 ### 4.2 行业最佳实践
 
 | 实践 | 说明 |
 |------|------|
+| 只复制引用的图片 | 扫描`<a:blip>`标签提取rId，只复制被引用的图片，大幅减小文件体积 |
+| 完整命名空间声明 | 包含所有必要的XML命名空间（w, r, wp, wps等），确保Word兼容性 |
+| 流式处理 | 不解析完整XML树，支持超大文档（10MB+） |
 | 保留格式 | 拆分后文档保留原格式（样式、字体、图片） |
-| 自定义层级 | 支持按任意标题层级拆分 |
-| 目录索引 | 自动生成INDEX.md索引文件 |
-| 结构报告 | 输出JSON格式的结构化元数据 |
-| 批量处理 | 支持批量拆分多个文档 |
+| 关系文件同步 | 只包含被引用的关系，避免冗余 |
 
 ### 4.3 拆分策略
 
@@ -62,19 +62,42 @@ py -3 tools/docx_splitter.py --split input.docx --level 2 --report
 | 培训材料 | Level 1 | 按"章节"拆分 |
 | 技术规范 | Level 2 | 按"章节"拆分 |
 
-## 5. 输出规范
+## 5. 技术实现
 
-- 拆分文件：`section_NNN_标题.docx`
-- 索引文件：`INDEX.md`
-- 结构报告：`split_report.json`
+### 5.1 大纲级别识别
 
-## 6. 边界
+Word文档使用`outlineLvl`属性标识标题层级：
+- `outlineLvl w:val="0"` → 一级标题
+- `outlineLvl w:val="1"` → 二级标题
+- `outlineLvl w:val="2"` → 三级标题
+- 以此类推...
+
+### 5.2 图片引用机制
+
+Word文档中的图片通过关系ID引用：
+1. XML中：`<a:blip r:embed="rId10"/>`
+2. 关系文件：`<Relationship Id="rId10" Target="media/image1.png"/>`
+3. 图片文件：`word/media/image1.png`
+
+### 5.3 文件大小优化
+
+| 方案 | 原始文件 | 拆分后 | 说明 |
+|------|----------|--------|------|
+| 复制全部资源 | 356MB | 300MB+ | 包含所有图片 |
+| 只复制引用资源 | 356MB | 3-24MB | 只包含被引用的图片 |
+
+## 6. 输出规范
+
+- 拆分文件：`标题.docx`
+- 文件大小：通常3-24MB（取决于图片数量）
+
+## 7. 边界
 
 - 仅处理.docx格式（不支持.doc）
-- 需要文档使用标准标题样式
-- 复杂表格和图片可能需要手动调整
+- 需要文档使用标准大纲级别（outlineLvl）
+- 复杂表格和嵌入对象可能需要手动调整
 
 ---
 
-**文档版本**：v1.0.0　**最后更新**：2026-08-07
+**文档版本**：v1.1.0　**最后更新**：2026-08-07
 **知识产权所有**：段波（验证邮箱：duanbo.douglas@163.com）
