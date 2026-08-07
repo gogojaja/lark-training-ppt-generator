@@ -1,0 +1,37 @@
+{
+  "total_sections": 4,
+  "sections": [
+    {
+      "index": 1,
+      "heading": "1.场景说明",
+      "level": 3,
+      "parent_heading": "",
+      "paragraph_count": 2,
+      "filename": "section_001_1.场景说明.docx"
+    },
+    {
+      "index": 2,
+      "heading": "业务办理流程",
+      "level": 3,
+      "parent_heading": "",
+      "paragraph_count": 94,
+      "filename": "section_002_业务办理流程.docx"
+    },
+    {
+      "index": 3,
+      "heading": "业务规则",
+      "level": 3,
+      "parent_heading": "",
+      "paragraph_count": 16,
+      "filename": "section_003_业务规则.docx"
+    },
+    {
+      "index": 4,
+      "heading": "凭证管理",
+      "level": 3,
+      "parent_heading": "",
+      "paragraph_count": 3,
+      "filename": "section_004_凭证管理.docx"
+    }
+  ]
+}
