@@ -1,0 +1,209 @@
+{
+  "_说明": "培训PPT配置模板 - 遵循行业最佳实践",
+  "_使用方法": "py -3 generate_training_ppt.py 输入文档.docx --config config.json --out 输出.pptx",
+  
+  "theme": {
+    "_说明": "主题风格预设：professional(专业蓝)/warm(温暖橙)/modern(现代绿)/minimal(简约灰)",
+    "style": "professional"
+  },
+
+  "colors": {
+    "_说明": "颜色配置 - 遵循70-25-5配色比例",
+    "_主色占比": "70% - 背景和主要区域",
+    "_辅色占比": "25% - 标题和重点模块",
+    "_点缀色占比": "5% - 关键数据和强调标记",
+    
+    "primary": {
+      "_说明": "主色 - 用于封面背景、标题栏",
+      "dark": "1F3864",
+      "medium": "2E75B6",
+      "light": "D6E4F0"
+    },
+    "secondary": {
+      "_说明": "辅色 - 用于内容区域背景",
+      "dark": "006100",
+      "medium": "C6EFCE",
+      "light": "E2EFDA"
+    },
+    "accent": {
+      "_说明": "点缀色 - 用于强调和高亮",
+      "warning": "FFC000",
+      "error": "C00000",
+      "success": "70AD47"
+    },
+    "text": {
+      "_说明": "文字颜色",
+      "primary": "333333",
+      "secondary": "666666",
+      "light": "FFFFFF",
+      "muted": "999999"
+    },
+    "background": {
+      "_说明": "背景颜色",
+      "white": "FFFFFF",
+      "light": "F5F5F5",
+      "gray": "E7E6E6"
+    }
+  },
+
+  "fonts": {
+    "_说明": "字体配置 - 全文不超过2种字体",
+    "_推荐方案": "标题用思源黑体/微软雅黑加粗，正文用微软雅黑",
+    
+    "family": {
+      "title": "Microsoft YaHei",
+      "body": "Microsoft YaHei",
+      "code": "Consolas"
+    },
+    "size": {
+      "_说明": "字号层级 - 保证投影清晰",
+      "cover_title": 44,
+      "cover_subtitle": 28,
+      "slide_title": 32,
+      "section_title": 28,
+      "body": 20,
+      "caption": 14,
+      "footer": 12
+    },
+    "weight": {
+      "bold": true,
+      "normal": false
+    }
+  },
+
+  "layout": {
+    "_说明": "布局配置",
+    "slide": {
+      "width": 12192000,
+      "height": 6858000,
+      "_说明": "16:9标准比例"
+    },
+    "margins": {
+      "top": 500000,
+      "bottom": 500000,
+      "left": 500000,
+      "right": 500000
+    },
+    "spacing": {
+      "title_to_content": 200000,
+      "between_items": 150000,
+      "line_height": 1.5
+    }
+  },
+
+  "slides": {
+    "_说明": "各页面配置",
+    
+    "cover": {
+      "enabled": true,
+      "background": "primary.dark",
+      "title_color": "text.light",
+      "subtitle_color": "text.light",
+      "show_date": true,
+      "show_author": false
+    },
+    
+    "scene_description": {
+      "enabled": true,
+      "title": "场景说明",
+      "background": "secondary.light",
+      "title_color": "secondary.dark",
+      "content_color": "text.primary",
+      "icon": "📋"
+    },
+    
+    "business_rules": {
+      "enabled": true,
+      "title": "业务规则",
+      "background": "secondary.light",
+      "title_color": "secondary.dark",
+      "content_color": "text.primary",
+      "icon": "📜"
+    },
+    
+    "flow_chart": {
+      "enabled": true,
+      "title": "业务办理流程",
+      "background": "white",
+      "title_bg": "primary.dark",
+      "title_color": "text.light",
+      
+      "steps": {
+        "start_color": "accent.error",
+        "end_color": "accent.success",
+        "normal_color": "secondary.medium",
+        "normal_text": "secondary.dark",
+        "decision_color": "accent.warning",
+        "decision_text": "7F6000",
+        "branch_color": "primary.light",
+        "error_color": "FCE4EC"
+      }
+    },
+    
+    "summary": {
+      "enabled": false,
+      "title": "总结",
+      "background": "primary.dark",
+      "title_color": "text.light"
+    }
+  },
+
+  "elements": {
+    "_说明": "元素样式配置",
+    
+    "shapes": {
+      "border_width": 9525,
+      "border_color": "808080",
+      "corner_radius": 8000
+    },
+    
+    "arrows": {
+      "width": 28575,
+      "color": "primary.dark",
+      "head_size": "med",
+      "tail_size": "med"
+    },
+    
+    "text_box": {
+      "padding": {
+        "top": 45720,
+        "bottom": 45720,
+        "left": 91440,
+        "right": 91440
+      },
+      "vertical_align": "ctr"
+    }
+  },
+
+  "presets": {
+    "_说明": "预设配色方案",
+    
+    "professional": {
+      "_说明": "专业蓝 - 适合技术培训、制度宣贯",
+      "primary": {"dark": "1F3864", "medium": "2E75B6", "light": "D6E4F0"},
+      "secondary": {"dark": "006100", "medium": "C6EFCE", "light": "E2EFDA"},
+      "accent": {"warning": "FFC000", "error": "C00000", "success": "70AD47"}
+    },
+    
+    "warm": {
+      "_说明": "温暖橙 - 适合内部培训、软技能",
+      "primary": {"dark": "833C00", "medium": "ED7D31", "light": "FCE4D6"},
+      "secondary": {"dark": "006100", "medium": "C6EFCE", "light": "E2EFDA"},
+      "accent": {"warning": "FFC000", "error": "C00000", "success": "70AD47"}
+    },
+    
+    "modern": {
+      "_说明": "现代绿 - 适合创新培训、产品培训",
+      "primary": {"dark": "006100", "medium": "70AD47", "light": "E2EFDA"},
+      "secondary": {"dark": "1F3864", "medium": "D6E4F0", "light": "F2F7FB"},
+      "accent": {"warning": "FFC000", "error": "C00000", "success": "70AD47"}
+    },
+    
+    "minimal": {
+      "_说明": "简约灰 - 适合高管培训、正式场合",
+      "primary": {"dark": "404040", "medium": "808080", "light": "D9D9D9"},
+      "secondary": {"dark": "006100", "medium": "C6EFCE", "light": "E2EFDA"},
+      "accent": {"warning": "FFC000", "error": "C00000", "success": "70AD47"}
+    }
+  }
+}
