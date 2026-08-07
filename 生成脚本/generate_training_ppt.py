@@ -79,6 +79,29 @@ PRESETS = {
             "primary": {"dark": "404040", "medium": "808080", "light": "D9D9D9"},
             "secondary": {"dark": "006100", "medium": "C6EFCE", "light": "E2EFDA"}
         }
+    },
+    "cash_management": {
+        "_说明": "现金管理风格 - 基于柜面业务介绍样例",
+        "colors": {
+            "primary": {"dark": "018C6A", "medium": "018C6A", "light": "E8F5F0"},
+            "secondary": {"dark": "1F2329", "medium": "475569", "light": "F5F5F5"},
+            "accent": {"warning": "8AB82D", "error": "FF0000", "success": "098902", "blue": "1E3A8A"},
+            "text": {"primary": "1F2329", "secondary": "475569", "light": "FFFFFF", "muted": "8F959E"}
+        },
+        "fonts": {
+            "family": {"title": "Saturday Sans Regular", "body": "Microsoft YaHei"},
+            "size": {
+                "chapter_num": 88,
+                "chapter_title": 44,
+                "cover_title": 36,
+                "slide_title": 24,
+                "section_title": 20,
+                "content_title": 18,
+                "subtitle": 16,
+                "body": 12,
+                "caption": 10
+            }
+        }
     }
 }
 
@@ -370,6 +393,75 @@ def build_section_slide(chapter_num, title, subtitle, description, colors):
     if description:
         shapes.append(shape_text_large(sid, "description", 1651000, 5100000, 8890000, 800000,
                                         description, 177800, colors["text"]["muted"], False))
+    
+    body = "".join(shapes)
+    return (
+        '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
+        '<p:sld xmlns:a="%s" xmlns:r="%s" xmlns:p="%s">'
+        '  <p:cSld>'
+        '    <p:bg><p:bgRef idx="1001"><a:schemeClr val="bg1"/></p:bgRef></p:bg>'
+        '    <p:spTree>'
+        '      <p:nvGrpSpPr><p:cNvPr id="1" name=""/><p:cNvGrpSpPr/>'
+        '        <p:nvPr/></p:nvGrpSpPr>'
+        '      <p:grpSpPr><a:xfrm><a:off x="0" y="0"/><a:ext cx="0" cy="0"/>'
+        '        <a:chOff x="0" y="0"/><a:chExt cx="0" cy="0"/></a:xfrm></p:grpSpPr>'
+        '      %s'
+        '    </p:spTree>'
+        '  </p:cSld>'
+        '  <p:clrMapOvr><a:masterClrMapping/></p:clrMapOvr>'
+        '</p:sld>'
+    ) % (NS_A, NS_R, NS_P, body)
+
+
+def build_toc_slide(title, items, colors):
+    """构建目录页（参考目录样例.pptx风格）。
+    
+    布局结构：
+    - 顶部装饰栏
+    - 目录标题
+    - 目录项列表
+    """
+    shapes = []
+    sid = 1
+    
+    # 顶部装饰栏（深蓝色）
+    shapes.append(shape_rect(sid, "top_bar", 0, 0, SLIDE_W, 166688, colors["primary"]["dark"]))
+    sid += 1
+    
+    # 左侧装饰块（浅蓝色）
+    shapes.append(shape_rect(sid, "left_deco", 0, 0, 863600, 762000, colors["primary"]["light"]))
+    sid += 1
+    
+    # 目录标题
+    shapes.append(shape_text_large(sid, "toc_title", 787400, 215900, 7620000, 393700,
+                                    "目录 / CONTENTS", 228600, colors["text"]["primary"], True))
+    sid += 1
+    
+    # 分隔线
+    shapes.append(shape_rect(sid, "divider", 0, 755650, SLIDE_W, 12700, colors["primary"]["medium"]))
+    sid += 1
+    
+    # 目录项
+    y = 1200000
+    for i, item in enumerate(items):
+        # 序号
+        num_text = "%02d" % (i + 1)
+        shapes.append(shape_text_large(sid, "num%d" % (i + 1), 1000000, y, 800000, 500000,
+                                        num_text, 36000, colors["primary"]["dark"], True))
+        sid += 1
+        
+        # 目录项文本
+        shapes.append(shape_text_large(sid, "item%d" % (i + 1), 2000000, y, 9000000, 500000,
+                                        item, 24000, colors["text"]["primary"], False))
+        sid += 1
+        
+        # 分隔线
+        if i < len(items) - 1:
+            shapes.append(shape_rect(sid, "line%d" % (i + 1), 1000000, y + 550000, 10000000, 10000, 
+                                     colors["text"]["muted"]))
+            sid += 1
+        
+        y += 600000
     
     body = "".join(shapes)
     return (
@@ -711,8 +803,8 @@ def main(argv=None):
     ap = argparse.ArgumentParser(description="从Word文档生成培训PPT（参数化）")
     ap.add_argument("docx", help="输入Word文档路径")
     ap.add_argument("--config", help="配置文件路径（JSON格式）")
-    ap.add_argument("--preset", choices=["professional", "warm", "modern", "minimal"],
-                    help="预设主题：professional(专业蓝)/warm(温暖橙)/modern(现代绿)/minimal(简约灰)")
+    ap.add_argument("--preset", choices=["professional", "warm", "modern", "minimal", "cash_management"],
+                    help="预设主题：professional(专业蓝)/warm(温暖橙)/modern(现代绿)/minimal(简约灰)/cash_management(现金管理)")
     ap.add_argument("--out", default="培训PPT.pptx", help="输出PPTX路径")
     ap.add_argument("--title", default=None, help="PPT标题（覆盖文档标题）")
     ap.add_argument("--chapter-num", type=int, default=1, help="章节编号（默认1）")

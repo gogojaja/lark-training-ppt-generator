@@ -1,0 +1,157 @@
+{
+  "_说明": "基于柜面业务介绍-现金管理V4.0样例分析的配置模板",
+  "_样例来源": "样例/柜面业务介绍-现金管理V4.0.pptx",
+  "_分析报告": "样例/柜面业务介绍_分析报告.md",
+  
+  "theme": {
+    "style": "cash_management",
+    "_说明": "现金管理风格"
+  },
+
+  "colors": {
+    "_说明": "从样例PPT提取的配色方案",
+    
+    "primary": {
+      "_说明": "主色 - 绿色系",
+      "dark": "018C6A",
+      "medium": "018C6A",
+      "light": "E8F5F0"
+    },
+    "secondary": {
+      "_说明": "辅色 - 灰色系",
+      "dark": "1F2329",
+      "medium": "475569",
+      "light": "F5F5F5"
+    },
+    "accent": {
+      "_说明": "点缀色",
+      "warning": "8AB82D",
+      "error": "FF0000",
+      "success": "098902",
+      "blue": "1E3A8A"
+    },
+    "text": {
+      "_说明": "文字颜色 - 从样例提取",
+      "primary": "1F2329",
+      "secondary": "475569",
+      "light": "FFFFFF",
+      "muted": "8F959E"
+    }
+  },
+
+  "fonts": {
+    "_说明": "从样例PPT提取的字体配置",
+    
+    "family": {
+      "title": "Saturday Sans Regular",
+      "body": "Microsoft YaHei",
+      "cover": "Franklin Gothic Medium",
+      "_说明": "样例中章节标题使用Saturday Sans Regular，正文使用微软雅黑，封面使用Franklin Gothic Medium"
+    },
+    "size": {
+      "_说明": "从样例提取的字号（单位：磅）",
+      "chapter_num": 88,
+      "chapter_title": 44,
+      "cover_title": 36,
+      "slide_title": 24,
+      "section_title": 20,
+      "content_title": 18,
+      "subtitle": 16,
+      "body": 12,
+      "caption": 10
+    }
+  },
+
+  "layout": {
+    "_说明": "从样例提取的布局参数",
+    "slide": {
+      "width": 12192000,
+      "height": 6858000,
+      "_说明": "16:9标准比例"
+    },
+    "margins": {
+      "top": 500000,
+      "bottom": 500000,
+      "left": 500000,
+      "right": 500000
+    },
+    "decoration": {
+      "top_bar_height": 166688,
+      "left_deco_width": 863600,
+      "divider_height": 12700
+    }
+  },
+
+  "slides": {
+    "_说明": "各页面配置",
+    
+    "cover": {
+      "_说明": "封面页",
+      "enabled": true,
+      "title_font": "Franklin Gothic Medium",
+      "title_size": 36,
+      "title_color": "FFFFFF",
+      "subtitle_font": "Franklin Gothic Medium",
+      "subtitle_size": 20,
+      "subtitle_color": "000000"
+    },
+    
+    "section_cover": {
+      "_说明": "章节首页（参考章节首页样例.pptx）",
+      "enabled": true,
+      "top_bar_height": 166688,
+      "left_deco_width": 863600,
+      "chapter_label_y": 215900,
+      "divider_y": 755650,
+      "chapter_num_y": 1778000,
+      "chapter_title_y": 3429000,
+      "subtitle_y": 4600000,
+      "description_y": 5100000,
+      "chapter_num_font": "Saturday Sans Regular",
+      "chapter_num_size": 88,
+      "chapter_num_color": "018C6A",
+      "chapter_title_font": "Saturday Sans Regular",
+      "chapter_title_size": 44,
+      "chapter_title_color": "1F2329",
+      "subtitle_font": "Saturday Sans Regular",
+      "subtitle_size": 16,
+      "subtitle_color": "606266",
+      "description_font": "Saturday Sans Regular",
+      "description_size": 14,
+      "description_color": "8F959E"
+    },
+    
+    "toc": {
+      "_说明": "目录页（参考目录样例.pptx）",
+      "enabled": true,
+      "title_font": "Microsoft YaHei",
+      "title_size": 24,
+      "title_color": "018C6A",
+      "item_height": 600000,
+      "item_gap": 100000
+    },
+    
+    "content": {
+      "_说明": "内容页",
+      "enabled": true,
+      "title_font": "Microsoft YaHei",
+      "title_size": 20,
+      "title_color": "000000",
+      "content_title_font": "Microsoft YaHei",
+      "content_title_size": 16,
+      "content_title_color": "018C6A",
+      "body_font": "Saturday Sans Regular",
+      "body_size": 12,
+      "body_color": "1F2329"
+    },
+    
+    "flow_chart": {
+      "_说明": "流程图页",
+      "enabled": true,
+      "title_height": 800000,
+      "box_width": 7000000,
+      "box_height": 600000,
+      "gap": 300000
+    }
+  }
+}
