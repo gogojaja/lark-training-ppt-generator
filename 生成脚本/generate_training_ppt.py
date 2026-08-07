@@ -275,6 +275,121 @@ def arrow_shape(sid, x, y, cy):
     ) % (sid, sid, x, y, cy, cy)
 
 
+def shape_rect(sid, name, x, y, w, h, fill, border_color=None):
+    """构造矩形形状。"""
+    border_xml = ''
+    if border_color:
+        border_xml = '<a:ln w="9525"><a:solidFill><a:srgbClr val="%s"/></a:solidFill></a:ln>' % border_color
+    else:
+        border_xml = '<a:ln><a:noFill/></a:ln>'
+    
+    return (
+        '<p:sp>'
+        '  <p:nvSpPr><p:cNvPr id="%d" name="%s"/><p:cNvSpPr/><p:nvPr/></p:nvSpPr>'
+        '  <p:spPr>'
+        '    <a:xfrm><a:off x="%d" y="%d"/><a:ext cx="%d" cy="%d"/></a:xfrm>'
+        '    <a:prstGeom prst="rect"><a:avLst/></a:prstGeom>'
+        '    <a:solidFill><a:srgbClr val="%s"/></a:solidFill>'
+        '    %s'
+        '  </p:spPr>'
+        '  <p:txBody><a:bodyPr/><a:lstStyle/><a:p/></p:txBody>'
+        '</p:sp>'
+    ) % (sid, esc(name), x, y, w, h, fill, border_xml)
+
+
+def shape_text_large(sid, name, x, y, w, h, text, font_size, color, bold=True):
+    """构造大字号文本框。"""
+    return (
+        '<p:sp>'
+        '  <p:nvSpPr><p:cNvPr id="%d" name="%s"/><p:cNvSpPr/><p:nvPr/></p:nvSpPr>'
+        '  <p:spPr>'
+        '    <a:xfrm><a:off x="%d" y="%d"/><a:ext cx="%d" cy="%d"/></a:xfrm>'
+        '    <a:prstGeom prst="rect"><a:avLst/></a:prstGeom>'
+        '    <a:noFill/><a:ln><a:noFill/></a:ln>'
+        '  </p:spPr>'
+        '  <p:txBody><a:bodyPr wrap="square" anchor="ctr"/><a:lstStyle/>'
+        '    <a:p><a:pPr algn="ctr"/><a:r>'
+        '      <a:rPr lang="zh-CN" sz="%d" b="%d" dirty="0">'
+        '        <a:solidFill><a:srgbClr val="%s"/></a:solidFill>'
+        '      </a:rPr>'
+        '      <a:t>%s</a:t>'
+        '    </a:r></a:p></p:txBody>'
+        '</p:sp>'
+    ) % (sid, esc(name), x, y, w, h, font_size, 1 if bold else 0, color, esc(text))
+
+
+def build_section_slide(chapter_num, title, subtitle, description, colors):
+    """构建章节首页（参考章节首页样例.pptx风格）。
+    
+    布局结构：
+    - 顶部装饰栏
+    - PART XX / 章节标题
+    - 大号章节编号
+    - 大号章节标题
+    - 副标题和描述
+    """
+    shapes = []
+    sid = 1
+    
+    # 顶部装饰栏（深蓝色）
+    shapes.append(shape_rect(sid, "top_bar", 0, 0, SLIDE_W, 166688, colors["primary"]["dark"]))
+    sid += 1
+    
+    # 左侧装饰块（浅蓝色）
+    shapes.append(shape_rect(sid, "left_deco", 0, 0, 863600, 762000, colors["primary"]["light"]))
+    sid += 1
+    
+    # PART XX / 章节标题（小字）
+    chapter_text = "PART %02d / %s" % (chapter_num, title)
+    shapes.append(shape_text_large(sid, "chapter_label", 787400, 215900, 7620000, 393700,
+                                    chapter_text, 228600, colors["text"]["primary"], True))
+    sid += 1
+    
+    # 分隔线
+    shapes.append(shape_rect(sid, "divider", 0, 755650, SLIDE_W, 12700, colors["primary"]["medium"]))
+    sid += 1
+    
+    # 大号章节编号（PART 01）
+    chapter_num_text = "PART %02d" % chapter_num
+    shapes.append(shape_text_large(sid, "chapter_num", 0, 1778000, SLIDE_W, 1397000,
+                                    chapter_num_text, 1117600, colors["primary"]["light"], True))
+    sid += 1
+    
+    # 大号章节标题
+    shapes.append(shape_text_large(sid, "chapter_title", 0, 3429000, SLIDE_W, 1016000,
+                                    title, 558800, colors["text"]["primary"], True))
+    sid += 1
+    
+    # 副标题
+    if subtitle:
+        shapes.append(shape_text_large(sid, "subtitle", 1651000, 4600000, 8890000, 500000,
+                                        subtitle, 203200, colors["text"]["secondary"], False))
+        sid += 1
+    
+    # 描述文字
+    if description:
+        shapes.append(shape_text_large(sid, "description", 1651000, 5100000, 8890000, 800000,
+                                        description, 177800, colors["text"]["muted"], False))
+    
+    body = "".join(shapes)
+    return (
+        '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
+        '<p:sld xmlns:a="%s" xmlns:r="%s" xmlns:p="%s">'
+        '  <p:cSld>'
+        '    <p:bg><p:bgRef idx="1001"><a:schemeClr val="bg1"/></p:bgRef></p:bg>'
+        '    <p:spTree>'
+        '      <p:nvGrpSpPr><p:cNvPr id="1" name=""/><p:cNvGrpSpPr/>'
+        '        <p:nvPr/></p:nvGrpSpPr>'
+        '      <p:grpSpPr><a:xfrm><a:off x="0" y="0"/><a:ext cx="0" cy="0"/>'
+        '        <a:chOff x="0" y="0"/><a:chExt cx="0" cy="0"/></a:xfrm></p:grpSpPr>'
+        '      %s'
+        '    </p:spTree>'
+        '  </p:cSld>'
+        '  <p:clrMapOvr><a:masterClrMapping/></p:clrMapOvr>'
+        '</p:sld>'
+    ) % (NS_A, NS_R, NS_P, body)
+
+
 def build_cover_slide(title, colors):
     """构建封面页。"""
     shapes = []
@@ -600,6 +715,9 @@ def main(argv=None):
                     help="预设主题：professional(专业蓝)/warm(温暖橙)/modern(现代绿)/minimal(简约灰)")
     ap.add_argument("--out", default="培训PPT.pptx", help="输出PPTX路径")
     ap.add_argument("--title", default=None, help="PPT标题（覆盖文档标题）")
+    ap.add_argument("--chapter-num", type=int, default=1, help="章节编号（默认1）")
+    ap.add_argument("--chapter-subtitle", default=None, help="章节副标题")
+    ap.add_argument("--chapter-desc", default=None, help="章节描述")
     ap.add_argument("--scene-title", default=None, help="场景说明页标题")
     ap.add_argument("--rules-title", default=None, help="业务规则页标题")
     ap.add_argument("--flow-title", default=None, help="流程图页标题")
@@ -623,8 +741,14 @@ def main(argv=None):
     rules_title = args.rules_title or slides_config["business_rules"]["title"]
     flow_title = args.flow_title or slides_config["flow_chart"]["title"]
     
+    # 章节信息
+    chapter_num = args.chapter_num
+    chapter_subtitle = args.chapter_subtitle or "个人银行账户批量开立业务操作指南"
+    chapter_desc = args.chapter_desc or "支持柜面/存折/存单/银行卡账户开立"
+    
     print("主题: %s" % config["theme"]["style"])
     print("文档标题: %s" % doc["title"])
+    print("章节: PART %02d" % chapter_num)
     print("场景说明: %d 段" % len(doc["scene_description"]))
     print("业务规则: %d 段" % len(doc["business_rules"]))
     print("业务流程: %d 步" % len(doc["flow_steps"]))
@@ -632,8 +756,8 @@ def main(argv=None):
     # 构建幻灯片
     slides = []
     
-    # 1. 封面页
-    slides.append(build_cover_slide(doc["title"], colors))
+    # 1. 章节首页（参考章节首页样例.pptx）
+    slides.append(build_section_slide(chapter_num, doc["title"], chapter_subtitle, chapter_desc, colors))
     
     # 2. 场景说明页
     if doc["scene_description"]:
