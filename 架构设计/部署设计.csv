@@ -1,0 +1,13 @@
+﻿部署层级,部署组件,部署位置,运行环境,配置方式,依赖关系
+本地部署,Node.js运行时,用户机器,Node.js 14+,安装Node.js,npm包管理
+本地部署,Python运行时,用户机器,Python 3.6+,安装Python,系统包管理
+本地部署,generate.js,生成脚本目录,Node.js,直接运行,Node.js+pptxgenjs
+本地部署,gen_flowchart_branch.py,生成脚本目录,Python,直接运行,Python(零依赖)
+本地部署,配置文件,项目根目录,文件系统,文本编辑,无
+本地部署,主题文件,themes目录,文件系统,文本编辑,无
+本地部署,组件库,components目录,Node.js,require加载,Node.js
+本地部署,Schema文件,schemas目录,文件系统,JSON格式,无
+可选部署,lark-cli,系统PATH,命令行,安装配置,飞书API
+可选部署,素材文件,素材目录,文件系统,文件复制,无
+容器部署,Docker镜像,容器环境,Docker,容器配置,Docker引擎
+容器部署,Node.js容器,容器环境,Docker,容器镜像,Docker

@@ -1,0 +1,13 @@
+﻿接口类型,接口名称,接口描述,输入参数,输出格式,错误处理
+命令行接口,generate.js,主生成器入口,--config/--theme/--scheme/--all,生成结果/错误信息,错误码+错误消息
+命令行接口,gen_flowchart_branch.py,流程图生成器入口,json_file/--out,PPTX文件/错误信息,Python异常+错误消息
+文件接口,config.yaml,用户配置文件,theme/export_format/page_size,配置对象,YAML解析错误
+文件接口,themes/*.json,主题配置文件,palette/fonts/motif,主题对象,JSON格式错误
+文件接口,slide_plan*.json,幻灯片规划文件,slides/visual_strategy,规划对象,JSON Schema验证错误
+函数接口,ThemeManager.getTheme,获取主题配置,themeName,themeObject,主题不存在错误
+函数接口,ComponentLoader.loadComponent,加载组件,componentType,componentInstance,组件不存在错误
+函数接口,SlideRenderer.renderSlide,渲染幻灯片,slidePlan,renderedSlide,组件渲染错误
+函数接口,FlowchartGenerator.generateXML,生成流程图XML,flowchartDefinition,xmlString,生成失败错误
+函数接口,SchemaValidator.validate,验证数据格式,schema/data,validationResult,验证失败错误
+内部接口,组件render方法,组件渲染接口,theme/data,渲染内容,组件内部错误
+内部接口,调度器调度接口,组件调度接口,slidePlan,调度结果,调度错误

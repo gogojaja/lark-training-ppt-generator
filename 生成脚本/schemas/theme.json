@@ -1,0 +1,92 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Theme Schema",
+  "description": "主题配置文件的验证Schema",
+  "type": "object",
+  "required": ["name", "palette", "fonts"],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "主题名称"
+    },
+    "palette": {
+      "type": "object",
+      "required": ["primary", "secondary", "accent", "bg", "text"],
+      "properties": {
+        "primary": {
+          "type": "string",
+          "pattern": "^[0-9A-Fa-f]{6}$",
+          "description": "主色"
+        },
+        "secondary": {
+          "type": "string",
+          "pattern": "^[0-9A-Fa-f]{6}$",
+          "description": "辅色"
+        },
+        "accent": {
+          "type": "string",
+          "pattern": "^[0-9A-Fa-f]{6}$",
+          "description": "强调色"
+        },
+        "bg": {
+          "type": "string",
+          "pattern": "^[0-9A-Fa-f]{6}$",
+          "description": "背景色"
+        },
+        "text": {
+          "type": "string",
+          "pattern": "^[0-9A-Fa-f]{6}$",
+          "description": "文字色"
+        },
+        "textLight": {
+          "type": "string",
+          "pattern": "^[0-9A-Fa-f]{6}$"
+        },
+        "success": {
+          "type": "string",
+          "pattern": "^[0-9A-Fa-f]{6}$"
+        },
+        "warning": {
+          "type": "string",
+          "pattern": "^[0-9A-Fa-f]{6}$"
+        },
+        "danger": {
+          "type": "string",
+          "pattern": "^[0-9A-Fa-f]{6}$"
+        }
+      }
+    },
+    "fonts": {
+      "type": "object",
+      "required": ["heading", "body"],
+      "properties": {
+        "heading": {
+          "type": "string",
+          "description": "标题字体"
+        },
+        "body": {
+          "type": "string",
+          "description": "正文字体"
+        }
+      }
+    },
+    "sizes": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "body": {
+          "type": "string"
+        },
+        "note": {
+          "type": "string"
+        }
+      }
+    },
+    "motif": {
+      "type": "string",
+      "description": "主题图形"
+    }
+  }
+}

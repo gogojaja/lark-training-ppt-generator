@@ -1,0 +1,11 @@
+﻿需求编号,来源载体,原子行为描述,MoSCoW,分类,验收标准,约束依据,状态
+REQ-001,技术约束,将generate.js中的颜色常量抽离到themes/*.json配置文件,Must Have,功能,新建主题JSON文件后无需修改generate.js即可切换配色,行业最佳实践-配置驱动原则,已收集
+REQ-002,技术约束,创建config.yaml用户配置入口支持主题/格式/页面尺寸等配置,Must Have,功能,用户可通过config.yaml配置生成参数无需修改代码,行业最佳实践-配置分离原则,已收集
+REQ-003,技术约束,将generate.js拆分为可复用组件(header/footer/card/table/flowchart等),Must Have,功能,每个组件独立文件可单独测试和复用,行业最佳实践-组件化架构,已收集
+REQ-004,技术约束,建立slide_plan.json到组件调度器的生成流程,Must Have,功能,调度器根据slide type自动选择对应组件渲染,行业最佳实践-数据驱动生成,已收集
+REQ-005,技术约束,流程图生成器支持XML片段输出可嵌入主PPT,Should Have,功能,slide_plan.json中定义的流程图可自动生成并嵌入主PPT,当前痛点-手动合并,已收集
+REQ-006,技术约束,SKILL.md拆分为核心+参考文档减少行数至300行以内,Should Have,功能,核心SKILL.md仅包含工作流路由详细规则外置到references,当前痛点-认知负担,已收集
+REQ-007,技术约束,支持多套slide_plan.json并存支持一键生成不同方案,Could Have,功能,可通过--scheme参数指定生成方案或--all生成全部,行业最佳实践-多方案配置,已收集
+REQ-008,技术约束,创建slide_plan.json的JSON Schema验证文件,Must Have,功能,schema可校验slide_plan.json结构完整性,行业最佳实践- schema验证,已收集
+REQ-009,技术约束,建立预设主题库(10+行业模板)支持快速选择,Should Have,功能,themes/目录包含多个行业预设主题用户可直接选用,行业最佳实践-预设库,已收集
+REQ-010,技术约束,保持向后兼容现有generate.js入口和工作流不变,Must Have,约束,重构后现有用户无需修改即可继续使用,风险 mitigation-兼容性,已收集

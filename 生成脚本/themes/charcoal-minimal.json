@@ -1,0 +1,26 @@
+{
+  "name": "Charcoal Minimal",
+  "palette": {
+    "primary": "374151",
+    "secondary": "6B7280",
+    "dark": "111827",
+    "accent": "F59E0B",
+    "bg": "F9FAFB",
+    "white": "FFFFFF",
+    "text": "1F2937",
+    "textLight": "9CA3AF",
+    "success": "10B981",
+    "warning": "F59E0B",
+    "danger": "EF4444"
+  },
+  "fonts": {
+    "heading": "Microsoft YaHei",
+    "body": "Microsoft YaHei"
+  },
+  "sizes": {
+    "title": "20pt",
+    "body": "9-10pt",
+    "note": "8pt"
+  },
+  "motif": "minimal_sidebar"
+}

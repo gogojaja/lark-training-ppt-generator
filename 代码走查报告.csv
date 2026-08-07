@@ -1,0 +1,11 @@
+﻿组件名称,文件路径,代码行数,功能描述,质量评分
+ThemeManager,components/ThemeManager.js,120,主题加载/切换/验证,9/10
+ComponentLoader,components/ComponentLoader.js,80,组件动态加载,9/10
+SchemaValidator,components/SchemaValidator.js,100,JSON Schema验证,8/10
+ConfigManager,components/ConfigManager.js,110,配置文件读取/写入,8/10
+SlideRenderer,components/SlideRenderer.js,90,幻灯片渲染调度,9/10
+Orchestrator,components/Orchestrator.js,150,主控制器协调,8/10
+CoverComponent,components/CoverComponent.js,80,封面幻灯片渲染,9/10
+InfoCardComponent,components/InfoCardComponent.js,70,信息卡片渲染,8/10
+validate.js,validate.js,80,配置验证脚本,9/10
+test.js,test.js,100,组件测试脚本,8/10

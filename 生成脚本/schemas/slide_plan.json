@@ -1,0 +1,100 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Slide Plan Schema",
+  "description": "slide_plan.json的验证Schema",
+  "type": "object",
+  "required": ["deck_id", "title", "total_pages", "slides"],
+  "properties": {
+    "deck_id": {
+      "type": "string",
+      "description": "演示文稿唯一ID"
+    },
+    "title": {
+      "type": "string",
+      "description": "演示文稿标题"
+    },
+    "audience": {
+      "type": "string",
+      "description": "目标受众"
+    },
+    "goal": {
+      "type": "string",
+      "enum": ["宣贯", "操作培训", "合规考点"],
+      "description": "演示目标"
+    },
+    "total_pages": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "总页数"
+    },
+    "visual_strategy": {
+      "type": "object",
+      "properties": {
+        "selected_variant": {
+          "type": "string"
+        },
+        "color_palette": {
+          "type": "object"
+        },
+        "layout_template": {
+          "type": "string"
+        },
+        "motif": {
+          "type": "string"
+        },
+        "font_heading": {
+          "type": "string"
+        },
+        "font_body": {
+          "type": "string"
+        }
+      }
+    },
+    "slides": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["page", "type", "key_message"],
+        "properties": {
+          "page": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "type": {
+            "type": "string",
+            "enum": ["cover", "toc", "scene_description", "channel_comparison", "process_overview", "flowchart", "operation_overview", "step_detail", "step_precautions", "special_scenarios", "quick_reference_closing"]
+          },
+          "key_message": {
+            "type": "string"
+          },
+          "layout_type": {
+            "type": "string"
+          },
+          "layout_template": {
+            "type": "string"
+          },
+          "visual_focus": {
+            "type": "string"
+          },
+          "text_density": {
+            "type": "string",
+            "enum": ["low", "medium", "high"]
+          },
+          "notice_style": {
+            "type": "string",
+            "enum": ["bottom_banner", "inline_note", "right_sidebar", "none"]
+          },
+          "content_elements": {
+            "type": "object"
+          },
+          "notice_items": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}

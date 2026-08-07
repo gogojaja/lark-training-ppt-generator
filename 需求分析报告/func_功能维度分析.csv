@@ -1,0 +1,11 @@
+﻿需求编号,功能描述,实现方案,验收标准,优先级
+REQ-001,主题配置系统-颜色抽离,将generate.js中的颜色常量抽离到themes/*.json配置文件,新建主题JSON文件后无需修改generate.js即可切换配色,Must Have
+REQ-002,主题配置系统-config.yaml,创建config.yaml用户配置入口支持主题/格式/页面尺寸等配置,用户可通过config.yaml配置生成参数无需修改代码,Must Have
+REQ-003,组件化架构-组件拆分,将generate.js拆分为可复用组件(header/footer/card/table/flowchart等),每个组件独立文件可单独测试和复用,Must Have
+REQ-004,组件化架构-调度器,建立slide_plan.json到组件调度器的生成流程,调度器根据slide type自动选择对应组件渲染,Must Have
+REQ-005,流程图集成-XML片段,流程图生成器支持XML片段输出可嵌入主PPT,slide_plan.json中定义的流程图可自动生成并嵌入主PPT,Should Have
+REQ-006,SKILL.md简化,SKILL.md拆分为核心+参考文档减少行数至300行以内,核心SKILL.md仅包含工作流路由详细规则外置到references,Should Have
+REQ-007,多方案配置,支持多套slide_plan.json并存支持一键生成不同方案,可通过--scheme参数指定生成方案或--all生成全部,Could Have
+REQ-008,Schema验证,创建slide_plan.json的JSON Schema验证文件,schema可校验slide_plan.json结构完整性,Must Have
+REQ-009,预设主题库,建立预设主题库(10+行业模板)支持快速选择,themes/目录包含多个行业预设主题用户可直接选用,Should Have
+REQ-010,向后兼容,保持向后兼容现有generate.js入口和工作流不变,重构后现有用户无需修改即可继续使用,Must Have

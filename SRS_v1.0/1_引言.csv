@@ -1,0 +1,5 @@
+﻿章节,内容
+1.1 编写目的,本文档为lark-training-ppt-generator PPT生成skill优化项目的软件需求规格说明书（SRS），旨在明确优化需求、定义系统架构、规范开发流程。
+1.2 项目背景,当前PPT生成skill存在配置硬编码、组件化不足、流程图集成困难等问题，需进行模块化重构以提升可维护性和复用性。
+1.3 术语定义,PPT：演示文稿（Presentation）；Skill：可复用的AI技能模块；Theme：视觉主题配置；Component：可复用UI组件；Flowchart：流程图
+1.4 参考资料,lark-training-ppt-generator SKILL.md v4.1.0；行业最佳实践-配置驱动/组件化架构；DevProjectTeamSkill v21.0.1
