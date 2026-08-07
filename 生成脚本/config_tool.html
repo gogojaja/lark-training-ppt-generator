@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>培训PPT配置工具</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #1F3864;
+            margin-bottom: 30px;
+        }
+        
+        .section {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .section h2 {
+            color: #1F3864;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #D6E4F0;
+        }
+        
+        .section h3 {
+            color: #2E75B6;
+            margin: 15px 0 10px 0;
+            font-size: 14px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+            font-weight: bold;
+        }
+        
+        .form-group .hint {
+            color: #666;
+            font-size: 12px;
+            margin-bottom: 5px;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+        }
+        
+        input[type="text"],
+        input[type="number"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        
+        input[type="color"] {
+            width: 60px;
+            height: 35px;
+            padding: 2px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .color-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .color-group input[type="text"] {
+            width: 100px;
+        }
+        
+        .preset-btn {
+            display: inline-block;
+            padding: 8px 16px;
+            margin: 5px;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+        
+        .preset-btn:hover {
+            border-color: #2E75B6;
+        }
+        
+        .preset-btn.active {
+            border-color: #1F3864;
+            background: #1F3864;
+            color: white;
+        }
+        
+        .preset-btn.professional { border-color: #1F3864; }
+        .preset-btn.warm { border-color: #ED7D31; }
+        .preset-btn.modern { border-color: #70AD47; }
+        .preset-btn.minimal { border-color: #808080; }
+        
+        .preview-box {
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+        
+        .btn-group {
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        .btn {
+            padding: 12px 30px;
+            margin: 0 10px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background: #1F3864;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #2E75B6;
+        }
+        
+        .btn-secondary {
+            background: #E7E6E6;
+            color: #333;
+        }
+        
+        .btn-secondary:hover {
+            background: #D9D9D9;
+        }
+        
+        .json-preview {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 15px;
+            border-radius: 4px;
+            font-family: 'Consolas', monospace;
+            font-size: 12px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        
+        .tab-container {
+            display: flex;
+            border-bottom: 2px solid #ddd;
+            margin-bottom: 15px;
+        }
+        
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            margin-bottom: -2px;
+        }
+        
+        .tab.active {
+            border-bottom-color: #1F3864;
+            color: #1F3864;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>培训PPT配置工具</h1>
+        
+        <!-- 预设主题 -->
+        <div class="section">
+            <h2>预设主题</h2>
+            <p style="margin-bottom: 15px; color: #666;">选择一个预设主题作为基础，然后进行自定义调整</p>
+            <div>
+                <button class="preset-btn professional active" onclick="applyPreset('professional')">专业蓝</button>
+                <button class="preset-btn warm" onclick="applyPreset('warm')">温暖橙</button>
+                <button class="preset-btn modern" onclick="applyPreset('modern')">现代绿</button>
+                <button class="preset-btn minimal" onclick="applyPreset('minimal')">简约灰</button>
+            </div>
+        </div>
+        
+        <!-- 基本信息 -->
+        <div class="section">
+            <h2>基本信息</h2>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>文档标题</label>
+                    <input type="text" id="docTitle" value="个人批量开户">
+                </div>
+                <div class="form-group">
+                    <label>章节编号</label>
+                    <input type="number" id="chapterNum" value="1" min="1">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>章节副标题</label>
+                    <input type="text" id="chapterSubtitle" value="个人银行账户批量开立业务操作指南">
+                </div>
+                <div class="form-group">
+                    <label>章节描述</label>
+                    <input type="text" id="chapterDesc" value="支持柜面/存折/存单/银行卡账户开立">
+                </div>
+            </div>
+        </div>
+        
+        <!-- 颜色配置 -->
+        <div class="section">
+            <h2>颜色配置</h2>
+            <p style="margin-bottom: 15px; color: #666;">遵循70-25-5配色比例：主色70%，辅色25%，点缀色5%</p>
+            
+            <div class="tab-container">
+                <div class="tab active" onclick="switchTab('primary')">主色</div>
+                <div class="tab" onclick="switchTab('secondary')">辅色</div>
+                <div class="tab" onclick="switchTab('accent')">点缀色</div>
+                <div class="tab" onclick="switchTab('text')">文字色</div>
+            </div>
+            
+            <div id="tab-primary" class="tab-content active">
+                <h3>主色 - 用于封面背景、标题栏</h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>深色 (dark)</label>
+                        <div class="color-group">
+                            <input type="color" id="primaryDark" value="#1F3864" onchange="updateColor('primaryDark')">
+                            <input type="text" id="primaryDarkHex" value="1F3864" onchange="updateColorFromHex('primaryDark')">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>中间色 (medium)</label>
+                        <div class="color-group">
+                            <input type="color" id="primaryMedium" value="#2E75B6" onchange="updateColor('primaryMedium')">
+                            <input type="text" id="primaryMediumHex" value="2E75B6" onchange="updateColorFromHex('primaryMedium')">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>浅色 (light)</label>
+                        <div class="color-group">
+                            <input type="color" id="primaryLight" value="#D6E4F0" onchange="updateColor('primaryLight')">
+                            <input type="text" id="primaryLightHex" value="D6E4F0" onchange="updateColorFromHex('primaryLight')">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="tab-secondary" class="tab-content">
+                <h3>辅色 - 用于内容区域背景</h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>深色 (dark)</label>
+                        <div class="color-group">
+                            <input type="color" id="secondaryDark" value="#006100" onchange="updateColor('secondaryDark')">
+                            <input type="text" id="secondaryDarkHex" value="006100" onchange="updateColorFromHex('secondaryDark')">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>中间色 (medium)</label>
+                        <div class="color-group">
+                            <input type="color" id="secondaryMedium" value="#C6EFCE" onchange="updateColor('secondaryMedium')">
+                            <input type="text" id="secondaryMediumHex" value="C6EFCE" onchange="updateColorFromHex('secondaryMedium')">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>浅色 (light)</label>
+                        <div class="color-group">
+                            <input type="color" id="secondaryLight" value="#E2EFDA" onchange="updateColor('secondaryLight')">
+                            <input type="text" id="secondaryLightHex" value="E2EFDA" onchange="updateColorFromHex('secondaryLight')">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="tab-accent" class="tab-content">
+                <h3>点缀色 - 用于强调和高亮</h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>警告色 (warning)</label>
+                        <div class="color-group">
+                            <input type="color" id="accentWarning" value="#FFC000" onchange="updateColor('accentWarning')">
+                            <input type="text" id="accentWarningHex" value="FFC000" onchange="updateColorFromHex('accentWarning')">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>错误色 (error)</label>
+                        <div class="color-group">
+                            <input type="color" id="accentError" value="#C00000" onchange="updateColor('accentError')">
+                            <input type="text" id="accentErrorHex" value="C00000" onchange="updateColorFromHex('accentError')">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>成功色 (success)</label>
+                        <div class="color-group">
+                            <input type="color" id="accentSuccess" value="#70AD47" onchange="updateColor('accentSuccess')">
+                            <input type="text" id="accentSuccessHex" value="70AD47" onchange="updateColorFromHex('accentSuccess')">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="tab-text" class="tab-content">
+                <h3>文字颜色</h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>主文字色 (primary)</label>
+                        <div class="color-group">
+                            <input type="color" id="textPrimary" value="#333333" onchange="updateColor('textPrimary')">
+                            <input type="text" id="textPrimaryHex" value="333333" onchange="updateColorFromHex('textPrimary')">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>次文字色 (secondary)</label>
+                        <div class="color-group">
+                            <input type="color" id="textSecondary" value="#666666" onchange="updateColor('textSecondary')">
+                            <input type="text" id="textSecondaryHex" value="666666" onchange="updateColorFromHex('textSecondary')">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>浅文字色 (light)</label>
+                        <div class="color-group">
+                            <input type="color" id="textLight" value="#FFFFFF" onchange="updateColor('textLight')">
+                            <input type="text" id="textLightHex" value="FFFFFF" onchange="updateColorFromHex('textLight')">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 颜色预览 -->
+            <h3>颜色预览</h3>
+            <div class="preview-box" id="colorPreview" style="background: #1F3864; color: white;">
+                <div style="font-size: 24px; font-weight: bold; margin-bottom: 10px;">章节标题预览</div>
+                <div style="background: #D6E4F0; color: #1F3864; padding: 10px; border-radius: 4px; margin-bottom: 10px;">
+                    主色浅色背景示例
+                </div>
+                <div style="background: #E2EFDA; color: #006100; padding: 10px; border-radius: 4px;">
+                    辅色浅色背景示例
+                </div>
+            </div>
+        </div>
+        
+        <!-- 字体配置 -->
+        <div class="section">
+            <h2>字体配置</h2>
+            <p style="margin-bottom: 15px; color: #666;">全文字体不超过2种，优先选择系统自带字体</p>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label>标题字体</label>
+                    <select id="fontTitle">
+                        <option value="Microsoft YaHei" selected>微软雅黑</option>
+                        <option value="SimHei">黑体</option>
+                        <option value="SimSun">宋体</option>
+                        <option value="KaiTi">楷体</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>正文字体</label>
+                    <select id="fontBody">
+                        <option value="Microsoft YaHei" selected>微软雅黑</option>
+                        <option value="SimHei">黑体</option>
+                        <option value="SimSun">宋体</option>
+                        <option value="KaiTi">楷体</option>
+                    </select>
+                </div>
+            </div>
+            
+            <h3>字号设置（单位：磅）</h3>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>封面标题</label>
+                    <input type="number" id="sizeCoverTitle" value="44" min="20" max="72">
+                </div>
+                <div class="form-group">
+                    <label>章节标题</label>
+                    <input type="number" id="sizeSlideTitle" value="32" min="16" max="48">
+                </div>
+                <div class="form-group">
+                    <label>正文</label>
+                    <input type="number" id="sizeBody" value="20" min="12" max="32">
+                </div>
+                <div class="form-group">
+                    <label>注释</label>
+                    <input type="number" id="sizeCaption" value="14" min="10" max="18">
+                </div>
+            </div>
+        </div>
+        
+        <!-- 页面配置 -->
+        <div class="section">
+            <h2>页面配置</h2>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" id="showCover" checked> 显示封面页
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" id="showScene" checked> 显示场景说明页
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" id="showRules" checked> 显示业务规则页
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" id="showFlow" checked> 显示流程图页
+                    </label>
+                </div>
+            </div>
+            
+            <h3>页面标题自定义</h3>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>场景说明页标题</label>
+                    <input type="text" id="sceneTitle" value="场景说明">
+                </div>
+                <div class="form-group">
+                    <label>业务规则页标题</label>
+                    <input type="text" id="rulesTitle" value="业务规则">
+                </div>
+                <div class="form-group">
+                    <label>流程图页标题</label>
+                    <input type="text" id="flowTitle" value="业务办理流程">
+                </div>
+            </div>
+        </div>
+        
+        <!-- 导出配置 -->
+        <div class="section">
+            <h2>导出配置</h2>
+            <p style="margin-bottom: 15px; color: #666;">点击"生成JSON"按钮生成配置文件，然后复制到config.json文件中使用</p>
+            
+            <div class="json-preview" id="jsonPreview">
+{
+  // 配置将在这里生成
+}
+            </div>
+            
+            <div class="btn-group">
+                <button class="btn btn-primary" onclick="generateJSON()">生成JSON</button>
+                <button class="btn btn-secondary" onclick="copyJSON()">复制到剪贴板</button>
+                <button class="btn btn-secondary" onclick="downloadJSON()">下载配置文件</button>
+            </div>
+        </div>
+        
+        <!-- 使用说明 -->
+        <div class="section">
+            <h2>使用说明</h2>
+            <div style="color: #666; line-height: 1.8;">
+                <p><strong>1. 选择预设主题：</strong>点击顶部的主题按钮快速应用预设配色方案</p>
+                <p><strong>2. 自定义配置：</strong>在各个配置区域调整颜色、字体、页面等参数</p>
+                <p><strong>3. 生成配置文件：</strong>点击"生成JSON"按钮生成配置文件</p>
+                <p><strong>4. 使用配置文件：</strong>将生成的JSON内容保存为config.json文件</p>
+                <p><strong>5. 运行生成命令：</strong></p>
+                <pre style="background: #f5f5f5; padding: 10px; border-radius: 4px; margin-top: 10px;">
+py -3 生成脚本/generate_training_ppt.py 输入文档/个人批量开户.docx --config config.json --out 培训PPT.pptx</pre>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // 预设主题数据
+        const presets = {
+            professional: {
+                primary: { dark: '1F3864', medium: '2E75B6', light: 'D6E4F0' },
+                secondary: { dark: '006100', medium: 'C6EFCE', light: 'E2EFDA' },
+                accent: { warning: 'FFC000', error: 'C00000', success: '70AD47' },
+                text: { primary: '333333', secondary: '666666', light: 'FFFFFF' }
+            },
+            warm: {
+                primary: { dark: '833C00', medium: 'ED7D31', light: 'FCE4D6' },
+                secondary: { dark: '006100', medium: 'C6EFCE', light: 'E2EFDA' },
+                accent: { warning: 'FFC000', error: 'C00000', success: '70AD47' },
+                text: { primary: '333333', secondary: '666666', light: 'FFFFFF' }
+            },
+            modern: {
+                primary: { dark: '006100', medium: '70AD47', light: 'E2EFDA' },
+                secondary: { dark: '1F3864', medium: 'D6E4F0', light: 'F2F7FB' },
+                accent: { warning: 'FFC000', error: 'C00000', success: '70AD47' },
+                text: { primary: '333333', secondary: '666666', light: 'FFFFFF' }
+            },
+            minimal: {
+                primary: { dark: '404040', medium: '808080', light: 'D9D9D9' },
+                secondary: { dark: '006100', medium: 'C6EFCE', light: 'E2EFDA' },
+                accent: { warning: 'FFC000', error: 'C00000', success: '70AD47' },
+                text: { primary: '333333', secondary: '666666', light: 'FFFFFF' }
+            }
+        };
+        
+        // 应用预设主题
+        function applyPreset(presetName) {
+            const preset = presets[presetName];
+            
+            // 更新按钮状态
+            document.querySelectorAll('.preset-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`.preset-btn.${presetName}`).classList.add('active');
+            
+            // 更新颜色值
+            setColorValue('primaryDark', preset.primary.dark);
+            setColorValue('primaryMedium', preset.primary.medium);
+            setColorValue('primaryLight', preset.primary.light);
+            setColorValue('secondaryDark', preset.secondary.dark);
+            setColorValue('secondaryMedium', preset.secondary.medium);
+            setColorValue('secondaryLight', preset.secondary.light);
+            setColorValue('accentWarning', preset.accent.warning);
+            setColorValue('accentError', preset.accent.error);
+            setColorValue('accentSuccess', preset.accent.success);
+            setColorValue('textPrimary', preset.text.primary);
+            setColorValue('textSecondary', preset.text.secondary);
+            setColorValue('textLight', preset.text.light);
+            
+            updateColorPreview();
+        }
+        
+        // 设置颜色值
+        function setColorValue(id, hex) {
+            document.getElementById(id).value = '#' + hex;
+            document.getElementById(id + 'Hex').value = hex;
+        }
+        
+        // 更新颜色（从color picker）
+        function updateColor(id) {
+            const hex = document.getElementById(id).value.replace('#', '').toUpperCase();
+            document.getElementById(id + 'Hex').value = hex;
+            updateColorPreview();
+        }
+        
+        // 更新颜色（从hex输入）
+        function updateColorFromHex(id) {
+            const hex = document.getElementById(id + 'Hex').value;
+            if (/^[0-9A-Fa-f]{6}$/.test(hex)) {
+                document.getElementById(id).value = '#' + hex;
+                updateColorPreview();
+            }
+        }
+        
+        // 更新颜色预览
+        function updateColorPreview() {
+            const preview = document.getElementById('colorPreview');
+            const primaryDark = document.getElementById('primaryDarkHex').value;
+            const primaryLight = document.getElementById('primaryLightHex').value;
+            const secondaryLight = document.getElementById('secondaryLightHex').value;
+            const secondaryDark = document.getElementById('secondaryDarkHex').value;
+            const textLight = document.getElementById('textLightHex').value;
+            
+            preview.style.background = '#' + primaryDark;
+            preview.style.color = '#' + textLight;
+        }
+        
+        // 切换标签页
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            event.target.classList.add('active');
+            document.getElementById('tab-' + tabName).classList.add('active');
+        }
+        
+        // 生成JSON配置
+        function generateJSON() {
+            const config = {
+                "theme": {
+                    "style": document.querySelector('.preset-btn.active').className.replace('preset-btn ', '').replace(' active', '')
+                },
+                "colors": {
+                    "primary": {
+                        "dark": document.getElementById('primaryDarkHex').value,
+                        "medium": document.getElementById('primaryMediumHex').value,
+                        "light": document.getElementById('primaryLightHex').value
+                    },
+                    "secondary": {
+                        "dark": document.getElementById('secondaryDarkHex').value,
+                        "medium": document.getElementById('secondaryMediumHex').value,
+                        "light": document.getElementById('secondaryLightHex').value
+                    },
+                    "accent": {
+                        "warning": document.getElementById('accentWarningHex').value,
+                        "error": document.getElementById('accentErrorHex').value,
+                        "success": document.getElementById('accentSuccessHex').value
+                    },
+                    "text": {
+                        "primary": document.getElementById('textPrimaryHex').value,
+                        "secondary": document.getElementById('textSecondaryHex').value,
+                        "light": document.getElementById('textLightHex').value
+                    }
+                },
+                "fonts": {
+                    "family": {
+                        "title": document.getElementById('fontTitle').value,
+                        "body": document.getElementById('fontBody').value
+                    },
+                    "size": {
+                        "cover_title": parseInt(document.getElementById('sizeCoverTitle').value),
+                        "slide_title": parseInt(document.getElementById('sizeSlideTitle').value),
+                        "body": parseInt(document.getElementById('sizeBody').value),
+                        "caption": parseInt(document.getElementById('sizeCaption').value)
+                    }
+                },
+                "slides": {
+                    "cover": { "enabled": document.getElementById('showCover').checked },
+                    "scene_description": {
+                        "enabled": document.getElementById('showScene').checked,
+                        "title": document.getElementById('sceneTitle').value
+                    },
+                    "business_rules": {
+                        "enabled": document.getElementById('showRules').checked,
+                        "title": document.getElementById('rulesTitle').value
+                    },
+                    "flow_chart": {
+                        "enabled": document.getElementById('showFlow').checked,
+                        "title": document.getElementById('flowTitle').value
+                    }
+                }
+            };
+            
+            const jsonStr = JSON.stringify(config, null, 2);
+            document.getElementById('jsonPreview').textContent = jsonStr;
+        }
+        
+        // 复制JSON到剪贴板
+        function copyJSON() {
+            const jsonStr = document.getElementById('jsonPreview').textContent;
+            navigator.clipboard.writeText(jsonStr).then(() => {
+                alert('配置已复制到剪贴板！');
+            });
+        }
+        
+        // 下载JSON文件
+        function downloadJSON() {
+            const jsonStr = document.getElementById('jsonPreview').textContent;
+            const blob = new Blob([jsonStr], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'config.json';
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+        
+        // 页面加载时生成JSON
+        window.onload = function() {
+            generateJSON();
+        };
+    </script>
+</body>
+</html>
