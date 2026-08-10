@@ -1,0 +1,100 @@
+{
+  "_说明": "基于样例PPT分析的配置模板 - 与样例风格一致",
+  "_样例来源": "章节首页样例.pptx、目录样例.pptx、流程图样例.pptx",
+  
+  "theme": {
+    "style": "sample",
+    "_说明": "与样例PPT风格一致"
+  },
+
+  "colors": {
+    "_说明": "从样例PPT提取的配色方案",
+    
+    "primary": {
+      "_说明": "主色 - 绿色系",
+      "dark": "018C6A",
+      "medium": "018C6A",
+      "light": "E8F5F0"
+    },
+    "secondary": {
+      "_说明": "辅色 - 灰色系",
+      "dark": "1F2329",
+      "medium": "606266",
+      "light": "F5F5F5"
+    },
+    "accent": {
+      "_说明": "点缀色",
+      "warning": "FFC000",
+      "error": "C00000",
+      "success": "018C6A"
+    },
+    "text": {
+      "_说明": "文字颜色 - 从样例提取",
+      "primary": "1F2329",
+      "secondary": "606266",
+      "light": "FFFFFF",
+      "muted": "8F959E"
+    }
+  },
+
+  "fonts": {
+    "_说明": "从样例PPT提取的字体配置",
+    
+    "family": {
+      "title": "Saturday Sans Regular",
+      "body": "Microsoft YaHei",
+      "_说明": "样例中章节标题使用Saturday Sans Regular，正文使用微软雅黑"
+    },
+    "size": {
+      "_说明": "从样例提取的字号（单位：磅）",
+      "chapter_num": 88,
+      "chapter_title": 44,
+      "slide_title": 18,
+      "subtitle": 16,
+      "body": 14,
+      "caption": 12
+    }
+  },
+
+  "layout": {
+    "_说明": "从样例提取的布局参数",
+    "slide": {
+      "width": 12192000,
+      "height": 6858000,
+      "_说明": "16:9标准比例"
+    }
+  },
+
+  "slides": {
+    "_说明": "各页面配置",
+    
+    "section_cover": {
+      "_说明": "章节首页（参考章节首页样例.pptx）",
+      "enabled": true,
+      "top_bar_height": 166688,
+      "left_deco_width": 863600,
+      "chapter_label_y": 215900,
+      "divider_y": 755650,
+      "chapter_num_y": 1778000,
+      "chapter_title_y": 3429000,
+      "subtitle_y": 4600000,
+      "description_y": 5100000
+    },
+    
+    "toc": {
+      "_说明": "目录页（参考目录样例.pptx）",
+      "enabled": true,
+      "item_height": 600000,
+      "item_gap": 100000
+    },
+    
+    "flow_chart": {
+      "_说明": "流程图页（参考流程图样例.pptx）",
+      "enabled": true,
+      "title_height": 800000,
+      "box_width": 7000000,
+      "box_height": 600000,
+      "gap": 300000
+    }
+  }
+}
