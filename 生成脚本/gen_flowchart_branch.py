@@ -33,6 +33,11 @@
 }
 坐标单位 EMU; 颜色为六位 RGB 十六进制（不含 #）。
 
+== 连线异常降级 ==
+连线无法正确对位时，可不生成连接线（仅保留文本框）：
+  py -3 gen_flowchart_branch.py flow.json --out out.pptx --no-connectors
+或在 JSON 顶层设置 {"draw_connectors": false} 固定关闭连线。
+
 == 固化样式规范（自动套用，也可在 JSON 中覆盖）==
 主流程框:  浅绿 C6EFCE / 深绿字 006100
 菱形判断:  浅黄 FFF2CC / 深黄字 7F6000
@@ -296,9 +301,14 @@ def main(argv=None):
     ap = argparse.ArgumentParser()
     ap.add_argument("json", help="流程 JSON 文件（含 steps=语义模式；含 nodes=高级模式）")
     ap.add_argument("--out", default="流程图.pptx")
+    ap.add_argument("--no-connectors", dest="no_conn", action="store_true",
+                    help="不生成连接线（仅保留文本框，用于连线异常降级）")
     a = ap.parse_args(argv)
     with open(a.json, encoding="utf-8") as f:
         raw = json.load(f)
+
+    # 是否绘制连接线：CLI 显式关闭，或 JSON 顶层 draw_connectors=false
+    no_conn = a.no_conn or raw.get("draw_connectors", True) is False
 
     if "steps" in raw and "nodes" not in raw:
         flow = auto_layout(raw)
@@ -322,29 +332,30 @@ def main(argv=None):
                                n["text"], fill, color, n.get("sz", 1500)))
         sid += 1
 
-    for e in flow.get("edges", []):
-        na, nb = pos[e["from"]], pos[e["to"]]
-        color = e.get("color", "1F3864")
-        style = e.get("style", "v")
-        if style == "v":
-            body.append(_v(sid, na, nb, color)); sid += 1
-        elif style == "el":
-            for s in _elbow(sid, na, nb, color):
-                body.append(s); sid += 1
-        elif style == "el-left":
-            for s in _elbow_left(sid, na, nb, color):
-                body.append(s); sid += 1
-        elif style == "h":
-            x1 = na["x"] + na["w"]; y1 = na["y"] + na["h"] // 2
-            x2 = nb["x"]; y2 = nb["y"] + nb["h"] // 2
-            body.append(hline(sid, x1, y1, x2, y2, color=color, arrow=True)); sid += 1
-        elif style == "el-right":
-            x1 = na["x"] + na["w"]; y1 = na["y"] + na["h"] // 2
-            x2 = nb["x"]; y2 = nb["y"] + nb["h"] // 2
-            body.append(hline(sid, x1, y1, x2, y1, color=color, arrow=True)); sid += 1
-        if e.get("label"):
-            body.append(label_sp(sid, e.get("label_x", 0), e.get("label_y", 0),
-                                 e["label"], e.get("label_color", "C00000"))); sid += 1
+    if not no_conn:
+        for e in flow.get("edges", []):
+            na, nb = pos[e["from"]], pos[e["to"]]
+            color = e.get("color", "1F3864")
+            style = e.get("style", "v")
+            if style == "v":
+                body.append(_v(sid, na, nb, color)); sid += 1
+            elif style == "el":
+                for s in _elbow(sid, na, nb, color):
+                    body.append(s); sid += 1
+            elif style == "el-left":
+                for s in _elbow_left(sid, na, nb, color):
+                    body.append(s); sid += 1
+            elif style == "h":
+                x1 = na["x"] + na["w"]; y1 = na["y"] + na["h"] // 2
+                x2 = nb["x"]; y2 = nb["y"] + nb["h"] // 2
+                body.append(hline(sid, x1, y1, x2, y2, color=color, arrow=True)); sid += 1
+            elif style == "el-right":
+                x1 = na["x"] + na["w"]; y1 = na["y"] + na["h"] // 2
+                x2 = nb["x"]; y2 = nb["y"] + nb["h"] // 2
+                body.append(hline(sid, x1, y1, x2, y1, color=color, arrow=True)); sid += 1
+            if e.get("label"):
+                body.append(label_sp(sid, e.get("label_x", 0), e.get("label_y", 0),
+                                     e["label"], e.get("label_color", "C00000"))); sid += 1
 
     slide = (
         '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
