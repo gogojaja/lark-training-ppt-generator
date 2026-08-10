@@ -1,0 +1,12 @@
+﻿评审对象,基线版本,检查点,结果,说明,时间
+gen_flowchart_branch.py 维度参数化,Sprint-20260810-3,_DEFAULT_DIM 常量,通过,box_w=1800000(5cm) box_h=216000(0.6cm) diamond_w=1620000(4.5cm) diamond_h=360000(1cm) step_gap=180000(0.5cm),2026-08-10
+gen_flowchart_branch.py 维度参数化,Sprint-20260810-3,load_dimensions() 三级覆盖,通过,JSON dim → CLI → 默认值,2026-08-10
+gen_flowchart_branch.py 维度参数化,Sprint-20260810-3,CLI --box-w/--box-h/--diamond-w/--diamond-h/--step-gap,通过,5个维度参数均可覆盖,2026-08-10
+gen_flowchart_branch.py 维度参数化,Sprint-20260810-3,auto_layout() 接收 dim 参数,通过,替换原 L_MAIN_W/L_BOX_H/L_DIA_H/L_STEP_H/L_BR_W 5个硬编码常量,2026-08-10
+gen_flowchart_branch.py 维度参数化,Sprint-20260810-3,默认维度回归,通过,m0 w=1800000(5cm) h=216000(0.6cm) PASS,2026-08-10
+gen_flowchart_branch.py 维度参数化,Sprint-20260810-3,菱形维度回归,通过,m3 w=1620000(4.5cm) h=360000(1cm) PASS,2026-08-10
+gen_flowchart_branch.py 维度参数化,Sprint-20260810-3,纵向间隔回归,通过,m0->m1 gap=180000(0.5cm) PASS,2026-08-10
+gen_flowchart_branch.py 维度参数化,Sprint-20260810-3,CLI覆盖回归,通过,--step-gap 1 -> gap=360000(1cm) PASS,2026-08-10
+gen_flowchart_branch.py 维度参数化,Sprint-20260810-3,无连线+维度组合回归,通过,--no-connectors --box-w 6 --box-h 1 组合正常,2026-08-10
+gen_flowchart_branch.py 维度参数化,Sprint-20260810-3,文件完整性,通过,zipok=True,2026-08-10
+gen_flowchart_branch.py 维度参数化,Sprint-20260810-3,门禁(阻断缺陷),通过,0,2026-08-10

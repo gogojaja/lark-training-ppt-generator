@@ -38,6 +38,20 @@
   py -3 gen_flowchart_branch.py flow.json --out out.pptx --no-connectors
 或在 JSON 顶层设置 {"draw_connectors": false} 固定关闭连线。
 
+== 维度参数化（cm → EMU 自动转换） ==
+CLI 参数（覆盖 JSON）：
+  --box-w 5       矩形框宽（默认 5.0cm）
+  --box-h 0.6     矩形框高（默认 0.6cm）
+  --diamond-w 4.5 菱形宽（默认 4.5cm）
+  --diamond-h 1   菱形高（默认 1.0cm）
+  --step-gap 0.5  纵向间隔（默认 0.5cm）
+
+JSON 顶层配置（覆盖默认值，优先级低于 CLI）：
+  {"dim": {"box_w": 1800000, "box_h": 216000, "diamond_w": 1620000, "diamond_h": 360000, "step_gap": 180000}}
+  值为 EMU 整数；CLI 传 cm 会被自动转换为 EMU。
+
+覆盖优先级：CLI > JSON dim > 内置默认值
+
 == 固化样式规范（自动套用，也可在 JSON 中覆盖）==
 主流程框:  浅绿 C6EFCE / 深绿字 006100
 菱形判断:  浅黄 FFF2CC / 深黄字 7F6000
@@ -62,17 +76,47 @@ DIA_FILL, DIA_COL = "FFF2CC", "7F6000"       # 菱形判断
 BR_FILL, BR_COL = "DDEBF7", "1F3864"         # 正常分支
 ERR_FILL, ERR_COL = "FCE4EC", "C00000"       # 异常分支
 
-# 纵向紧凑布局参数（语义模式自动排版）
+# 默认布局维度（EMU，可被 JSON / CLI 覆盖）
+_DEFAULT_DIM = {
+    "box_w":    1800000,   # 矩形框宽 5cm（5 * 360000）
+    "box_h":     216000,   # 矩形框高 0.6cm（0.6 * 360000）
+    "diamond_w": 1620000,  # 菱形宽 4.5cm（4.5 * 360000）
+    "diamond_h": 360000,   # 菱形高 1cm（1 * 360000）
+    "step_gap":  180000,   # 纵向间隔 0.5cm（0.5 * 360000）
+}
+
+# 不可变常量
 L_MAIN_X = 900000     # 主流程列 X
-L_MAIN_W = 2600000    # 主流程框宽
-L_BOX_H = 216000      # 主流程框高（0.6cm = 0.6 * 360000）
-L_DIA_H = 216000      # 菱形高
-L_STEP_H = 275000     # 行节距（略大于框高留出间隙）
-L_TOP = 1000000       # 首行 Y
-L_BR_W = 2700000      # 分支框宽
+L_TOP    = 1000000    # 首行 Y
 L_BR_GAP = 300000     # 主流程与分支列间距
 L_SZ_MAIN = 1000      # 主流程字号
-L_SZ_BR = 900         # 分支字号
+L_SZ_BR   = 900       # 分支字号
+
+
+def load_dimensions(json_raw=None, cli=None):
+    """三级覆盖：默认值 → JSON dim → CLI 参数。
+
+    JSON 示例：{"dim": {"box_w": 5000000, "box_h": 216000, "diamond_w": 4500000, "diamond_h": 360000, "step_gap": 180000}}
+    CLI 示例：--box-w 5 --box-h 0.6 --diamond-w 4.5 --diamond-h 1 --step-gap 0.5（单位 cm）
+    """
+    dim = dict(_DEFAULT_DIM)
+
+    # 第二层：JSON dim
+    if json_raw and isinstance(json_raw.get("dim"), dict):
+        for k in dim:
+            if k in json_raw["dim"]:
+                dim[k] = int(json_raw["dim"][k])
+
+    # 第三层：CLI 参数（cm → EMU，仅非 None 时覆盖）
+    if cli:
+        for flag, key in [("box_w", "box_w"), ("box_h", "box_h"),
+                          ("diamond_w", "diamond_w"), ("diamond_h", "diamond_h"),
+                          ("step_gap", "step_gap")]:
+            val = getattr(cli, flag, None)
+            if val is not None:
+                dim[key] = int(val * 360000)
+
+    return dim
 
 
 def esc(t):
@@ -224,13 +268,15 @@ def label_sp(sid, x, y, text, color="C00000", sz=1100):
     ) % (sid, sid, x, y, rpr(sz, True, color), esc(text))
 
 
-def auto_layout(flow):
+def auto_layout(flow, dim=None):
     """语义模式：steps → 纵向紧凑布局 nodes+edges（固化配色与间距）。
 
     step 结构: {"text":.., "branch": {"text":.., "label":.., "kind":"err"|"br"}}
     - 有 branch 的步骤渲染为菱形判断（浅黄），branch 渲染为右侧分支框
     - branch.kind="err" → 异常分支（浅红）；"br" → 正常分支（浅蓝）
     """
+    if dim is None:
+        dim = _DEFAULT_DIM
     steps = flow.get("steps", [])
     if not steps:
         raise SystemExit("语义模式需提供 steps 列表。")
@@ -239,11 +285,12 @@ def auto_layout(flow):
     for i, st in enumerate(steps):
         text = st.get("text", "")
         has_branch = bool(st.get("branch")) or st.get("type") == "diamond"
-        y = L_TOP + i * L_STEP_H
-        h = L_DIA_H if has_branch else L_BOX_H
+        y = L_TOP + i * dim["step_gap"]
+        h = dim["diamond_h"] if has_branch else dim["box_h"]
         kind = "diamond" if has_branch else "box"
         nodes.append({"id": "m%d" % i, "kind": kind, "x": L_MAIN_X, "y": y,
-                      "w": L_MAIN_W, "h": h, "text": text, "sz": L_SZ_MAIN})
+                      "w": dim["diamond_w"] if has_branch else dim["box_w"], "h": h,
+                      "text": text, "sz": L_SZ_MAIN})
         if prev:
             edges.append({"from": prev, "to": "m%d" % i, "style": "v"})
         prev = "m%d" % i
@@ -251,13 +298,13 @@ def auto_layout(flow):
         if br:
             is_err = br.get("kind") == "err"
             nodes.append({"id": "b%d" % i, "kind": "short", "err": is_err,
-                          "x": L_MAIN_X + L_MAIN_W + L_BR_GAP,
-                          "y": y + h // 2 - L_BOX_H // 2,
-                          "w": L_BR_W, "h": L_BOX_H,
+                          "x": L_MAIN_X + (dim["diamond_w"] if has_branch else dim["box_w"]) + L_BR_GAP,
+                          "y": y + h // 2 - dim["box_h"] // 2,
+                          "w": dim["box_w"], "h": dim["box_h"],
                           "text": br.get("text", ""), "sz": L_SZ_BR})
             edges.append({"from": "m%d" % i, "to": "b%d" % i, "style": "el-right",
                           "label": br.get("label", ""),
-                          "label_x": L_MAIN_X + L_MAIN_W + 110000,
+                          "label_x": L_MAIN_X + (dim["diamond_w"] if has_branch else dim["box_w"]) + 110000,
                           "label_y": y + h // 2 - 80000,
                           "label_color": ERR_COL if is_err else BR_COL})
     return {"title": flow.get("title", "流程图"), "nodes": nodes, "edges": edges}
@@ -303,6 +350,16 @@ def main(argv=None):
     ap.add_argument("--out", default="流程图.pptx")
     ap.add_argument("--no-connectors", dest="no_conn", action="store_true",
                     help="不生成连接线（仅保留文本框，用于连线异常降级）")
+    ap.add_argument("--box-w", type=float, default=None,
+                    help="矩形框宽度（cm），默认 5.0")
+    ap.add_argument("--box-h", type=float, default=None,
+                    help="矩形框高度（cm），默认 0.6")
+    ap.add_argument("--diamond-w", type=float, default=None,
+                    help="菱形宽度（cm），默认 4.5")
+    ap.add_argument("--diamond-h", type=float, default=None,
+                    help="菱形高度（cm），默认 1.0")
+    ap.add_argument("--step-gap", type=float, default=None,
+                    help="纵向间隔（cm），默认 0.5")
     a = ap.parse_args(argv)
     with open(a.json, encoding="utf-8") as f:
         raw = json.load(f)
@@ -310,8 +367,10 @@ def main(argv=None):
     # 是否绘制连接线：CLI 显式关闭，或 JSON 顶层 draw_connectors=false
     no_conn = a.no_conn or raw.get("draw_connectors", True) is False
 
+    # 三级覆盖：默认值 → JSON dim → CLI 参数
+    dim = load_dimensions(json_raw=raw, cli=a)
     if "steps" in raw and "nodes" not in raw:
-        flow = auto_layout(raw)
+        flow = auto_layout(raw, dim=dim)
     else:
         flow = raw
 
