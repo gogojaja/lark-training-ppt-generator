@@ -54,21 +54,29 @@ py -3 tools/split_docx_by_level.py 输入文档/操作手册.docx 生成产物/�
 
 ### Step 3：生成流程节点 CSV 表
 
-**方式 A · 规则引擎草稿（零依赖，可选）**：从 Word 文档直接生成 CSV 草稿
+**方式 A · AI 语义化生成（推荐，主路径）**：由 AI（skill 执行者）读取 Word 内容，按下方 schema 语义化输出最终 CSV
 
-```bash
-# 从 Word 生成 CSV 草稿（纯规则启发式，无需大模型）
-py -3 tools/docx_to_flow_csv.py 输入文档/操作手册.docx --out 生成产物/草稿.csv
-
-# 仅输出 JSON 草稿（调试）
-py -3 tools/docx_to_flow_csv.py 输入文档/操作手册.docx --json-only --out 草稿.json
+```
+流程：AI 读取业务文档（或拆分后的章节）→ 逐段提炼流程步骤 → 标注判断/分支 → 输出规范 CSV
+工具：文档文本提取可复用 tools/split_docx_by_level.py（按章节拆分）或 docx_to_flow_csv.py --json-only（调试）
 ```
 
-> **重要**：此草稿为**规则启发式**产物（动作动词/判断关键词识别），识别的是"碎句"，零散叙述性长句难精炼。
-> 适用于步骤较规整、含步骤编号/动作词的文档；对叙述性长句文档建议先用 `split_docx_by_level.py` 拆分章节后逐节处理。
-> 草稿**必须人工核对**（精简/归类/补分支）后方可用于生成 PPT，见 Step 4。
+> **AI 生成要点（语义判断由模型负责，机械排版由脚本负责——遵循项目"模型无关/工具先于模型"原则）**：
+> - 只输出 schema 所需的核心动作，**每节点 ≤15 字**（压缩而非截断）
+> - 区分：**处理步骤**=rect 主流程；**判断/条件**=diamond（是否/若…则/校验/审核/异常 等）
+> - 判断节点必须有分支：正常（`normal`）+ 异常（`error`），branch_to 指向 41+ 分支节点
+> - 主流程 seq=1..N，分支 seq=41+；分支颜色：error 浅红 FCE4EC/C00000，normal 浅蓝 DDEBF7/1F3864
+> - 单入口单出口；文本精炼为动作句（动词开头）
+> 生成后填入小工具「CSV 节点表」直接生成 PPT，无需再次人工大改。
 
-**方式 B · 手工整理**：按下方 schema 制表（推荐用于高质量最终版）
+**方式 B · 手工整理**：按下方 schema 制表（AI 不可用时的替代）
+
+**方式 C · 规则脚本离线草稿（备选，质量有限）**：纯规则启发式，仅作快速了解文档结构用
+```bash
+py -3 tools/docx_to_flow_csv.py 输入文档/操作手册.docx --out 生成产物/草稿.csv
+```
+> 由于 Word→CSV 本质是语义理解，规则脚本**无法产出可直接使用**的 CSV（截断/噪音/分支误判）。
+> 仅建议用于初步摸清文档段落；**正式 CSV 请用方式 A（AI 生成）**。
 
 **CSV 格式**（`skills/flowchart-skill/templates/flowchart_nodes.csv`）：
 

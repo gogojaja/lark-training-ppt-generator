@@ -145,17 +145,17 @@ class FlowchartTool(tk.Tk):
     # ---------- 标签②：流程图生成 ----------
     def _build_flow_tab(self):
         f = self._tab_flow
-        self._add_section_title(f, "〇、从 Word 生成 CSV 草稿（可选）")
+        self._add_section_title(f, "〇、CSV 来源（推荐：AI 生成后填入下方节点表）")
         row = tk.Frame(f); row.pack(fill="x", padx=16, pady=4)
         tk.Label(row, text="Word 文档:", font=("Microsoft YaHei", 10)).pack(side="left")
         self.flow_docx_var = tk.StringVar()
         tk.Entry(row, textvariable=self.flow_docx_var, width=56).pack(side="left", padx=8)
         tk.Button(row, text="浏览…", command=self._pick_flow_docx,
                   bg="#E8EDF7", font=("Microsoft YaHei", 10)).pack(side="left")
-        self.docx2csv_btn = tk.Button(row, text="生成CSV草稿", command=self._run_docx_to_csv,
+        self.docx2csv_btn = tk.Button(row, text="规则预览", command=self._run_docx_to_csv,
                                       bg="#FFF2CC", font=("Microsoft YaHei", 10))
         self.docx2csv_btn.pack(side="left", padx=8)
-        tk.Label(row, text="(自动填入下方CSV节点表，草稿需人工核对后使用)",
+        tk.Label(row, text="(离线规则预览仅作参考，正式CSV请由AI生成后填入)",
                  fg="#666", font=("Microsoft YaHei", 9)).pack(side="left")
 
         self._add_section_title(f, "一、选择数据文件")
@@ -247,28 +247,27 @@ class FlowchartTool(tk.Tk):
             messagebox.showwarning("提示", "请先选择有效的 Word 文档")
             return
         base = os.path.splitext(os.path.basename(docx))[0]
-        out = os.path.join(os.path.dirname(docx), base + "_流程图_草稿.csv")
+        out = os.path.join(os.path.dirname(docx), base + "_规则预览.csv")
         self.docx2csv_btn.config(state="disabled")
-        self._log(self.flow_log, "▶ 开始从 Word 生成 CSV 草稿…")
+        self._log(self.flow_log, "▶ 开始规则预览（离线参考，正式CSV建议由AI生成）…")
         self._log(self.flow_log, f"  Word: {docx}")
         self._log(self.flow_log, f"  输出: {out}")
         threading.Thread(target=self._do_docx_to_csv, args=(docx, out), daemon=True).start()
 
     def _do_docx_to_csv(self, docx, out):
         code, text = run_cmd([sys.executable, DOCX2CSV_SCRIPT, docx, "--out", out],
-                             "生成CSV草稿")
+                             "规则预览")
         self.after(0, self._docx_to_csv_done, code, text, out)
 
     def _docx_to_csv_done(self, code, text, out):
         self.docx2csv_btn.config(state="normal")
         self._log(self.flow_log, text)
         if code == 0 and os.path.isfile(out):
-            self.flow_csv_var.set(out)
-            self._log(self.flow_log, "✓ CSV 草稿已生成，并填入节点表。请人工核对后生成流程图。")
-            messagebox.showinfo("成功", "CSV 草稿已生成\n已填入下方节点表，请核对后使用")
+            self._log(self.flow_log, "✓ 规则预览已输出（仅供参考）。正式CSV请由AI生成后填入节点表。")
+            messagebox.showinfo("提示", "规则预览已输出（仅供参考）\n正式CSV建议由AI生成后填入节点表")
         else:
-            self._log(self.flow_log, "✗ 生成失败，请查看日志")
-            messagebox.showerror("失败", "CSV 草稿生成失败，请查看日志")
+            self._log(self.flow_log, "✗ 预览生成失败，请查看日志")
+            messagebox.showerror("失败", "规则预览生成失败，请查看日志")
 
     def _pick_flow_csv(self):
         p = filedialog.askopenfilename(title="选择CSV节点表",
