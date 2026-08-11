@@ -18,6 +18,9 @@ py -3 小工具/流程图_小工具.py
 > **前提**：已安装 Python 3（无需任何第三方库，全部使用标准库）。
 > 检查方法：命令行运行 `py --version`，有输出即已安装。
 
+> **说明**：`.bat` 启动器（ASCII脚本）→ `flowchart_tool_launcher.pyw`（ASCII启动器）→ `流程图_小工具.py`（中文主程序）。
+> 采用 ASCII 启动器是为了避免中文路径/代码页（codepage）导致 `.bat` 双击失效。
+
 ---
 
 ## 二、功能①：Word 文档拆分
@@ -86,6 +89,7 @@ seq,node_type,content,shape,width_cm,height_cm,bg_color,text_color,branch_to,bra
 lark-training-ppt-generator/
 ├── 小工具/                  ← 本工具
 │   ├── 流程图_小工具.py    ← 主程序（图形界面）
+│   ├── flowchart_tool_launcher.pyw ← ASCII启动器（供.bat调用）
 │   ├── 启动_流程图工具.bat  ← 双击启动器
 │   └── README.md           ← 本说明
 ├── tools/
