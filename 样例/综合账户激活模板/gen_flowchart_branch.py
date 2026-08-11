@@ -378,9 +378,7 @@ def main(argv=None):
     ap.add_argument("json", help="流程 JSON 文件（含 steps=语义模式；含 nodes=高级模式）")
     ap.add_argument("--out", default="流程图.pptx")
     ap.add_argument("--no-connectors", dest="no_conn", action="store_true",
-                    help="不生成连接线（仅保留文本框，默认行为）")
-    ap.add_argument("--connectors", dest="with_conn", action="store_true",
-                    help="显式生成连接线（默认不生成）")
+                    help="不生成连接线（仅保留文本框，用于连线异常降级）")
     ap.add_argument("--box-w", type=float, default=None,
                     help="矩形框宽度（cm），默认 5.0")
     ap.add_argument("--box-h", type=float, default=None,
@@ -395,9 +393,8 @@ def main(argv=None):
     with open(a.json, encoding="utf-8") as f:
         raw = json.load(f)
 
-    # 是否绘制连接线：默认不绘制；仅当 CLI --connectors 或 JSON 顶层 draw_connectors=true 时绘制
-    draw_conn = a.with_conn or raw.get("draw_connectors", False) is True
-    no_conn = not draw_conn
+    # 是否绘制连接线：CLI 显式关闭，或 JSON 顶层 draw_connectors=false
+    no_conn = a.no_conn or raw.get("draw_connectors", True) is False
 
     # 三级覆盖：默认值 → JSON dim → CLI 参数
     dim = load_dimensions(json_raw=raw, cli=a)

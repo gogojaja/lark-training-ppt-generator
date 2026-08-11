@@ -1,0 +1,11 @@
+{
+  "_说明": "警示红 - 适合应急/故障/风控升级类流程图",
+  "main": {"fill": "FCE4EC", "text": "C00000"},
+  "diamond": {"fill": "FFF2CC", "text": "7F6000"},
+  "branch": {"fill": "DDEBF7", "text": "1F3864"},
+  "error": {"fill": "F8D7DA", "text": "721C24"},
+  "title_bg": "7F1D1D",
+  "title_text": "FFFFFF",
+  "border": "808080",
+  "connector": "7F1D1D"
+}

@@ -1,6 +1,6 @@
 # 技能包索引 (SKILL_INDEX)
 
-> 最后更新：2026-08-07
+> 最后更新：2026-08-10
 
 ## 技能包列表
 
@@ -9,6 +9,7 @@
 | 1 | dev-project-team-skill | v21.3.1 | 软件研发多角色编排器 | 全生命周期、启用角色、阶段评审 |
 | 2 | document-processing | v1.0.0 | 文档处理技能包 | 拆分文档、章节拆分、docx拆分 |
 | 3 | lark-training-ppt-generator | v5.0.0 | 培训PPT生成工作流 | 生成PPT、培训材料、演示文稿 |
+| 4 | flowchart-skill | v1.0.0 | 流程图快速生成技能包 | 流程图、CSV转PPT、节点表、配色预设 |
 
 ## 技能包详细信息
 
