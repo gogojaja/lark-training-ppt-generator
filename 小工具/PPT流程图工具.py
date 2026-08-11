@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""离线小工具 — Word文档拆分 + PPT流程图 一键生成（图形界面）
+"""PPT流程图工具 — Word文档拆分 + PPT流程图 一键生成（图形界面）
 
 本工具将「文档拆分」与「流程图生成」两大能力封装为本地可视化工具，
 无需命令行，无需联网，双击运行即可。
@@ -12,8 +12,8 @@
 依赖：Python 3.x（标准库，无第三方依赖）
 
 用法：
-  py -3 小工具/流程图_小工具.py
-  （或双击 小工具/启动_流程图工具.bat）
+  py -3 小工具/PPT流程图工具.py
+  （或双击 小工具/启动_PPT流程图工具.bat）
 """
 import argparse
 import csv
@@ -64,7 +64,7 @@ def list_presets():
 class FlowchartTool(tk.Tk):
     def __init__(self):
         super().__init__()
-        self.title("银行培训流程图离线工具")
+        self.title("PPT流程图工具")
         self.geometry("860x620")
         self.minsize(760, 540)
         self.configure(bg=LIGHT_BG)
@@ -95,7 +95,7 @@ class FlowchartTool(tk.Tk):
     def _build_footer(self):
         foot = tk.Frame(self, bg=LIGHT_BG)
         foot.pack(fill="x", side="bottom")
-        tk.Label(foot, text="© 2026 银行培训流程图工具 · 双击启动_流程图工具.bat 运行",
+        tk.Label(foot, text="© 2026 PPT流程图工具 · 双击启动_PPT流程图工具.bat 运行",
                  bg=LIGHT_BG, fg="#888", font=("Microsoft YaHei", 9)).pack(padx=18, pady=6, anchor="w")
 
     # ---------- 标签①：文档拆分 ----------

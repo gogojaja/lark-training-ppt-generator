@@ -1,4 +1,4 @@
-# 银行培训流程图离线工具 · 使用说明
+# PPT流程图工具 · 使用说明
 
 > 本工具将「Word 文档拆分」与「PPT 流程图生成」封装为本地可视化软件。
 > **完全离线、无需联网、无需命令行**，双击即可使用。
@@ -8,17 +8,17 @@
 ## 一、快速开始
 
 ### 方式1 · 双击启动（推荐）
-双击 `小工具/启动_流程图工具.bat`，即可打开图形界面。
+双击 `小工具/启动_PPT流程图工具.bat`，即可打开图形界面。
 
 ### 方式2 · 命令行启动
 ```bash
-py -3 小工具/流程图_小工具.py
+py -3 小工具/PPT流程图工具.py
 ```
 
 > **前提**：已安装 Python 3（无需任何第三方库，全部使用标准库）。
 > 检查方法：命令行运行 `py --version`，有输出即已安装。
 
-> **说明**：`.bat` 启动器（ASCII脚本）→ `flowchart_tool_launcher.pyw`（ASCII启动器）→ `流程图_小工具.py`（中文主程序）。
+> **说明**：`.bat` 启动器（ASCII脚本）→ `flowchart_tool_launcher.pyw`（ASCII启动器）→ `PPT流程图工具.py`（中文主程序）。
 > 采用 ASCII 启动器是为了避免中文路径/代码页（codepage）导致 `.bat` 双击失效。
 
 ---
@@ -88,9 +88,9 @@ seq,node_type,content,shape,width_cm,height_cm,bg_color,text_color,branch_to,bra
 ```
 lark-training-ppt-generator/
 ├── 小工具/                  ← 本工具
-│   ├── 流程图_小工具.py    ← 主程序（图形界面）
+│   ├── PPT流程图工具.py    ← 主程序（图形界面）
 │   ├── flowchart_tool_launcher.pyw ← ASCII启动器（供.bat调用）
-│   ├── 启动_流程图工具.bat  ← 双击启动器
+│   ├── 启动_PPT流程图工具.bat  ← 双击启动器
 │   └── README.md           ← 本说明
 ├── tools/
 │   └── split_docx_by_level.py   ← 文档拆分引擎

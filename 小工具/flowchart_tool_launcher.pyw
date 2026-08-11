@@ -3,7 +3,7 @@
 """ASCII 启动器：加载中文命名的图形界面主程序。
 
 避免 .bat 文件因中文路径/UTF-8 codepage 解析问题而失败。
-双击 启动_流程图工具.bat → 本文件 → 主程序 GUI。
+双击 启动_PPT流程图工具.bat → 本文件 → 主程序 GUI。
 """
 import os
 import sys
@@ -12,7 +12,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 
 
 def main():
-    main_py = os.path.join(HERE, "流程图_小工具.py")
+    main_py = os.path.join(HERE, "PPT流程图工具.py")
     if not os.path.isfile(main_py):
         sys.stderr.write("找不到主程序: %s\n" % main_py)
         input("按回车退出…")

@@ -1,0 +1,10 @@
+评审对象,基线版本,检查点,结果,说明,时间
+flowchart-skill 技能包,Sprint-20260810-4,SKILL.md 五步工作流,通过,拆分→选配色→生成CSV→手工调整→生成PPT,2026-08-10
+flowchart-skill 技能包,Sprint-20260810-4,4套配色预设,通过,green/blue/red/yellow JSON 齐全,2026-08-10
+flowchart-skill 技能包,Sprint-20260810-4,CSV模板(精简+全参数),通过,flowchart_nodes.csv + flowchart_full_config.csv(config区),2026-08-10
+csv_to_flowchart.py,Sprint-20260810-4,全参数CSV config区解析,通过,type=config 全局配置可读,2026-08-10
+csv_to_flowchart.py,Sprint-20260810-4,子进程UTF-8编码修复,通过,encoding=utf-8 errors=replace + PYTHONIOENCODING,2026-08-10
+gen_flowchart_branch.py,Sprint-20260810-4,维度参数化回归,通过,CLI>JSON>默认 三级覆盖,2026-08-10
+样例固化,Sprint-20260810-4,综合账户激活模板,通过,源文档+JSON+PPT+CSV+脚本+README,2026-08-10
+样例应用,Sprint-20260810-4,个人综合签约流程图,通过,14主流程+4分支 绿色预设生成成功,2026-08-10
+门禁(阻断缺陷),Sprint-20260810-4,质量门禁,通过,0,2026-08-10
