@@ -50,10 +50,18 @@ py -3 小工具/PPT流程图工具.py
 
 ## 三、功能②：PPT 流程图生成
 
-**用途**：从 CSV 节点表（业务步骤清单）一键生成业务流程图 PPT。
+**用途**：从业务文档一键生成流程节点 CSV（草稿），再从 CSV 节点表生成业务流程图 PPT。
 
 ### 操作步骤
-1. **选择 CSV 节点表**：点击「浏览…」选择 `.csv` 文件
+
+**步骤 0（可选）：从 Word 生成 CSV 草稿**
+1. 在「〇、从 Word 生成 CSV 草稿」区选择 `.docx` 文档
+2. 点击「生成CSV草稿」，自动调用 `tools/docx_to_flow_csv.py` 规则引擎
+   - 输出 `源文档名_流程图_草稿.csv`（与 Word 同目录），并自动填入下方「CSV 节点表」
+   - **注意**：该草稿为纯规则启发式（无需联网/大模型），**需人工核对**流程完整性、判断分支与文字精简后再生成 PPT
+
+**步骤 1：选择 CSV 节点表**
+1. 点击「浏览…」选择 `.csv` 文件（可用步骤 0 生成的草稿，或模板）
    - 可使用 `skills/flowchart-skill/templates/` 下的模板，或点「查看CSV模板」按钮
 2. **配色方案**：green（绿）/ blue（蓝）/ red（红）/ yellow（黄）
 3. **标题**：流程图标题（留空则用文件名）
@@ -93,7 +101,8 @@ lark-training-ppt-generator/
 │   ├── 启动_PPT流程图工具.bat  ← 双击启动器
 │   └── README.md           ← 本说明
 ├── tools/
-│   └── split_docx_by_level.py   ← 文档拆分引擎
+│   ├── split_docx_by_level.py   ← 文档拆分引擎
+│   └── docx_to_flow_csv.py      ← Word→CSV 规则引擎（纯规则草稿）
 ├── 生成脚本/
 │   ├── csv_to_flowchart.py      ← CSV→PPT 转换
 │   └── gen_flowchart_branch.py  ← PPT 流程图生成引擎

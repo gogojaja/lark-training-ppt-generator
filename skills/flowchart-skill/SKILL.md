@@ -54,6 +54,22 @@ py -3 tools/split_docx_by_level.py 输入文档/操作手册.docx 生成产物/�
 
 ### Step 3：生成流程节点 CSV 表
 
+**方式 A · 规则引擎草稿（零依赖，可选）**：从 Word 文档直接生成 CSV 草稿
+
+```bash
+# 从 Word 生成 CSV 草稿（纯规则启发式，无需大模型）
+py -3 tools/docx_to_flow_csv.py 输入文档/操作手册.docx --out 生成产物/草稿.csv
+
+# 仅输出 JSON 草稿（调试）
+py -3 tools/docx_to_flow_csv.py 输入文档/操作手册.docx --json-only --out 草稿.json
+```
+
+> **重要**：此草稿为**规则启发式**产物（动作动词/判断关键词识别），识别的是"碎句"，零散叙述性长句难精炼。
+> 适用于步骤较规整、含步骤编号/动作词的文档；对叙述性长句文档建议先用 `split_docx_by_level.py` 拆分章节后逐节处理。
+> 草稿**必须人工核对**（精简/归类/补分支）后方可用于生成 PPT，见 Step 4。
+
+**方式 B · 手工整理**：按下方 schema 制表（推荐用于高质量最终版）
+
 **CSV 格式**（`skills/flowchart-skill/templates/flowchart_nodes.csv`）：
 
 ```csv
@@ -136,6 +152,9 @@ skills/flowchart-skill/
 生成脚本/
 ├── csv_to_flowchart.py           # CSV → PPT 转换器（主入口）
 ├── gen_flowchart_branch.py       # PPT 流程图生成器（底层引擎）
+
+tools/
+└── docx_to_flow_csv.py           # Word→CSV 规则引擎（纯规则草稿，可选）
 
 样例/
 └── 综合账户激活模板/            # 标准模板样例（参考本目录)
