@@ -263,8 +263,15 @@ class FlowchartTool(tk.Tk):
         self.docx2csv_btn.config(state="normal")
         self._log(self.flow_log, text)
         if code == 0 and os.path.isfile(out):
-            self._log(self.flow_log, "✓ 规则预览已输出（仅供参考）。正式CSV请由AI生成后填入节点表。")
-            messagebox.showinfo("提示", "规则预览已输出（仅供参考）\n正式CSV建议由AI生成后填入节点表")
+            # 自动加载到 CSV 节点表输入框
+            self.flow_csv_var.set(out)
+            # 自动设置标题
+            base = os.path.splitext(os.path.basename(out))[0].replace("_规则预览", "")
+            if not self.flow_title_var.get():
+                self.flow_title_var.set(base)
+            self._log(self.flow_log, "✓ 规则预览已输出（仅供参考）。已自动加载到 CSV 节点表。")
+            self._log(self.flow_log, "  提示：正式使用建议由 AI 生成 CSV（参考 flowchart-skill Step 3）")
+            messagebox.showinfo("提示", "规则预览已输出\n已自动加载到 CSV 节点表\n\n⚠️ 仅供参考，正式CSV建议由AI生成")
         else:
             self._log(self.flow_log, "✗ 预览生成失败，请查看日志")
             messagebox.showerror("失败", "规则预览生成失败，请查看日志")

@@ -165,9 +165,10 @@ def compress(s, max_len=15):
 
 # ---------------- 主流程 ----------------
 
-def build_csv(docx_path, preset="green"):
-    paras = extract_paras_from_docx(docx_path)
-
+def build_csv(paras):
+    """从已提取的段落列表构建 CSV 节点。
+    paras: [(text, is_heading, outline_level), ...]
+    """
     nodes = []          # 识别出的流程节点 (dict)
     branch_nodes = []   # 判断分支节点
 
@@ -239,13 +240,67 @@ def build_csv(docx_path, preset="green"):
     return nodes, branch_nodes
 
 
-def write_csv(nodes, branch_nodes, out_path, preset="green", title_hint=""):
-    """把节点与分支写成标准 CSV"""
-    need = preset  # 触发 import 而不使用会告警，这里仅透传给读取方（无实际影响）
-    header = "seq,node_type,content,shape,width_cm,height_cm,bg_color,text_color,branch_to,branch_label,branch_kind"
-    rows = [header]
+# 预设配色表（与 flowchart-skill presets/*.json 对齐）
+PRESET_COLORS = {
+    "green": {
+        "main_bg": "C6EFCE", "main_tc": "006100",
+        "diamond_bg": "FFF2CC", "diamond_tc": "7F6000",
+        "normal_bg": "DDEBF7", "normal_tc": "1F3864",
+        "error_bg": "FCE4EC", "error_tc": "C00000",
+        "title_bg": "1F3864",
+    },
+    "blue": {
+        "main_bg": "D6E4F0", "main_tc": "1F3864",
+        "diamond_bg": "FFF2CC", "diamond_tc": "7F6000",
+        "normal_bg": "E2EFDA", "normal_tc": "375623",
+        "error_bg": "FCE4EC", "error_tc": "C00000",
+        "title_bg": "1F3864",
+    },
+    "red": {
+        "main_bg": "FCE4EC", "main_tc": "C00000",
+        "diamond_bg": "FFF2CC", "diamond_tc": "7F6000",
+        "normal_bg": "DDEBF7", "normal_tc": "1F3864",
+        "error_bg": "F8D7DA", "error_tc": "C00000",
+        "title_bg": "C00000",
+    },
+    "yellow": {
+        "main_bg": "FFF2CC", "main_tc": "7F6000",
+        "diamond_bg": "DDEBF7", "diamond_tc": "1F3864",
+        "normal_bg": "E2EFDA", "normal_tc": "375623",
+        "error_bg": "FCE4EC", "error_tc": "C00000",
+        "title_bg": "7F6000",
+    },
+}
 
-    main_seq = sorted((n["seq"] for n in nodes))
+
+def write_csv(nodes, branch_nodes, out_path, preset="green", title_hint=""):
+    """把节点与分支写成全参数 CSV（含 config 全局配置区，与 flowchart_full_config.csv 格式一致）"""
+    colors = PRESET_COLORS.get(preset, PRESET_COLORS["green"])
+    rows = []
+
+    # --- 全局配置区 ---
+    rows.append("# 规则预览草稿 - 流程图全参数配置表")
+    rows.append("# 注意：此为规则启发式草稿，请人工核对后使用")
+    rows.append("#")
+    rows.append("# === [全局配置区] ===")
+    rows.append("# type,key,value,desc")
+    title = title_hint or "业务流程图"
+    rows.append(f"config,title,{title},流程图标题")
+    rows.append(f"config,preset,{preset},配色预设：green/blue/red/yellow")
+    rows.append("config,no_connectors,true,禁用连接线（默认 true）")
+    rows.append("config,step_gap_cm,1.2,纵向间隔（cm）")
+    rows.append("config,box_width_cm,5.0,主流程矩形宽度（cm）")
+    rows.append("config,box_height_cm,0.6,主流程矩形高度（cm）")
+    rows.append("config,diamond_width_cm,4.5,菱形判断宽度（cm）")
+    rows.append("config,diamond_height_cm,1.0,菱形判断高度（cm）")
+    rows.append(f"config,title_bg,{colors['title_bg']},标题栏背景色")
+    rows.append("config,title_text,FFFFFF,标题栏文字色")
+    rows.append("")
+
+    # --- 主流程节点区 ---
+    rows.append("# === [主流程节点区] ===")
+    rows.append("# seq,node_type,content,shape,width_cm,height_cm,bg_color,text_color,branch_to,branch_label,branch_kind")
+
     # 为判断节点补分支（跳转）
     bnode_by_ref = {}
     for b in branch_nodes:
@@ -258,20 +313,31 @@ def write_csv(nodes, branch_nodes, out_path, preset="green", title_hint=""):
                 n["branch_label"] = "不通过" if "err" in b["kind"].lower() else "正常"
                 n["branch_kind"] = "error" if "err" in b["kind"].lower() else "normal"
         w, h = n["cols"]
+        if n["shape"] == "diamond":
+            bg, tc = colors["diamond_bg"], colors["diamond_tc"]
+        else:
+            bg, tc = colors["main_bg"], colors["main_tc"]
         rows.append(
             f"{n['seq']},{n['node_type']},{n['content']},"
-            f"{n['shape']},{w},{h},C6EFCE,006100,"
+            f"{n['shape']},{w},{h},{bg},{tc},"
             f"{n['branch_to']},{n['branch_label']},{n['branch_kind']}"
         )
 
-    for b in branch_nodes:
-        w, h = 5.0, 0.6
-        bg = "FCE4EC" if "err" in b["kind"].lower() else "DDEBF7"
-        tc = "C00000" if "err" in b["kind"].lower() else "1F3864"
-        rows.append(
-            f"{b['seq']},branch,{b['content']},"
-            f"rect,{w},{h},{bg},{tc},,,"
-        )
+    # --- 分支节点区 ---
+    if branch_nodes:
+        rows.append("")
+        rows.append("# === [分支节点区] ===")
+        rows.append("# seq 从 41 开始，node_type=branch")
+        for b in branch_nodes:
+            w, h = 5.0, 0.6
+            if "err" in b["kind"].lower():
+                bg, tc = colors["error_bg"], colors["error_tc"]
+            else:
+                bg, tc = colors["normal_bg"], colors["normal_tc"]
+            rows.append(
+                f"{b['seq']},branch,{b['content']},"
+                f"rect,{w},{h},{bg},{tc},,,"
+            )
 
     with open(out_path, "w", encoding="utf-8-sig", newline="") as f:
         f.write("\n".join(rows) + "\n")
@@ -283,8 +349,10 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("docx", help="输入 Word 文档 (.docx)")
     ap.add_argument("--out", default="flowchart_nodes.csv", help="输出 CSV 路径")
-    ap.add_argument("--preset", default="green", help="配色预设（仅标注，不影响生成）")
+    ap.add_argument("--preset", default="green", help="配色预设：green/blue/red/yellow")
+    ap.add_argument("--title", default="", help="流程图标题（默认取文件名）")
     ap.add_argument("--json-only", action="store_true", help="仅输出 JSON 草稿（调试）")
+    ap.add_argument("--stats", action="store_true", help="仅输出文档统计信息（段落/标题数）")
     args = ap.parse_args()
 
     if not os.path.isfile(args.docx):
@@ -292,25 +360,61 @@ def main():
         sys.exit(1)
 
     try:
-        nodes, branches = build_csv(args.docx)
+        paras = extract_paras_from_docx(args.docx)
     except zipfile.BadZipFile:
         print("无法读取 docx（不是有效的 Word 文件）")
         sys.exit(1)
 
+    # 统计信息
+    n_total = len(paras)
+    n_headings = sum(1 for _, is_h, _ in paras if is_h)
+    n_body = n_total - n_headings
+    title_hint = args.title or os.path.splitext(os.path.basename(args.docx))[0]
+
+    if args.stats:
+        print(f"文档统计: {title_hint}")
+        print(f"  总段落数: {n_total}")
+        print(f"  标题数:   {n_headings}")
+        print(f"  正文数:   {n_body}")
+        if n_headings > 0:
+            print("  大纲结构:")
+            for text, is_h, lvl in paras:
+                if is_h:
+                    indent = "  " * (lvl or 0)
+                    print(f"    {indent}- {text[:40]}")
+        sys.exit(0)
+
     if args.json_only:
+        nodes, branches = build_csv(paras)
         with open(args.out, "w", encoding="utf-8") as f:
-            json.dump({"nodes": nodes, "branches": branches}, f, ensure_ascii=False, indent=2)
+            json.dump({"title": title_hint, "nodes": nodes, "branches": branches,
+                       "stats": {"total_paras": n_total, "headings": n_headings}},
+                      f, ensure_ascii=False, indent=2)
         print(f"JSON 草稿已写入: {args.out}")
         sys.exit(0)
 
+    nodes, branches = build_csv(paras)
+
     if not nodes:
         print("未识别到流程节点，请检查文档内容（可能需要先拆分为业务章节）。")
+        print(f"文档统计：总段落 {n_total}，标题 {n_headings}，正文 {n_body}")
         sys.exit(1)
 
-    n_nodes, n_branch = write_csv(nodes, branches, args.out, args.preset)
-    print(f"已生成 CSV 草稿: {args.out}")
-    print(f"  主流程节点: {n_nodes}  分支节点: {n_branch}")
-    print("注意：此为规则启发式草稿，请人工核对流程完整性、判断分支与文字精简后使用。")
+    n_nodes, n_branch = write_csv(nodes, branches, args.out, args.preset, title_hint)
+    n_diamond = sum(1 for n in nodes if n["shape"] == "diamond")
+    n_rect = sum(1 for n in nodes if n["shape"] == "rect")
+
+    print(f"✓ 规则预览草稿已生成: {args.out}")
+    print(f"  文档: {title_hint}（总段落 {n_total}，标题 {n_headings}）")
+    print(f"  主流程节点: {n_nodes}（处理步骤 {n_rect} + 判断节点 {n_diamond}）")
+    print(f"  分支节点:   {n_branch}")
+    print(f"  配色预设:   {args.preset}")
+    print("")
+    print("⚠️  此为规则启发式草稿，请注意：")
+    print("   1. 节点内容可能被截断，需人工精简")
+    print("   2. 判断节点的分支归属可能不准确")
+    print("   3. 流程完整性需人工核对")
+    print("   4. 正式使用建议由 AI 语义生成（参考 flowchart-skill Step 3 方式 A）")
 
 
 if __name__ == "__main__":

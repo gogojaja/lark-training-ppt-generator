@@ -13,8 +13,12 @@
   "dependencies": {
     "pptxgenjs": "^3.12.0"
   },
-  "devDependencies": {},
-  "keywords": ["ppt", "presentation", "training", "lark"],
+  "keywords": [
+    "ppt",
+    "presentation",
+    "training",
+    "lark"
+  ],
   "author": "段波",
   "license": "MIT"
 }
