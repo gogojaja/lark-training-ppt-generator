@@ -77,7 +77,7 @@ class FlowchartTool(tk.Tk):
         bar = tk.Frame(self, bg=BLUE, height=64)
         bar.pack(fill="x")
         bar.pack_propagate(False)
-        tk.Label(bar, text="银行培训 · Word拆分 / PPT流程图 离线工具",
+        tk.Label(bar, text="PPT流程图工具 · Word拆分 / PPT流程图 离线工具",
                  bg=BLUE, fg="white", font=("Microsoft YaHei", 15, "bold")).pack(side="left", padx=18, pady=12)
         tk.Label(bar, text="离线可用 · 无需联网 · 无需命令行",
                  bg=BLUE, fg="#C9DAF8", font=("Microsoft YaHei", 9)).pack(side="right", padx=18)
