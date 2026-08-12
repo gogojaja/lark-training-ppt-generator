@@ -1,0 +1,64 @@
+{
+  "_说明": "v1 经典布局参数备份（优化前的原始默认值）",
+  "_版本": "v1.0（经典绿样式）",
+  "_备份来源": "gen_flowchart_branch.py 原始默认常量 _DEFAULT_DIM 与布局常量",
+  "_备份日期": "2026-08-12",
+
+  "default_dimensions_EMU": {
+    "_说明": "默认布局维度（EMU），对应 gen_flowchart_branch.py 中 _DEFAULT_DIM",
+    "box_w": 1800000,
+    "box_h": 216000,
+    "diamond_w": 1620000,
+    "diamond_h": 360000,
+    "step_gap": 432000
+  },
+
+  "default_dimensions_cm": {
+    "_说明": "默认布局维度（cm 换算值）",
+    "box_w_cm": 5.0,
+    "box_h_cm": 0.6,
+    "diamond_w_cm": 4.5,
+    "diamond_h_cm": 1.0,
+    "step_gap_cm": 1.2
+  },
+
+  "layout_constants": {
+    "_说明": "不可变布局常量（对应 L_MAIN_X / L_TOP 等）",
+    "L_MAIN_X_EMU": 900000,
+    "L_MAIN_X_cm": 2.5,
+    "L_TOP_EMU": 1000000,
+    "L_TOP_cm": 2.78,
+    "L_BR_GAP_EMU": 300000,
+    "L_BR_GAP_cm": 0.83,
+    "L_SZ_MAIN": 1000,
+    "L_SZ_BR": 900
+  },
+
+  "classic_colors": {
+    "_说明": "v1 经典配色（与 green.json 对应）",
+    "MAIN_FILL": "C6EFCE",
+    "MAIN_COL": "006100",
+    "DIA_FILL": "FFF2CC",
+    "DIA_COL": "7F6000",
+    "BR_FILL": "DDEBF7",
+    "BR_COL": "1F3864",
+    "ERR_FILL": "FCE4EC",
+    "ERR_COL": "C00000",
+    "TITLE_BG": "1F3864",
+    "TITLE_TEXT": "FFFFFF",
+    "CONNECTOR": "1F3864"
+  },
+
+  "slide_size": {
+    "_说明": "幻灯片尺寸",
+    "width_EMU": 12192000,
+    "height_EMU": 6858000,
+    "aspect_ratio": "16:9"
+  },
+
+  "_备注": [
+    "此文件为 v1 经典布局的完整参数备份，用于对比和回滚",
+    "v2.1 新布局参数见 presets/business_blue_v2.json",
+    "完整脚本备份见 生成脚本/gen_flowchart_branch.py.bak_v1"
+  ]
+}
