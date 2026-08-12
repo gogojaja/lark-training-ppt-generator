@@ -1,0 +1,129 @@
+{
+  "id": "professional-blue",
+  "name": "专业蓝调",
+  "tagline": "清晰、专业、可信赖",
+  "visualThesis": {
+    "adjectives": ["清晰", "专业", "可信赖"],
+    "tension": "严谨但不生硬"
+  },
+  "characteristics": {
+    "visual": [
+      "蓝色主色调 + 橙色强调色（注意事项）",
+      "步骤编号圆环 motif",
+      "卡片式布局 + 细边框"
+    ],
+    "typography": [
+      "标题坚定有力",
+      "正文紧凑易读",
+      "数字和代码使用等宽字体"
+    ],
+    "layout": [
+      "左文右图的分步操作页",
+      "顶部标题栏 + 内容区",
+      "卡片网格布局"
+    ]
+  },
+  "palette": {
+    "primary": { "value": "1F3864", "role": "深蓝 - 主色调" },
+    "secondary": { "value": "2E75B6", "role": "中蓝 - 次要强调" },
+    "accent": { "value": "ED7D31", "role": "橙色 - 警告/强调" },
+    "background": { "value": "FFFFFF", "role": "白色背景" },
+    "text": { "value": "333333", "role": "深灰文字" },
+    "semantic": {
+      "success": "70AD47",
+      "warning": "ED7D31",
+      "error": "C00000"
+    }
+  },
+  "typography": {
+    "family": {
+      "heading": "Microsoft YaHei",
+      "body": "Microsoft YaHei",
+      "mono": "Consolas"
+    },
+    "roles": {
+      "claim": { "size": 32, "weight": "bold", "lineHeight": 1.2 },
+      "sectionLabel": { "size": 12, "weight": "normal", "lineHeight": 1.3 },
+      "body": { "size": 14, "weight": "normal", "lineHeight": 1.5 },
+      "annotation": { "size": 12, "weight": "normal", "lineHeight": 1.4 },
+      "source": { "size": 10, "weight": "normal", "lineHeight": 1.3 }
+    }
+  },
+  "layouts": [
+    {
+      "id": "cover",
+      "name": "封面页",
+      "description": "深蓝背景 + 白色标题 + 副标题",
+      "useCase": "培训PPT封面"
+    },
+    {
+      "id": "toc",
+      "name": "目录页",
+      "description": "编号列表 + 章节标题",
+      "useCase": "文档导航"
+    },
+    {
+      "id": "section",
+      "name": "章节首页",
+      "description": "大号编号 + 章节标题",
+      "useCase": "章节过渡"
+    },
+    {
+      "id": "content",
+      "name": "内容页",
+      "description": "标题栏 + 正文/列表",
+      "useCase": "一般内容"
+    },
+    {
+      "id": "steps",
+      "name": "步骤页",
+      "description": "编号圆环 + 步骤说明",
+      "useCase": "操作流程"
+    },
+    {
+      "id": "warning",
+      "name": "注意事项页",
+      "description": "橙色边框 + 警告图标",
+      "useCase": "重要提醒"
+    }
+  ],
+  "remixKnobs": [
+    {
+      "id": "blue-depth",
+      "name": "蓝色深浅",
+      "description": "调节蓝色主色调的深浅程度",
+      "range": ["浅蓝(日常培训)", "标准蓝(一般场景)", "深蓝(正式场合)"]
+    },
+    {
+      "id": "border-radius",
+      "name": "卡片圆角",
+      "description": "调节卡片圆角大小",
+      "range": ["大圆角(亲和)", "标准圆角", "小圆角(严肃)"]
+    },
+    {
+      "id": "decoration",
+      "name": "装饰元素",
+      "description": "控制装饰元素的数量",
+      "range": ["简约", "标准", "丰富"]
+    },
+    {
+      "id": "density",
+      "name": "信息密度",
+      "description": "控制每页信息量",
+      "range": ["低密度(演讲)", "中密度(培训)", "高密度(汇报)"]
+    }
+  ],
+  "failureSignals": [
+    "标题贴着第一个内容模块，缺少视觉停顿",
+    "各模块视觉权重相等，没有主次之分",
+    "底部内容戛然而止，没有收尾元素",
+    "装饰元素纯粹填充，不支持沟通目标",
+    "所有页面都用相同布局，缺少节奏变化"
+  ],
+  "scenarios": [
+    "操作培训",
+    "系统上线培训",
+    "常规业务宣贯",
+    "新员工培训"
+  ]
+}

@@ -1,0 +1,168 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "StyleBrief",
+  "description": "PPT风格简报数据结构 - 基于jingmei-ppt方法论",
+  "type": "object",
+  "required": ["id", "name", "visualThesis", "tension", "characteristics", "palette", "typography", "layouts", "remixKnobs", "failureSignals"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "风格唯一标识符"
+    },
+    "name": {
+      "type": "string",
+      "description": "风格名称"
+    },
+    "tagline": {
+      "type": "string",
+      "description": "风格标语（一句话概括气质）"
+    },
+    "visualThesis": {
+      "type": "object",
+      "description": "视觉论点 - 定义整套幻灯片的气质",
+      "required": ["adjectives", "tension"],
+      "properties": {
+        "adjectives": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 3,
+          "maxItems": 3,
+          "description": "三个形容词定义气质"
+        },
+        "tension": {
+          "type": "string",
+          "description": "生产性张力（如：严谨但不生硬）"
+        }
+      }
+    },
+    "characteristics": {
+      "type": "object",
+      "description": "标志性特征 - 让人一眼认出的视觉符号",
+      "required": ["visual", "typography", "layout"],
+      "properties": {
+        "visual": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "视觉特征"
+        },
+        "typography": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "排版特征"
+        },
+        "layout": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "布局特征"
+        }
+      }
+    },
+    "palette": {
+      "type": "object",
+      "description": "调色板",
+      "required": ["primary", "secondary", "accent", "background", "text"],
+      "properties": {
+        "primary": { "$ref": "#/definitions/colorRole" },
+        "secondary": { "$ref": "#/definitions/colorRole" },
+        "accent": { "$ref": "#/definitions/colorRole" },
+        "background": { "$ref": "#/definitions/colorRole" },
+        "text": { "$ref": "#/definitions/colorRole" },
+        "semantic": {
+          "type": "object",
+          "properties": {
+            "success": { "type": "string" },
+            "warning": { "type": "string" },
+            "error": { "type": "string" }
+          }
+        }
+      }
+    },
+    "typography": {
+      "type": "object",
+      "description": "排版系统",
+      "required": ["family", "roles"],
+      "properties": {
+        "family": {
+          "type": "object",
+          "properties": {
+            "heading": { "type": "string" },
+            "body": { "type": "string" },
+            "mono": { "type": "string" }
+          }
+        },
+        "roles": {
+          "type": "object",
+          "description": "角色驱动的字号系统",
+          "properties": {
+            "claim": { "$ref": "#/definitions/typeSpec" },
+            "sectionLabel": { "$ref": "#/definitions/typeSpec" },
+            "body": { "$ref": "#/definitions/typeSpec" },
+            "annotation": { "$ref": "#/definitions/typeSpec" },
+            "source": { "$ref": "#/definitions/typeSpec" }
+          }
+        }
+      }
+    },
+    "layouts": {
+      "type": "array",
+      "description": "常用版式（Silhouettes）",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "description", "useCase"],
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "description": { "type": "string" },
+          "useCase": { "type": "string" }
+        }
+      }
+    },
+    "remixKnobs": {
+      "type": "array",
+      "description": "混音旋钮 - 可调节维度",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "description", "range"],
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "description": { "type": "string" },
+          "range": {
+            "type": "array",
+            "items": { "type": "string" },
+            "minItems": 2
+          }
+        }
+      }
+    },
+    "failureSignals": {
+      "type": "array",
+      "description": "失败信号 - 常见设计陷阱",
+      "items": { "type": "string" }
+    },
+    "scenarios": {
+      "type": "array",
+      "description": "适用场景",
+      "items": { "type": "string" }
+    }
+  },
+  "definitions": {
+    "colorRole": {
+      "type": "object",
+      "required": ["value"],
+      "properties": {
+        "value": { "type": "string", "description": "6位HEX色值" },
+        "role": { "type": "string", "description": "颜色角色说明" }
+      }
+    },
+    "typeSpec": {
+      "type": "object",
+      "required": ["size", "weight"],
+      "properties": {
+        "size": { "type": "number", "description": "字号（pt）" },
+        "weight": { "type": "string", "enum": ["normal", "bold"], "description": "字重" },
+        "lineHeight": { "type": "number", "description": "行高倍数" }
+      }
+    }
+  }
+}

@@ -1,60 +1,28 @@
-# 综合账户激活业务流程 - 流程图全参数配置表
-# 
-# ============================================================
-# 使用说明：
-# 1. 全局配置行：type=config，只需填写相关字段，其他留空
-# 2. 节点数据行：type=node，按 seq 顺序填写
-# 3. 分支节点行：type=branch，seq 用 41+ 编号
-# 4. 颜色用 6 位十六进制（不含 #），如 C6EFCE
-# 5. 尺寸单位：cm（宽/高/间隔）
-# 6. 运行命令：py -3 生成脚本/csv_to_flowchart.py 此文件.csv --out 流程图.pptx
-# ============================================================
-
-# === [全局配置区] ===
-# type,key,value,desc
-config,title,综合账户激活业务流程,流程图标题
-config,preset,green,配色预设：green/blue/red/yellow 或 JSON 路径
-config,no_connectors,true,禁用连接线（默认 true 不连线；false 时连线）
-config,step_gap_cm,1.2,纵向间隔（cm）
-config,box_width_cm,5.0,主流程矩形宽度（cm）
-config,box_height_cm,0.6,主流程矩形高度（cm）
-config,diamond_width_cm,4.5,菱形判断宽度（cm）
-config,diamond_height_cm,1.0,菱形判断高度（cm）
-config,title_bg,1F3864,标题栏背景色
-config,title_text,FFFFFF,标题栏文字色
-
-# === [主流程节点区] ===
-# seq,node_type,content,shape,width_cm,height_cm,bg_color,text_color,branch_to,branch_label,branch_kind
-# 说明：
-#   - seq: 主流程 1-N 连续编号
-#   - node_type: main
-#   - shape: rect(矩形)/diamond(菱形)/circle(圆形)/round_rect(圆角矩形)
-#   - width_cm/height_cm: 留空则用全局默认值
-#   - bg_color/text_color: 留空则用预设色；填写则覆盖
-#   - branch_to: 分支目标 seq（仅菱形判断节点填写）
-#   - branch_label: 分支标签（如"否"/"缺失"/"异常"）
-#   - branch_kind: normal(正常分支)/error(异常分支)
-
-1,main,客户到达网点取号,rect,,,,,,,,
-2,main,Pad身份识别与分流,rect,,,,,,,,
-3,main,柜员输入交易代码进入场景,rect,,,,,,,,
-4,main,选择证件类型并读取身份证件,diamond,,,,41,缺失,error
-5,main,人脸识别身份核实,diamond,,,,42,不通过,error
-6,main,读取介质并校验状态,diamond,,,,43,异常,error
-7,main,不动户验证原密码,diamond,,,,44,非密码类,normal
-8,main,设置取款密码和查询密码,rect,,,,,,,,
-9,main,阅读账户协议,rect,,,,,,,,
-10,main,业务信息确认与电子签名,rect,,,,,,,,
-11,main,凭证打印与回单服务,rect,,,,,,,,
-12,main,客户评价,rect,,,,,,,,
-13,main,系统质检与自动归档,rect,,,,,,,,
-
-# === [分支节点区] ===
-# seq 从 41 开始，node_type=branch
-# branch_to/branch_label/branch_kind 留空（分支节点本身不再分支）
-# bg_color/text_color: 留空则按 branch_kind 自动套用预设色
-
-41,branch,客户信息维护,rect,,,,,,,,
-42,branch,上级现场审核,rect,,,,,,,,
-43,branch,拒绝交易,rect,,,,,,,,
-44,branch,跳过验密,rect,,,,,,,,
+type,key,value,desc,seq,node_type,content,shape,width_cm,height_cm,bg_color,text_color,branch_to,branch_label,branch_kind
+config,title,综合账户激活业务流程,流程图标题,,,,,,,,,
+config,preset,green,配色预设：green/blue/red/yellow,,,,,,,,,
+config,no_connectors,true,禁用连接线（默认 true 不连线；false 时连线）,,,,,,,,,
+config,step_gap_cm,1.2,纵向间隔（cm）,,,,,,,,,
+config,box_width_cm,5.0,主流程矩形宽度（cm）,,,,,,,,,
+config,box_height_cm,0.6,主流程矩形高度（cm）,,,,,,,,,
+config,diamond_width_cm,4.5,菱形判断宽度（cm）,,,,,,,,,
+config,diamond_height_cm,1.0,菱形判断高度（cm）,,,,,,,,,
+config,title_bg,1F3864,标题栏背景色,,,,,,,,,
+config,title_text,FFFFFF,标题栏文字色,,,,,,,,,
+,,,,1,main,客户到达网点取号,rect,5.0,0.6,C6EFCE,006100,,,,
+,,,,2,main,Pad身份识别与分流,rect,5.0,0.6,C6EFCE,006100,,,,
+,,,,3,main,柜员输入交易代码进入场景,rect,5.0,0.6,C6EFCE,006100,,,,
+,,,,4,main,选择证件类型并读取身份证件,diamond,4.5,1.0,FFF2CC,7F6000,41,缺失,error
+,,,,5,main,人脸识别身份核实,diamond,4.5,1.0,FFF2CC,7F6000,42,不通过,error
+,,,,6,main,读取介质并校验状态,diamond,4.5,1.0,FFF2CC,7F6000,43,异常,error
+,,,,7,main,不动户验证原密码,diamond,4.5,1.0,FFF2CC,7F6000,44,非密码类,normal
+,,,,8,main,设置取款密码和查询密码,rect,5.0,0.6,C6EFCE,006100,,,,
+,,,,9,main,阅读账户协议,rect,5.0,0.6,C6EFCE,006100,,,,
+,,,,10,main,业务信息确认与电子签名,rect,5.0,0.6,C6EFCE,006100,,,,
+,,,,11,main,凭证打印与回单服务,rect,5.0,0.6,C6EFCE,006100,,,,
+,,,,12,main,客户评价,rect,5.0,0.6,C6EFCE,006100,,,,
+,,,,13,main,系统质检与自动归档,rect,5.0,0.6,C6EFCE,006100,,,,
+,,,,41,branch,客户信息维护,rect,5.0,0.6,FCE4EC,C00000,,,,
+,,,,42,branch,上级现场审核,rect,5.0,0.6,FCE4EC,C00000,,,,
+,,,,43,branch,拒绝交易,rect,5.0,0.6,FCE4EC,C00000,,,,
+,,,,44,branch,跳过验密,rect,5.0,0.6,DDEBF7,1F3864,,,,
