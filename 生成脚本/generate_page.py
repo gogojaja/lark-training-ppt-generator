@@ -54,6 +54,16 @@ def hex2rgb(hexstr):
     return RGBColor(int(hexstr[0:2], 16), int(hexstr[2:4], 16), int(hexstr[4:6], 16))
 
 
+def blend_hex(c1, c2, w):
+    """线性混合两个 HEX 颜色，w 为 c2 的权重（0..1）。用于生成柔和浅色。"""
+    def _ch(c):
+        c = c.lstrip("#")
+        return [int(c[i:i + 2], 16) for i in (0, 2, 4)]
+    a, b = _ch(c1), _ch(c2)
+    out = [round(a[i] * (1 - w) + b[i] * w) for i in range(3)]
+    return "%02X%02X%02X" % tuple(min(255, max(0, v)) for v in out)
+
+
 class PageBuilder:
     def __init__(self, recipe):
         self.recipe = recipe
@@ -190,36 +200,50 @@ class PageBuilder:
                      content.get("page", "01 / 01"))
 
     def build_cover(self, slide, content):
+        primary = self.colors["primary"]
+        # 柔和浅色背景：主色向白色混合约 88%（柔和粉彩），避免深黑/刺眼
+        soft_bg = blend_hex(primary, "FFFFFF", 0.88)
+        # 柔和强调带：主色向白色混合约 72%，用于横幅/色块
+        soft_band = blend_hex(primary, "FFFFFF", 0.72)
+        # 标题色：略加深的主色，保证在浅色背景上的对比度与柔和感
+        title_color = blend_hex(primary, "000000", 0.10)
+
         slide.background.fill.solid()
-        slide.background.fill.fore_color.rgb = hex2rgb(self.colors["primary"])
+        slide.background.fill.fore_color.rgb = hex2rgb(soft_bg)
+        # 顶部柔和色带（浅色横幅，替代刺眼的整页深色）
+        band = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE,
+                                      Cm(0), Cm(0), Cm(SLIDE_W_CM), Cm(3.2))
+        band.fill.solid()
+        band.fill.fore_color.rgb = hex2rgb(soft_band)
+        band.line.fill.background()
         # 主标题（居中）
-        tb = slide.shapes.add_textbox(Cm(4), Cm(6.5), Cm(26), Cm(4))
+        tb = slide.shapes.add_textbox(Cm(4), Cm(7.2), Cm(26), Cm(4))
         tf = tb.text_frame
         tf.word_wrap = True
         p = tf.paragraphs[0]
         p.alignment = PP_ALIGN.CENTER
         run = p.add_run()
         run.text = content.get("claim", "")
-        run.font.size = Pt(40)
+        run.font.size = Pt(38)
         run.font.bold = True
         run.font.name = "Microsoft YaHei"
-        run.font.color.rgb = hex2rgb(self.colors["background"])
+        run.font.color.rgb = hex2rgb(title_color)
         # 副标题
-        st = slide.shapes.add_textbox(Cm(4), Cm(11.5), Cm(26), Cm(2))
+        st = slide.shapes.add_textbox(Cm(4), Cm(12.2), Cm(26), Cm(2))
         tf2 = st.text_frame
         tf2.word_wrap = True
         p = tf2.paragraphs[0]
         p.alignment = PP_ALIGN.CENTER
         run = p.add_run()
         run.text = content.get("context", "")
-        run.font.size = Pt(18)
+        run.font.size = Pt(16)
         run.font.name = "Microsoft YaHei"
-        run.font.color.rgb = hex2rgb(self.colors["light"])
-        # 底部装饰线
+        run.font.color.rgb = hex2rgb(blend_hex(primary, "FFFFFF", 0.55))
+        # 居中短分隔线（柔和强调色，细线不刺眼）
         line = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE,
-                                      Cm(14.4), Cm(10.6), Cm(5), Cm(0.1))
+                                      Cm(14.4), Cm(11.5), Cm(5), Cm(0.08))
         line.fill.solid()
-        line.fill.fore_color.rgb = hex2rgb(self.colors["accent"])
+        line.fill.fore_color.rgb = hex2rgb(blend_hex(self.colors["accent"], "FFFFFF", 0.30))
         line.line.fill.background()
 
     def build_toc(self, slide, content):
