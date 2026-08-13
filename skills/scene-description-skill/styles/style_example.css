@@ -1,17 +1,26 @@
-/* scene-description-skill 样式定义 */
+/* 场景描述样式定义 */
 
 /* 颜色定义 */
---primary-color: #1F3864;
---secondary-color: #2E75B6;
---accent-color: #ED7D31;
+--scene-primary: #1F3864;
+--scene-secondary: #2E75B6;
+--scene-accent: #ED7D31;
+--scene-text: #333333;
+--scene-light: #F5F7FA;
 
 /* 字体定义 */
---font-family: 'Microsoft YaHei', sans-serif;
---font-size-base: 16px;
+--scene-title-font: 'Microsoft YaHei', '微软雅黑', sans-serif;
+--scene-content-font: 'Microsoft YaHei', '微软雅黑', sans-serif;
+
+/* 字号定义 */
+--scene-title-size: 28px;
+--scene-content-size: 20px;
+--scene-label-size: 18px;
 
 /* 间距定义 */
---spacing-xs: 4px;
---spacing-sm: 8px;
---spacing-md: 16px;
---spacing-lg: 24px;
---spacing-xl: 32px;
+--scene-title-spacing: 20px;
+--scene-content-spacing: 15px;
+--scene-label-spacing: 10px;
+
+/* 布局定义 */
+--scene-max-width: 800px;
+--scene-card-padding: 20px;

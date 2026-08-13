@@ -1,17 +1,34 @@
-/* cover-skill 样式定义 */
+/* 封面页样式定义 */
 
 /* 颜色定义 */
---primary-color: #1F3864;
---secondary-color: #2E75B6;
---accent-color: #ED7D31;
+--cover-primary: #1F3864;      /* 主色调 - 深蓝 */
+--cover-secondary: #2E75B6;    /* 辅助色 - 中蓝 */
+--cover-accent: #ED7D31;       /* 强调色 - 橙色 */
+--cover-text: #333333;         /* 文本色 */
+--cover-light: #F5F7FA;        /* 浅色背景 */
+--cover-white: #FFFFFF;        /* 白色背景 */
 
 /* 字体定义 */
---font-family: 'Microsoft YaHei', sans-serif;
---font-size-base: 16px;
+--cover-title-font: 'Microsoft YaHei', '微软雅黑', sans-serif;
+--cover-subtitle-font: 'Microsoft YaHei', '微软雅黑', sans-serif;
+--cover-author-font: 'Arial', sans-serif;
+
+/* 字号定义 */
+--cover-title-size: 48px;      /* 标题字号 */
+--cover-subtitle-size: 28px;   /* 副标题字号 */
+--cover-author-size: 20px;     /* 作者字号 */
 
 /* 间距定义 */
---spacing-xs: 4px;
---spacing-sm: 8px;
---spacing-md: 16px;
---spacing-lg: 24px;
---spacing-xl: 32px;
+--cover-title-spacing: 20px;
+--cover-subtitle-spacing: 10px;
+--cover-author-spacing: 15px;
+
+/* 布局定义 */
+--cover-padding: 60px;
+--cover-header-height: 80px;
+--cover-footer-height: 60px;
+
+/* 效果定义 */
+--cover-blend-opacity: 0.88;   /* 混合透明度 */
+--cover-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+--cover-gradient: linear-gradient(135deg, var(--cover-primary) 0%, var(--cover-secondary) 100%);

@@ -17,30 +17,31 @@ const CW = W - 2 * M; // content width = 9
 // COLORS — Formal Work Report (Blue + Amber Accent)
 // ============================================================
 const C = {
-  primary: "1A5276",      // 深蓝主色
-  secondary: "2E86C1",    // 亮蓝辅色
-  dark: "1B2631",         // 深色文本
-  accent: "D68910",       // 琥珀色强调
-  bg: "F8F9FA",           // 背景色
+  primary: "27AE60",      // 柔和中绿（主色/标题/表头）
+  secondary: "5DADE2",    // 柔和浅蓝（辅色）
+  dark: "1E5631",         // 深绿（封面/深色块背景）
+  accent: "F4D03F",       // 暖黄强调色
+  bg: "F5FFF7",           // 极浅绿背景
   white: "FFFFFF",
-  text: "2C3E50",         // 主文本
-  textLight: "7F8C8D",    // 次要文本
-  success: "1E8449",
-  warning: "D68910",
-  danger: "C0392B",
+  text: "2C3E2F",         // 深灰绿主文本
+  textLight: "85998A",    // 浅灰绿次要文本
+  success: "58D68D",      // 浅绿
+  warning: "F39C12",      // 暖橙黄（保证可读性）
+  danger: "EC7063",       // 柔和浅红
   cardBg: "FFFFFF",
   // 角色颜色（泳道图）
-  roleCustomer: "1E8449",
-  roleHall: "D68910",
-  roleTeller: "1A5276",
-  roleSystem: "2E86C1",
-  roleAuth: "C0392B",
+  roleCustomer: "2ECC71", // 绿
+  roleHall: "F4D03F",     // 黄
+  roleTeller: "3498DB",   // 蓝
+  roleSystem: "85C1E9",   // 浅蓝
+  roleAuth: "EC7063",     // 红
+  rolePurple: "AF7AC5",   // 浅紫
   noteBg: "FEF9E7",
-  noteBorder: "D68910",
-  errorBg: "FDEDEC",
-  errorBorder: "C0392B",
-  infoBg: "EBF5FB",
-  infoBorder: "2E86C1",
+  noteBorder: "F4D03F",
+  errorBg: "FDF2F0",
+  errorBorder: "EC7063",
+  infoBg: "EBF8FB",
+  infoBorder: "5DADE2",
 };
 
 const TF = "Microsoft YaHei"; // title font
@@ -228,7 +229,7 @@ function footer(slide) {
   });
   s.addText("操作培训手册", {
     x: 0.8, y: 2.55, w: 8.4, h: 0.5,
-    fontSize: 22, fontFace: TF, color: "85C1E9",
+    fontSize: 22, fontFace: TF, color: "82E0AA",
     align: "left", valign: "middle",
   });
   // accent line
@@ -237,12 +238,12 @@ function footer(slide) {
   });
   s.addText("柜面 · 智能柜员机 · 移动Pad  全渠道操作培训", {
     x: 0.8, y: 3.4, w: 8.4, h: 0.35,
-    fontSize: 13, fontFace: BF, color: "D5D8DC",
+    fontSize: 13, fontFace: BF, color: "D5F5E3",
     align: "left", valign: "middle",
   });
   s.addText("交易代码 030401  |  权限：业务柜员", {
     x: 0.8, y: 4.3, w: 8.4, h: 0.3,
-    fontSize: 11, fontFace: BF, color: "85929E",
+    fontSize: 11, fontFace: BF, color: "82E0AA",
     align: "left", valign: "middle",
   });
   s.addNotes("【开场白】各位同事大家好，今天我们来学习个人客户信息维护的操作流程。本培训面向柜面及厅堂业务人员，目标是让大家掌握030401交易的完整操作，涵盖柜面、智能柜员机、移动Pad三个渠道。培训时长约40分钟，请大家关注每一步的关键字段和注意事项。");
@@ -565,10 +566,10 @@ function footer(slide) {
     fill: { color: C.dark }, rectRadius: 0.05,
   });
   s.addText([
-    { text: "交易代码：", options: { fontSize: 12, color: "85C1E9" } },
+    { text: "交易代码：", options: { fontSize: 12, color: "82E0AA" } },
     { text: "030401 个人客户信息维护", options: { fontSize: 12, color: C.white, bold: true } },
-    { text: "    |    ", options: { fontSize: 12, color: "6B7280" } },
-    { text: "交易权限：", options: { fontSize: 12, color: "85C1E9" } },
+    { text: "    |    ", options: { fontSize: 12, color: "7D8C8D" } },
+    { text: "交易权限：", options: { fontSize: 12, color: "82E0AA" } },
     { text: "业务柜员", options: { fontSize: 12, color: C.white, bold: true } },
   ], {
     x: M + 0.2, y: 1.0, w: CW - 0.4, h: 0.55,
@@ -1044,7 +1045,7 @@ function footer(slide) {
       ],
     },
     {
-      title: "新建客户三要素验证", color: C.primary, icon: "🔑",
+      title: "新建客户三要素验证", color: C.rolePurple, icon: "🔑",
       items: [
         "通过\"证件号码\"、\"姓名\"和\"证件类型\"三要素进行唯一性验证",
         "新建客户（无银行账户情况下），无需签署《个人税收居民身份声明文件》",
@@ -1333,13 +1334,13 @@ function footer(slide) {
 
   s.addText(summaryPoints.map(p => ({ text: p, options: { bullet: true, breakLine: true, paraSpaceAfter: 8 } })), {
     x: 0.8, y: 2.3, w: 8.4, h: 2.0,
-    fontSize: 14, fontFace: BF, color: "D5D8DC",
+    fontSize: 14, fontFace: BF, color: "D5F5E3",
     valign: "top",
   });
 
   s.addText("交易代码 030401  |  权限：业务柜员  |  个人客户信息维护 · 操作培训手册", {
     x: 0.8, y: 4.6, w: 8.4, h: 0.3,
-    fontSize: 11, fontFace: BF, color: "85929E",
+    fontSize: 11, fontFace: BF, color: "82E0AA",
     align: "left", valign: "middle",
   });
   s.addNotes("【培训总结】感谢大家参加本次培训。希望大家通过今天的学习，能够熟练掌握个人客户信息维护的操作流程，严格遵守各项业务规则。\n【行动号召】培训结束后，请大家在实际操作中严格遵守注意事项与红线要求。遇到不确定的情况，及时请教老员工或主管。\n【后续支持】有任何问题可以随时联系培训组，也可以查阅完整的操作手册。祝大家工作顺利！");

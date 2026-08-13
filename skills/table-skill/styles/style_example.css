@@ -1,17 +1,27 @@
-/* table-skill 样式定义 */
+/* 表格样式定义 */
 
 /* 颜色定义 */
---primary-color: #1F3864;
---secondary-color: #2E75B6;
---accent-color: #ED7D31;
+--table-primary: #1F3864;
+--table-secondary: #2E75B6;
+--table-header: #4A6FA5;
+--table-border: #E0E0E0;
+--table-bg: #FFFFFF;
+--table-stripe: #F5F7FA;
 
 /* 字体定义 */
---font-family: 'Microsoft YaHei', sans-serif;
---font-size-base: 16px;
+--table-font: 'Microsoft YaHei', '微软雅黑', sans-serif;
+
+/* 字号定义 */
+--table-title-size: 28px;
+--table-header-size: 20px;
+--table-cell-size: 18px;
 
 /* 间距定义 */
---spacing-xs: 4px;
---spacing-sm: 8px;
---spacing-md: 16px;
---spacing-lg: 24px;
---spacing-xl: 32px;
+--table-title-spacing: 20px;
+--table-header-height: 40px;
+--table-cell-padding: 12px 16px;
+--table-border-width: 1px;
+
+/* 布局定义 */
+--table-max-width: 800px;
+--table-column-gap: 10px;
