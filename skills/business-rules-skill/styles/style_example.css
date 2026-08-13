@@ -1,0 +1,17 @@
+/* business-rules-skill 样式定义 */
+
+/* 颜色定义 */
+--primary-color: #1F3864;
+--secondary-color: #2E75B6;
+--accent-color: #ED7D31;
+
+/* 字体定义 */
+--font-family: 'Microsoft YaHei', sans-serif;
+--font-size-base: 16px;
+
+/* 间距定义 */
+--spacing-xs: 4px;
+--spacing-sm: 8px;
+--spacing-md: 16px;
+--spacing-lg: 24px;
+--spacing-xl: 32px;

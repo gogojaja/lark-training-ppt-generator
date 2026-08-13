@@ -9,6 +9,7 @@ description: "文档处理技能包：Word文档章节拆分、结构分析、�
 
 ## 1. 元数据
 
+- **技能名称**：document-processing
 - **技能版本**：v1.1.0
 - **发布日期**：2026-08-07
 - **参考标准**：OOXML (ISO/IEC 29500) · IEEE 830 · BABOK v3
