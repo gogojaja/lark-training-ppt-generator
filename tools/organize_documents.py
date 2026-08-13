@@ -107,6 +107,86 @@ def organize_generated_files():
             else:
                 print(f"    -> 保留在根目录")
 
+    # 整理根目录的 Python 脚本
+    py_files = list(Path('.').glob('*.py'))
+    if py_files:
+        print(f"\n发现根目录下的 Python 脚本：")
+        for file in py_files:
+            name = file.name
+            print(f"  - {name}")
+
+            # 保留正式工具
+            if name == 'extract_table_data.py':
+                print(f"    -> 保留（正式工具）")
+                continue
+
+            # 删除临时脚本
+            if name.startswith(('check_', 'find_', 'read_', 'temp_', 'check_yuchaxun', 'find_tables',
+                                'read_table', 'temp_read_doc')):
+                print(f"    -> 删除（临时脚本）")
+                file.unlink()
+                continue
+
+            # 移动到生成脚本/目录
+            dest_dir = Path('生成脚本')
+            dest_dir.mkdir(parents=True, exist_ok=True)
+            dest_file = dest_dir / name
+            shutil.move(str(file), str(dest_file))
+            print(f"    -> {dest_file}")
+
+    # 整理根目录的 package-lock.json
+    package_lock = Path('package-lock.json')
+    if package_lock.exists():
+        print(f"\n发现 package-lock.json：")
+        dest_dir = Path('生成脚本')
+        dest_dir.mkdir(parents=True, exist_ok=True)
+        dest_file = dest_dir / package_lock.name
+        shutil.move(str(package_lock), str(dest_file))
+        print(f"  -> {dest_file}")
+
+    # 整理根目录的 SKILL.md
+    skill_md = Path('SKILL.md')
+    if skill_md.exists():
+        print(f"\n发现 SKILL.md：")
+        dest_dir = Path('skills')
+        dest_dir.mkdir(parents=True, exist_ok=True)
+        dest_file = dest_dir / skill_md.name
+        shutil.move(str(skill_md), str(dest_file))
+        print(f"  -> {dest_file}")
+
+    # 整理根目录的 .html 和 .pdf 文件
+    html_files = list(Path('.').glob('*.html'))
+    if html_files:
+        print(f"\n发现根目录下的 HTML 文件：")
+        for file in html_files:
+            print(f"  - {file.name}")
+            dest_dir = Path('文档')
+            dest_dir.mkdir(parents=True, exist_ok=True)
+            dest_file = dest_dir / file.name
+            shutil.move(str(file), str(dest_file))
+            print(f"    -> {dest_file}")
+
+    pdf_files = list(Path('.').glob('*.pdf'))
+    if pdf_files:
+        print(f"\n发现根目录下的 PDF 文件：")
+        for file in pdf_files:
+            print(f"  - {file.name}")
+            dest_dir = Path('文档')
+            dest_dir.mkdir(parents=True, exist_ok=True)
+            dest_file = dest_dir / file.name
+            shutil.move(str(file), str(dest_file))
+            print(f"    -> {dest_file}")
+
+    # 整理根目录的项目文档
+    project_doc = Path('项目文档.md')
+    if project_doc.exists():
+        print(f"\n发现项目文档.md：")
+        dest_dir = Path('文档')
+        dest_dir.mkdir(parents=True, exist_ok=True)
+        dest_file = dest_dir / project_doc.name
+        shutil.move(str(project_doc), str(dest_file))
+        print(f"  -> {dest_file}")
+
 def organize_temp_files():
     """整理临时文件"""
     print("\n" + "=" * 60)
