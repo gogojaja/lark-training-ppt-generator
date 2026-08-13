@@ -41,7 +41,7 @@
 | [ppt-framework/primitives/](ppt-framework/primitives/) | L3 原语组件库：text/panel/divider/badge/source_note/step_number |
 | [ppt-framework/design-checklist.md](ppt-framework/design-checklist.md) | 9 项设计质量诊断清单（基于 jingmei-ppt 方法论） |
 | [tools/design_validator.py](../tools/design_validator.py) | 设计质量自动化验证工具（9 项检查 + 面积重叠加权灰度重心） |
-| [生成脚本/generate_page.py](../生成脚本/generate_page.py) | 端到端页面生成器：风格配方 + 垂直节奏 + 角色字号 → PPTX |
+| [生成脚本/generate_page.py](../生成脚本/generate_page.py) | 端到端页面生成器：风格配方 + 垂直节奏 + 角色字号 → PPTX（支持 cover/toc/content/steps/warning，可整本生成） |
 
 ### 设计质量验证
 
@@ -57,6 +57,26 @@ py -3 tools/design_validator.py input.pptx --report report.json
 ```
 
 检查项覆盖：标题主张、视觉停顿、视觉重心偏移、底部收尾、面板主次、图表解读、来源可读、缩略图层次、装饰功能。
+封面页（整页深色背景 `<p:bg>`）自动豁免主张/重心/底部三项检查。
+
+### 端到端生成
+
+```bash
+# 生成单页（默认 content 类型，使用示例内容）
+py -3 生成脚本/generate_page.py --out 生成产物/demo_业务要点.pptx
+
+# 生成多页 deck（从 JSON 读取 pages 列表）
+py -3 生成脚本/generate_page.py --deck deck.json --out 生成产物/demo_deck.pptx
+
+# 切换风格配方
+py -3 生成脚本/generate_page.py --recipe skills/style-brief-skill/recipes/red-alert.json
+```
+
+支持页面类型：`cover` / `toc` / `content` / `steps` / `warning`，均复用同一套
+垂直节奏条带与角色字号，保证全篇节奏一致。
+
+闭环验证：用 `generate_page.py` 生成的 5 页 demo deck（4 套风格配方各一版），
+经 `design_validator` 评分均为 **10.0/10（优秀）**。
 
 ## 使用流程
 
@@ -141,7 +161,9 @@ Word文档 → ①提取内容 → ②选择技能 → ③生成PPT页面
 - 新增 vertical_rhythm.py 布局引擎与 primitives 原语组件库（6 个组件）
 - 新增 design-checklist.md（9 项诊断）与 tools/design_validator.py（自动化验证 + 面积重叠加权灰度重心）
 - 新增 生成脚本/generate_page.py：端到端生成器（风格配方 + 垂直节奏 + 角色字号 → PPTX）
-- 闭环验证：用 generate_page.py 生成的「业务要点」页经 design_validator 评分 10.0/10（优秀）
+- generate_page.py 扩展为支持 cover/toc/content/steps/warning 五种页面类型与整本 deck 生成
+- design_validator 修复形状填充误读、象限面积重叠加权、封面页豁免等逻辑
+- 闭环验证：generate_page.py 生成的 5 页 demo deck（4 套风格配方各一版）经 design_validator 评分均为 10.0/10（优秀）
 
 ### v1.0.0（2026-08-12）
 - 首版发布：完整的PPT生成技能库

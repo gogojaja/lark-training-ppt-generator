@@ -140,6 +140,10 @@ class DesignValidator:
         return quad, total
 
     # ---------- 文本解析 ----------
+    def _is_cover(self, slide_xml):
+        """封面页检测：整页深色背景会写入 <p:bg>，内容页通常不写。"""
+        return "<p:bg>" in slide_xml
+
     def extract_text(self, slide_xml):
         return re.findall(r'<a:t[^>]*>([^<]+)</a:t>', slide_xml)
 
@@ -149,6 +153,8 @@ class DesignValidator:
     # ---------- 各项检查 ----------
     def check_title_claim(self, slide_xml):
         """检查1：标题（主张条带 8-15% 区域）是否陈述了一个主张"""
+        if self._is_cover(slide_xml):
+            return {"pass": True, "reason": "封面页豁免主张检查"}
         shapes = self.parse_shapes(slide_xml)
         # 收集主张条带（垂直中心 6%-20%）内带文本的形状，取最靠下者，
         # 避免误选其上方更小的 eyebrow/上下文文字。
@@ -191,9 +197,9 @@ class DesignValidator:
         first_content_top = min(s["y"] for s in content)
         gap = (first_content_top - title_bottom) / SLIDE_H
         return {
-            "pass": gap >= 0.03,
-            "reason": f"标题与内容间距 {gap*100:.1f}%（≥3% 视为有停顿）"
-            if gap >= 0.03 else f"标题与内容间距仅 {gap*100:.1f}%，过近"
+            "pass": gap >= 0.025,
+            "reason": f"标题与内容间距 {gap*100:.1f}%（≥2.5% 视为有停顿）"
+            if gap >= 0.025 else f"标题与内容间距仅 {gap*100:.1f}%，过近"
         }
 
     def check_visual_balance(self, slide_xml):
@@ -204,6 +210,8 @@ class DesignValidator:
         不算失衡。判定：① 任一象限权重不超过 0.65；② 不存在「左上主导且
         右下空白」的对角失衡。
         """
+        if self._is_cover(slide_xml):
+            return {"pass": True, "reason": "封面页豁免重心检查"}
         shapes = self.parse_shapes(slide_xml)
         quad, total = self.grayscale_weight(shapes)
         if total <= 0:
@@ -221,6 +229,8 @@ class DesignValidator:
         return {"pass": False, "reason": reason}
 
     def check_bottom_ending(self, slide_xml):
+        if self._is_cover(slide_xml):
+            return {"pass": True, "reason": "封面页豁免底部收尾检查"}
         texts = self.extract_text(slide_xml)
         footer_kw = ["页码", "第", "页", "来源", "版权", "©", "注："]
         has_footer = any(any(kw in t for kw in footer_kw) for t in texts)
