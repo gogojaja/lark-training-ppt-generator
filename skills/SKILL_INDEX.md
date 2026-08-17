@@ -1,7 +1,7 @@
 # 技能包总索引
 
-**生成时间**: 2026-08-13
-**版本**: v1.0.0
+**生成时间**: 2026-08-17
+**版本**: v2.0.0
 
 ## 概述
 
@@ -94,7 +94,7 @@ slide = create_toc_page(pres, '目录', items)
 ### 3. scene-description-skill
 
 **技能名称**: 场景描述技能包
-**技能版本**: v1.0.0
+**技能版本**: v1.1.0
 **发布日期**: 2026-08-13
 **技能描述**: 用于创建业务场景描述页，展示业务场景和关键要素
 
@@ -132,28 +132,31 @@ slide = create_scene_description(
 
 ---
 
-### 4. business-rules-skill
+### 4. business-content-skill
 
-**技能名称**: 业务规则技能包
-**技能版本**: v1.0.0
-**发布日期**: 2026-08-13
-**技能描述**: 用于展示业务规则和约束条件
+**技能名称**: 业务内容页生成技能（合并版）
+**技能版本**: v2.0.0
+**发布日期**: 2026-08-17
+**技能描述**: 从Word文档提取业务规则、要点和关键信息，生成专业的业务内容PPT页面
+**合并说明**: 由 business-rules-skill 和 key-points-skill 合并而成
 
 **功能列表**:
-- 创建业务规则页
-- 支持规则列表展示
-- 支持规则优先级标注
+- 提取业务规则（限制/要求/审批）
+- 提取业务要点（证件/账户/范围/收费）
+- 生成规则类页面（带颜色标记）
+- 生成要点类页面（卡片布局）
+- 生成混合页面（左右分栏）
 
 **使用方法**:
-```python
-from business_rules_skill import create_business_rules_page
+```bash
+# 自动识别内容类型
+py -3 生成脚本/gen_business_content.py input.docx --out output.pptx
 
-rules = [
-    '规则1：所有签约必须经过风控审核',
-    '规则2：签约材料必须在3个工作日内完成审核',
-    '规则3：合同必须由法务部门审核通过'
-]
-slide = create_business_rules_page(pres, '业务规则', rules)
+# 指定内容类型为规则类
+py -3 生成脚本/gen_business_content.py input.docx --type rules --out rules.pptx
+
+# 指定内容类型为要点类
+py-3 生成脚本/gen_business_content.py input.docx --type points --out points.pptx
 ```
 
 **目录结构**:
@@ -219,6 +222,7 @@ slide = create_operation_steps_page(pres, '操作步骤', steps)
 **技能版本**: v1.0.0
 **发布日期**: 2026-08-13
 **技能描述**: 用于展示培训的关键点和注意事项
+**状态**: ⚠️ 已弃用（已合并到 business-content-skill）
 
 **功能列表**:
 - 创建关键点页
@@ -469,7 +473,7 @@ py -3 tools/split_docx_by_level.py input.docx output_dir 2
 ### 12. flowchart-skill
 
 **技能名称**: 流程图技能包
-**技能版本**: v1.0.0
+**技能版本**: v1.2.0
 **发布日期**: 2026-08-13
 **技能描述**: 用于创建流程图，展示业务流程和决策路径
 
@@ -503,6 +507,85 @@ slide = create_flowchart(pres, '个人综合签约流程', nodes, [])
 
 ---
 
+### 13. content-extraction-skill
+
+**技能名称**: 内容提炼技能包
+**技能版本**: v1.0.0
+**发布日期**: 2026-08-17
+**技能描述**: 从源文档提取内容，进行AI结构化提炼，生成宣讲导向的PPT大纲
+
+**功能列表**:
+- 文档内容提取
+- AI结构化提炼
+- 宣讲大纲生成
+- 支持三种宣讲目标（宣贯/培训/考核）
+
+**使用方法**:
+```bash
+# 提取文档结构
+py -3 生成脚本/extract_content.py input.docx --out content.json
+
+# 生成大纲
+py -3 生成脚本/generate_outline.py content.json --target training --out outline.json
+```
+
+**目录结构**:
+- templates/ - 模板文件
+- styles/ - 样式定义
+- examples/ - 示例代码
+
+**相关技能**: style-brief-skill
+
+**依赖技能**: 无
+
+**文档**:
+- SKILL_INDEX.md
+- README.md
+- SKILL.md
+
+---
+
+### 14. validation-skill
+
+**技能名称**: 回读验证技能包
+**技能版本**: v1.0.0
+**发布日期**: 2026-08-17
+**技能描述**: 验证生成的PPT内容完整性、版面质量和设计规范
+
+**功能列表**:
+- 内容回读验证
+- 版面质量检查
+- 设计规范检查
+- 生成验证报告
+
+**使用方法**:
+```bash
+# 完整验证
+py -3 生成脚本/validate_ppt.py input.pptx --out validation_report.json
+
+# 仅内容回读
+py -3 生成脚本/validate_ppt.py input.pptx --mode content
+
+# 仅版面检查
+py -3 生成脚本/validate_ppt.py input.pptx --mode layout
+```
+
+**目录结构**:
+- templates/ - 模板文件
+- styles/ - 样式定义
+- examples/ - 示例代码
+
+**相关技能**: ppt-framework
+
+**依赖技能**: ppt-framework
+
+**文档**:
+- SKILL_INDEX.md
+- README.md
+- SKILL.md
+
+---
+
 ## 技能包分类
 
 ### 页面生成
@@ -511,9 +594,9 @@ slide = create_flowchart(pres, '个人综合签约流程', nodes, [])
 - scene-description-skill: 场景描述
 
 ### 内容展示
-- business-rules-skill: 业务规则
+- **business-content-skill**: 业务内容（规则+要点）✅ 新增
 - operation-steps-skill: 操作步骤
-- key-points-skill: 关键点
+- key-points-skill: 关键点 ⚠️ 已弃用
 - faq-skill: 常见问题
 
 ### 数据可视化
@@ -527,6 +610,10 @@ slide = create_flowchart(pres, '个人综合签约流程', nodes, [])
 ### 文档处理
 - document-processing: 文档处理
 
+### 工作流支撑
+- **content-extraction-skill**: 内容提炼 ✅ 新增
+- **validation-skill**: 回读验证 ✅ 新增
+
 ## 依赖关系
 
 ```
@@ -534,13 +621,16 @@ ppt-framework (基础框架)
     ├── cover-skill
     ├── toc-skill
     ├── scene-description-skill
-    ├── business-rules-skill
+    ├── business-content-skill (合并版)
     ├── operation-steps-skill
-    ├── key-points-skill
     ├── faq-skill
     ├── table-skill
     ├── flowchart-skill
-    └── style-brief-skill
+    ├── style-brief-skill
+    └── validation-skill
+
+content-extraction-skill (独立)
+    └── 依赖 style-brief-skill (风格预览)
 
 document-processing (独立)
 ```
@@ -576,21 +666,26 @@ toc_items = [
 ]
 create_toc_page(pres, '目录', toc_items)
 
-# 添加操作步骤页
-from operation_steps_skill import create_operation_steps_page
-steps = [
-    '步骤1：提交签约申请',
-    '步骤2：准备相关材料',
-    '步骤3：等待审核',
-    '步骤4：签订合同'
-]
-create_operation_steps_page(pres, '操作步骤', steps)
+# 添加业务内容页（合并版）
+from business_content_skill import create_business_content
+content = {
+    'title': '业务规则',
+    'content_type': 'rules',
+    'sections': [{'type': 'restriction', 'items': ['不允许代理']}]
+}
+create_business_content(pres, content)
 
 # 保存演示文稿
 pres.save('output/training.pptx')
 ```
 
 ## 更新日志
+
+### v2.0.0 (2026-08-17)
+- 合并 business-rules-skill 和 key-points-skill 为 business-content-skill
+- 新增 content-extraction-skill（内容提炼）
+- 新增 validation-skill（回读验证）
+- 更新技能依赖关系
 
 ### v1.0.0 (2026-08-13)
 - 初始版本
