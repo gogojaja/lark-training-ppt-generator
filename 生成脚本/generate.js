@@ -1,4 +1,180 @@
+const fs = require("fs");
+const path = require("path");
 const pptxgen = require("pptxgenjs");
+const { exportToLark } = require("./adapters/lark-export");
+
+function parseArgs(argv = process.argv.slice(2)) {
+  const args = {
+    theme: "ocean-gradient",
+    output: "综合个人开户_柜面操作培训.pptx",
+    config: null,
+    help: false,
+    localOnly: false,
+    export: null,
+  };
+
+  for (let i = 0; i < argv.length; i++) {
+    const token = argv[i];
+    if (token === "--theme") {
+      args.theme = argv[i + 1] || args.theme;
+      i += 1;
+    } else if (token === "--output") {
+      args.output = argv[i + 1] || args.output;
+      i += 1;
+    } else if (token === "--config") {
+      args.config = argv[i + 1] || null;
+      i += 1;
+    } else if (token === "--local-only") {
+      args.localOnly = true;
+    } else if (token === "--export") {
+      args.export = argv[i + 1] || null;
+      i += 1;
+    } else if (token === "--help" || token === "-h") {
+      args.help = true;
+    }
+  }
+
+  return args;
+}
+
+function parseYamlObject(content) {
+  const result = {};
+  const lines = String(content || "").split(/\r?\n/);
+
+  for (const line of lines) {
+    const trimmed = line.trim();
+    if (!trimmed || trimmed.startsWith("#")) continue;
+    const idx = trimmed.indexOf(":");
+    if (idx <= 0) continue;
+    const key = trimmed.slice(0, idx).trim();
+    let value = trimmed.slice(idx + 1).trim();
+
+    if ((value.startsWith('"') && value.endsWith('"')) || (value.startsWith("'") && value.endsWith("'"))) {
+      value = value.slice(1, -1);
+    } else if (value === "true") {
+      value = true;
+    } else if (value === "false") {
+      value = false;
+    } else if (value === "null" || value === "~") {
+      value = null;
+    } else if (!Number.isNaN(Number(value)) && value !== "") {
+      value = Number(value);
+    }
+
+    result[key] = value;
+  }
+
+  return result;
+}
+
+function resolveConfigPath(configPath) {
+  if (!configPath) {
+    return path.join(__dirname, "config.yaml");
+  }
+
+  return path.isAbsolute(configPath)
+    ? configPath
+    : path.join(__dirname, configPath);
+}
+
+function resolveEffectiveConfig(argv = process.argv.slice(2)) {
+  const cliArgs = parseArgs(argv);
+  const configPath = resolveConfigPath(cliArgs.config);
+  let config = {
+    theme: "ocean-gradient",
+    output: "综合个人开户_柜面操作培训.pptx",
+    localOnly: false,
+    export: null,
+  };
+
+  if (fs.existsSync(configPath)) {
+    const fileText = fs.readFileSync(configPath, "utf-8");
+    config = { ...config, ...parseYamlObject(fileText) };
+  }
+
+  return {
+    ...config,
+    ...{
+      theme: cliArgs.theme || config.theme,
+      output: cliArgs.output || config.output || config.output_dir || "综合个人开户_柜面操作培训.pptx",
+      localOnly: cliArgs.localOnly || config.localOnly || false,
+      export: cliArgs.export || config.export || null,
+    }
+  };
+}
+
+function resolveMediaPath(relativeOrFileName) {
+  const normalized = String(relativeOrFileName || "").replace(/\\/g, "/");
+  const candidates = [
+    path.join(__dirname, normalized),
+    path.join(__dirname, "images", normalized),
+    path.join(__dirname, "..", "素材", "images", path.basename(normalized)),
+    path.join(__dirname, "..", "素材", "images", normalized),
+    path.join(__dirname, "..", "素材", normalized),
+  ];
+
+  for (const candidate of candidates) {
+    if (fs.existsSync(candidate)) {
+      return candidate;
+    }
+  }
+
+  return path.join(__dirname, normalized);
+}
+
+const DEFAULT_THEME = {
+  palette: {
+    primary: "065A82",
+    secondary: "1C7293",
+    dark: "21295C",
+    accent: "E86A33",
+    bg: "F5F7FA",
+    white: "FFFFFF",
+    text: "1F2937",
+    textLight: "6B7280",
+    success: "2D9C5E",
+    warning: "E8A838",
+    danger: "DC2626",
+    cardBg: "FFFFFF",
+    roleCustomer: "2D9C5E",
+    roleHall: "E8A838",
+    roleTeller: "065A82",
+    roleSystem: "1C7293",
+    roleAuth: "E86A33",
+    noteBg: "FFF7ED",
+    noteBorder: "E86A33",
+    errorBg: "FEF2F2",
+    errorBorder: "DC2626",
+  },
+  fonts: {
+    heading: "Microsoft YaHei",
+    body: "Microsoft YaHei",
+  },
+};
+
+function loadTheme(themeName = "ocean-gradient") {
+  const targetName = String(themeName || "ocean-gradient").trim();
+  const themePath = path.join(__dirname, "themes", `${targetName}.json`);
+
+  if (fs.existsSync(themePath)) {
+    const theme = JSON.parse(fs.readFileSync(themePath, "utf-8"));
+    return {
+      palette: { ...DEFAULT_THEME.palette, ...(theme.palette || {}) },
+      fonts: { ...DEFAULT_THEME.fonts, ...(theme.fonts || {}) },
+    };
+  }
+
+  return DEFAULT_THEME;
+}
+
+function applyTheme(themeName = "ocean-gradient") {
+  const theme = loadTheme(themeName);
+  return {
+    C: theme.palette,
+    TF: theme.fonts.heading,
+    BF: theme.fonts.body,
+  };
+}
 
 let pres = new pptxgen();
 pres.author = "AI Assistant";
@@ -13,35 +189,12 @@ const W = 10, H = 5.625;
 const M = 0.5;
 const CW = W - 2 * M; // content width = 9
 
-// ============================================================
-// COLORS — Ocean Gradient + Orange Accent
-// ============================================================
-const C = {
-  primary: "065A82",
-  secondary: "1C7293",
-  dark: "21295C",
-  accent: "E86A33",
-  bg: "F5F7FA",
-  white: "FFFFFF",
-  text: "1F2937",
-  textLight: "6B7280",
-  success: "2D9C5E",
-  warning: "E8A838",
-  danger: "DC2626",
-  cardBg: "FFFFFF",
-  roleCustomer: "2D9C5E",
-  roleHall: "E8A838",
-  roleTeller: "065A82",
-  roleSystem: "1C7293",
-  roleAuth: "E86A33",
-  noteBg: "FFF7ED",
-  noteBorder: "E86A33",
-  errorBg: "FEF2F2",
-  errorBorder: "DC2626",
-};
-
-const TF = "Microsoft YaHei"; // title font
-const BF = "Microsoft YaHei"; // body font
+const effectiveConfig = resolveEffectiveConfig();
+const optionalExport = handleOptionalExport(effectiveConfig);
+const appliedTheme = applyTheme(effectiveConfig.theme || "ocean-gradient");
+const C = appliedTheme.C;
+const TF = appliedTheme.TF; // title font
+const BF = appliedTheme.BF; // body font
 
 // ============================================================
 // HELPER: slide header
@@ -194,6 +347,35 @@ function footer(slide) {
   });
 }
 
+function handleOptionalExport(effectiveConfig) {
+  const exportTarget = effectiveConfig.export || null;
+  const localOnly = !!effectiveConfig.localOnly;
+
+  if (!exportTarget || localOnly) {
+    return {
+      enabled: false,
+      reason: localOnly ? "local-only mode" : "no optional export requested",
+    };
+  }
+
+  if (exportTarget.toLowerCase() === "lark") {
+    console.log("[optional-export] Lark export requested but skipped because cloud sync is optional and not required for local generation.");
+    return {
+      enabled: true,
+      target: "lark",
+      skipped: true,
+      reason: "cloud sync is optional; local generation remains the primary path",
+    };
+  }
+
+  return {
+    enabled: true,
+    target: exportTarget,
+    skipped: true,
+    reason: "unsupported export target; local output still generated",
+  };
+}
+
 // ============================================================
 // HELPER: business process overview slide (Slide 5 & 6)
 // ============================================================
@@ -294,7 +476,8 @@ function mediaSelectionSlide(pageNum, title, subtitle, cards) {
 // ============================================================
 {
   let s = pres.addSlide();
-  s.background = { path: "images/bg-cover_16x9.jpg" };
+  const coverBackgroundPath = resolveMediaPath("bg-cover_16x9.jpg");
+  s.background = { path: coverBackgroundPath };
   // dark overlay for text readability
   s.addShape(pres.shapes.RECTANGLE, {
     x: 0, y: 0, w: W, h: H,
@@ -1195,6 +1378,74 @@ function mediaSelectionSlide(pageNum, title, subtitle, cards) {
 // ============================================================
 // SAVE
 // ============================================================
-pres.writeFile({ fileName: "综合个人开户_柜面操作培训.pptx" })
-  .then(fn => console.log("Generated: " + fn))
-  .catch(err => console.error("Error:", err));
+function handleOptionalExport(effectiveConfig) {
+  const exportTarget = effectiveConfig.export || null;
+  const localOnly = !!effectiveConfig.localOnly;
+
+  if (!exportTarget || localOnly) {
+    return { enabled: false, reason: localOnly ? "local-only mode" : "no optional export requested" };
+  }
+
+  if (String(exportTarget).toLowerCase() === "lark") {
+    return { enabled: true, target: "lark", skipped: true, reason: "cloud sync is optional; local generation remains the primary path" };
+  }
+
+  return { enabled: true, target: exportTarget, skipped: true, reason: "unsupported export target; local output still generated" };
+}
+
+function runGeneration(overrides = {}) {
+  const cliArgs = parseArgs();
+  const effective = resolveEffectiveConfig();
+  const options = { ...effective, ...cliArgs, ...overrides };
+
+  if (options.help) {
+    console.log("Usage: node generate.js [--theme <name>] [--output <file>] [--config <path>] [--local-only] [--export lark] [--help]");
+    return Promise.resolve();
+  }
+
+  const selectedTheme = applyTheme(options.theme || "ocean-gradient");
+  const outputDir = options.output_dir ? path.resolve(__dirname, options.output_dir) : __dirname;
+  const outputFile = path.isAbsolute(options.output || "")
+    ? options.output
+    : path.join(outputDir, options.output || "综合个人开户_柜面操作培训.pptx");
+  const themeName = options.theme || "ocean-gradient";
+  const optionalExport = handleOptionalExport(options);
+
+  console.log(`Using theme: ${themeName}`);
+  console.log(`Mode: ${options.localOnly ? "local-only" : options.export ? `local-first with optional export=${options.export}` : "local-first default"}`);
+
+  if (!fs.existsSync(outputDir)) {
+    fs.mkdirSync(outputDir, { recursive: true });
+  }
+
+  return pres.writeFile({ fileName: outputFile })
+    .then(async (fn) => {
+      console.log("Generated: " + fn);
+      if (!optionalExport.enabled) {
+        console.log("[local-first] local PPTX generated successfully without cloud dependency.");
+        return { ok: true, localOnly: true, output: fn };
+      }
+
+      const exportResult = await exportToLark(fn, options);
+      if (exportResult.ok) {
+        console.log("[optional-export] Lark export succeeded: " + exportResult.output);
+      } else {
+        console.log("[optional-export] " + exportResult.reason);
+      }
+
+      return { ok: true, localOnly: false, output: fn, exportResult };
+    })
+    .catch(err => console.error("Error:", err));
+}
+
+if (require.main === module) {
+  runGeneration();
+}
+
+module.exports = {
+  parseArgs,
+  parseYamlObject,
+  resolveConfigPath,
+  resolveEffectiveConfig,
+  runGeneration,
+};

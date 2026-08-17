@@ -11,6 +11,7 @@ const ComponentLoader = require('./components/ComponentLoader');
 const SchemaValidator = require('./components/SchemaValidator');
 const ConfigManager = require('./components/ConfigManager');
 const SlideRenderer = require('./components/SlideRenderer');
+const { parseArgs } = require('./generate.js');
 
 function test() {
     console.log('开始组件测试...\n');
@@ -115,6 +116,35 @@ function test() {
         console.log('✗ CoverComponent 测试失败:', error.message);
         results.failed++;
         results.errors.push(`CoverComponent: ${error.message}`);
+    }
+
+    // 测试CLI参数解析
+    try {
+        const args = parseArgs(['--theme', 'charcoal-minimal', '--output', 'demo.pptx', '--local-only', '--export', 'lark']);
+        if (args.theme !== 'charcoal-minimal' || args.output !== 'demo.pptx' || args.localOnly !== true || args.export !== 'lark') {
+            throw new Error('CLI参数解析异常');
+        }
+        console.log('✓ parseArgs() 解析成功');
+        results.passed++;
+    } catch (error) {
+        console.log('✗ parseArgs() 测试失败:', error.message);
+        results.failed++;
+        results.errors.push(`parseArgs: ${error.message}`);
+    }
+
+    // 测试配置驱动主题解析
+    try {
+        const { resolveEffectiveConfig } = require('./generate.js');
+        const config = resolveEffectiveConfig(['--config', 'config.yaml', '--theme', 'charcoal-minimal']);
+        if (config.theme !== 'charcoal-minimal') {
+            throw new Error('配置和CLI主题未按优先级生效');
+        }
+        console.log('✓ resolveEffectiveConfig() 生效');
+        results.passed++;
+    } catch (error) {
+        console.log('✗ resolveEffectiveConfig() 测试失败:', error.message);
+        results.failed++;
+        results.errors.push(`resolveEffectiveConfig: ${error.message}`);
     }
 
     // 总结

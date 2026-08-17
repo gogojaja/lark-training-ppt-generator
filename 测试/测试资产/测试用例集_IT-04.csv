@@ -1,0 +1,11 @@
+用例编号,用例名称,测试类型,优先级,前置条件,测试步骤,预期结果,测试数据,需求编号,状态
+TC-IT04-001,流程图生成-基本功能,功能测试,Must have,JSON文件包含steps,1. 准备JSON文件\n2. 运行脚本\n3. 检查输出PPTX,生成PPTX文件包含所有节点,test_flowchart_v2.json,REQ-IT04-001,待执行
+TC-IT04-002,流程图生成-复杂分支,功能测试,Must have,JSON文件包含branch,1. 准备带branch的JSON\n2. 运行脚本\n3. 检查分支布局,菱形判断节点和分支正确显示,test_flowchart_v2.json,REQ-IT04-002,待执行
+TC-IT04-003,流程图生成-连接线,功能测试,Must have,draw_connectors=true,1. 使用--connectors参数\n2. 运行脚本\n3. 检查连接线,连接线正确绘制,test_flowchart_v2.json,REQ-IT04-001,待执行
+TC-IT04-004,流程图生成-维度参数,功能测试,Should have,CLI参数,1. 使用--box-w 6 --box-h 0.8\n2. 运行脚本\n3. 检查节点尺寸,节点尺寸符合参数设置,test_flowchart_v2.json,REQ-IT04-010,待执行
+TC-IT04-005,流程图生成-性能测试,性能测试,Should have,10MB文档,1. 准备大文件\n2. 运行脚本\n3. 记录处理时间,处理时间≤10秒,大文件JSON,REQ-IT04-007,待执行
+TC-IT04-006,流程图生成-内存测试,性能测试,Should have,长时间运行,1. 运行脚本多次\n2. 监控内存使用\n3. 检查内存泄漏,内存峰值≤1GB,循环测试,REQ-IT04-009,待执行
+TC-IT04-007,产品介绍模板-生成,功能测试,Must have,模板配置,1. 选择产品介绍模板\n2. 输入内容\n3. 生成PPT,生成符合模板样式的PPT,产品介绍内容,REQ-IT04-003,待执行
+TC-IT04-008,会议汇报模板-生成,功能测试,Must have,模板配置,1. 选择会议汇报模板\n2. 输入内容\n3. 生成PPT,生成符合模板样式的PPT,会议汇报内容,REQ-IT04-004,待执行
+TC-IT04-009,GUI界面-批量操作,功能测试,Must have,多个文件,1. 选择多个文件\n2. 点击批量生成\n3. 检查进度显示,批量生成成功显示进度,多个测试文件,REQ-IT04-006,待执行
+TC-IT04-010,GUI界面-响应速度,性能测试,Should have,用户操作,1. 执行各种操作\n2. 记录响应时间,响应时间≤1秒,各种操作,REQ-IT04-005,待执行

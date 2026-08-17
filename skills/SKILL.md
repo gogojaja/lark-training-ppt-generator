@@ -1,24 +1,47 @@
 ---
 name: lark-training-ppt-generator
-version: 4.1.0
-description: "培训课程设计与宣讲 PPT 生成工作流：深度解析多格式素材（制度文档、操作手册、业务规范、会议纪要、演讲稿），结构化提炼后生成对内宣讲用的演示文稿（PPT），并支持培训课程内容设计与编排。支持联网事实校验、AI 素材生成、自然语言修订、多格式导出与团队协作审阅。"
+version: 4.1.1
+description: "培训课程设计与宣讲 PPT 生成工作流：以本地优先架构为核心，支持离线解析、结构化提炼、多格式输出与本地版式生成，飞书云端协同仅作为可选扩展能力。"
 metadata:
   requires:
+    bins: ["node", "python"]
+  optional:
     bins: ["lark-cli"]
+    notes: ["仅在需要飞书云端协同、文档同步或知识库发布时启用；主流程不依赖云端环境。"]
 ---
 
 # 培训课程设计与宣讲 PPT 生成工作流
 
-**CRITICAL — 开始前 MUST 先用 Read 工具读取 [`../lark-shared/SKILL.md`](../lark-shared/SKILL.md)，其中包含认证、权限处理、JSON 输出契约、高风险操作审批协议。**
+## 设计原则
 
-**CRITICAL — 创建幻灯片前 MUST 用 Read 工具读取以下文件，缺一不可：**
-1. [`../lark-slides/SKILL.md`](../lark-slides/SKILL.md) — 幻灯片创建总入口
-2. [`../lark-slides/references/xml-schema-quick-ref.md`](../lark-slides/references/xml-schema-quick-ref.md) — XML 协议唯一正确来源
-3. [`../lark-slides/references/planning-layer.md`](../lark-slides/references/planning-layer.md) — 规划层规则
-4. [`../lark-slides/references/visual-planning.md`](../lark-slides/references/visual-planning.md) — 视觉规划
-5. [`../lark-slides/references/asset-planning.md`](../lark-slides/references/asset-planning.md) — 素材规划
+本项目采用**本地优先、云端可选**的架构：
+- 默认工作模式：在本地完成内容解析、整理、版式生成和交付产出
+- 飞书协同：仅在需要导出、同步、发布时启用
+- 若未安装 `lark-cli` 或未配置飞书环境，主流程仍可正常生成 PPTX / PDF / 其他本地产物
 
-**CRITICAL — 读取源文档前 MUST 用 Read 工具读取 [`../lark-doc/SKILL.md`](../lark-doc/SKILL.md) 和 [`../lark-doc/references/lark-doc-fetch.md`](../lark-doc/references/lark-doc-fetch.md)，了解 `docs +fetch` 的 `--scope` / `--detail` 选择和局部读取策略。**
+> **核心要求**：本地生成链路必须独立可用，不能因为缺失飞书平台能力而阻断主流程。
+
+### 可选读取说明（仅在飞书云端协同场景启用）
+
+若用户明确要求使用飞书云端文档/知识库/演示文稿协同，可按需读取：
+- [`../lark-shared/SKILL.md`](../lark-shared/SKILL.md) — 认证、权限、JSON 契约与高风险审批
+- [`../lark-slides/SKILL.md`](../lark-slides/SKILL.md) — 幻灯片创建总入口
+- [`../lark-slides/references/xml-schema-quick-ref.md`](../lark-slides/references/xml-schema-quick-ref.md) — XML 协议唯一正确来源（仅云端生成时）
+- [`../lark-slides/references/planning-layer.md`](../lark-slides/references/planning-layer.md) — 规划层规则（仅云端生成时）
+- [`../lark-slides/references/visual-planning.md`](../lark-slides/references/visual-planning.md) — 视觉规划（仅云端生成时）
+- [`../lark-slides/references/asset-planning.md`](../lark-slides/references/asset-planning.md) — 素材规划（仅云端生成时）
+- [`../lark-doc/SKILL.md`](../lark-doc/SKILL.md) 与 [`../lark-doc/references/lark-doc-fetch.md`](../lark-doc/references/lark-doc-fetch.md) — 仅在读取飞书文档时使用
+
+**注意**：这些文件属于云端适配层，不是本地主流程前置条件。
+
+## 扩展包入口
+
+项目已将云端协同能力整理为独立扩展包：
+- [../扩展包/lark-cloud-extension/README.md](../扩展包/lark-cloud-extension/README.md) — 扩展包总说明
+- [../扩展包/lark-cloud-extension/SKILL.md](../扩展包/lark-cloud-extension/SKILL.md) — 云端增强技能说明
+- [../扩展包/lark-cloud-extension/usage.md](../扩展包/lark-cloud-extension/usage.md) — 典型使用命令与失败处理
+
+云端扩展包仅在显式需要飞书协同时启用，默认主流程仍然完全本地化。
 
 ## 速查目录
 

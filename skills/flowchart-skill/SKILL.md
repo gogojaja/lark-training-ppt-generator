@@ -147,6 +147,42 @@ py -3 tools/docx_to_flow_csv.py 输入文档/操作手册.docx --out 生成产�
 
 按下方 schema 手工制表，或从方式 B 的草稿基础上修改。
 
+#### 方式 D · 直接读取 Word 中已有的流程图（本地工具，新增 v1.3.0）
+
+当 Word 文档里本身带有流程图（SmartArt / 矢量图形+连接线 / 图片），可一键读取并转成 PPT 流程图，
+无需重新从文字提炼。工具：`tools/docx_flow_extract.py`（纯标准库 + Windows 内置 OCR，离线零安装）。
+
+```bash
+# ① 先盘点该 docx 里的流程图载体（SmartArt/连接线/图片）
+py -3 tools/docx_flow_extract.py 文档.docx --scan
+
+# ② 按载体提取（三种载体任选；SmartArt/形状为精确解析，图片为 OCR 草稿）
+py -3 tools/docx_flow_extract.py 文档.docx --smartart            # 优先（结构最准）
+py -3 tools/docx_flow_extract.py 文档.docx --shapes              # 矢量形状+连接线
+py -3 tools/docx_flow_extract.py 文档.docx --image --rid rId122  # 指定图片
+py -3 tools/docx_flow_extract.py 文档.docx --auto                # 自动选最优载体
+
+# 通用选项：--preset green / --skip-ppt（只出 CSV）/ --json-only / --ocr-lang zh-Hans-CN
+```
+
+**输出**：`<场景>_wordflow.csv`（flowchart 全参数格式，green 预设）+ `.pptx` + `.json`，入口：
+`py -3 生成脚本/csv_to_flowchart.py <场景>_wordflow.csv --out xxx.pptx`。
+
+**载体说明与准确度**：
+
+| 载体 | 说明 | 准确度 | 依赖 |
+|------|------|-------|------|
+| SmartArt（word/diagrams） | 精确解析节点层级 | 高（结构无损） | 仅标准库 |
+| 矢量图形（a:sp 文本 + a:cxnSp 连接线） | 精确解析节点与拓扑 | 高 | 仅标准库 |
+| 位图截图/识图 | 本地 WinRT OCR（zh-Hans-CN）+ 行聚类 + 排序 | **草稿**，需人工核对精修 | Windows 10/11 内置 OCR |
+
+> ⚠️ 图片路径是【草稿】：框聚类/判断节点（◇菱形）识别、文字识别（尤其小字号 UI 截图）均有误差，
+> 输出一定要按下方 Step 4「手工调整 CSV」核对后才可用。
+
+**注意**：本项目操作手册里的「交易流程图」实为系统 UI 截图（14.6cm 全页宽，非概念流程图），
+对该类截图方式 D 仅能给出界面字样草稿，**业务流程图仍应以方式 A（AI 语义提炼文字步骤）为权威路径**。
+方式 D 面向真正含 SmartArt / 矢量 / 规范流程图的 Word 文档。
+
 **CSV 格式**（`skills/flowchart-skill/templates/flowchart_nodes.csv`）：
 
 ```csv
@@ -231,7 +267,9 @@ skills/flowchart-skill/
 ├── gen_flowchart_branch.py       # PPT 流程图生成器（底层引擎）
 
 tools/
-└── docx_to_flow_csv.py           # Word→CSV 规则引擎（纯规则草稿，可选）
+├── docx_to_flow_csv.py           # Word→CSV 规则引擎（纯规则草稿，可选）
+└── docx_flow_extract.py          # 读取 Word 内已有流程图（SmartArt/矢量/图片OCR）→ CSV/PPT（方式 D）
+    └── win_ocr.ps1               # Windows 内置 OCR 辅助脚本（离线，纯 ASCII）
 
 样例/
 └── 综合账户激活模板/            # 标准模板样例（参考本目录)
@@ -299,6 +337,11 @@ tools/
 - [ ] 整体布局是否从上到下、从左到右
 
 ## 5. 版本更新日志
+
+### v1.3.0（2026-08-13）
+- 新增方式 D：直接读取 Word 中已有的流程图载体（SmartArt / 矢量图形+连接线 / 位图 OCR）
+- 新增工具 `tools/docx_flow_extract.py` + `tools/win_ocr.ps1`（离线本地 OCR，零第三方依赖）
+- 说明本项目手册「交易流程图」为系统 UI 截图，业务流程图以方式 A 为准
 
 ### v1.2.0（2026-08-11）
 - **Prompt 模板大幅增强**：从 8 条基础规则 → 17 条四分类规则（基础/粒度/分支/质量）
