@@ -1,0 +1,7 @@
+/* quiz-extraction-skill 样式示例（Markdown 试卷渲染） */
+.quiz-paper h1 { color: #1F3864; font-size: 22pt; text-align: center; }
+.quiz-paper h2 { color: #2F5597; font-size: 16pt; border-bottom: 1px solid #DEEBF7; }
+.quiz-paper .stem { font-size: 14pt; font-weight: bold; }
+.quiz-paper .options li { font-size: 12pt; list-style: none; }
+.quiz-paper .answer { color: #375623; background: #E2EFDA; padding: 2px 8px; }
+.quiz-paper .material { background: #F5F5F5; border-left: 4px solid #7030A0; padding: 8px 12px; }

@@ -1,0 +1,6 @@
+group_id,section,shared_stem,qid,type,stem,option_a,option_b,option_c,option_d,option_e,option_f,answer,analysis,difficulty,score,source_page
+G1,一、单选题,,G1-Q1,single_choice,系统培训的主要目的是什么？,A. 提升操作规范性,B. 增加成本,C. 减少合规要求,D. 提高风险,,,A,参训人员掌握标准操作流程,medium,2,1
+G1,一、单选题,,G1-Q2,single_choice,以下哪项属于标准动作？,A. 随意跳步,B. 按手册执行,C. 凭经验操作,D. 口头指导,,,B,强调按手册执行,medium,2,1
+G2,二、判断题,,G2-Q1,true_false,培训结束后无需考核。,正确,错误,,,,,错误,必须考核验证效果,easy,1,2
+G3,三、填空题,,G3-Q1,fill_blank,签约流程包含____与____两个关键环节。,,,,,,,尽调,核验,关键环节,hard,2,2
+G4,四、材料分析,阅读以下案例：某网点未按手册操作导致风险事件。,G4-Q1,short_answer,结合案例简述风险成因。,,,,,,,操作未标准化,应从流程与培训两方面整改,hard,4,3

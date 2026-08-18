@@ -1,0 +1,74 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "quiz_schema.json",
+  "title": "考试题抽取统一结构",
+  "description": "从 Word/PPT/TXT/Markdown 源文档抽取的考试题统一中间结构与最终输出结构。符合 QTI 3.0 思想裁剪的本地题库 schema。",
+  "type": "object",
+  "required": ["paper_title", "source", "groups"],
+  "properties": {
+    "paper_title": { "type": "string", "description": "试卷/源文档标题，如「综合账户激活测试」" },
+    "source": {
+      "type": "object",
+      "required": ["path", "format", "pages"],
+      "properties": {
+        "path": { "type": "string", "description": "源文件路径" },
+        "format": { "type": "string", "enum": ["docx", "pptx", "txt", "md"] },
+        "pages": { "type": "integer", "description": "源文档总页数/总幻灯片数" }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "subject": { "type": "string", "description": "科目" },
+        "difficulty": { "type": "string", "enum": ["easy", "medium", "hard"] },
+        "total_questions": { "type": "integer" },
+        "warnings": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "groups": {
+      "type": "array",
+      "description": "题组。简单题型每组 1 题；材料题/阅读理解为共享题干 + 多小题",
+      "items": { "$ref": "#/definitions/group" }
+    }
+  },
+  "definitions": {
+    "group": {
+      "type": "object",
+      "required": ["group_id", "section", "questions"],
+      "properties": {
+        "group_id": { "type": "string", "description": "题组编号，如 G1" },
+        "section": { "type": "string", "description": "所属板块标题，如「一、单选题」" },
+        "shared_stem": { "type": "string", "description": "共享题干（材料题/阅读理解的阅读材料）" },
+        "shared_image": { "type": "string", "description": "共享配图路径（可选）" },
+        "source_pages": { "type": "array", "items": { "type": "integer" }, "description": "涉及源页号" },
+        "questions": { "type": "array", "minItems": 1, "items": { "$ref": "#/definitions/question" } }
+      }
+    },
+    "question": {
+      "type": "object",
+      "required": ["qid", "type", "stem"],
+      "properties": {
+        "qid": { "type": "string", "description": "题号，如 G1-Q1" },
+        "type": {
+          "type": "string",
+          "enum": ["single_choice", "multiple_choice", "true_false", "fill_blank", "short_answer"]
+        },
+        "stem": { "type": "string", "description": "题干" },
+        "options": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "选项列表（选择题用），如 ['A. xxx','B. xxx']；判断题可不填"
+        },
+        "answer": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "标准答案。单选=1 项；多选=多项；判断=['正确'|'错误']；填空=多个空；简答=参考要点"
+        },
+        "analysis": { "type": "string", "description": "解析/讲解" },
+        "difficulty": { "type": "string", "enum": ["easy", "medium", "hard"] },
+        "score": { "type": "number", "minimum": 0, "description": "分值（可选）" },
+        "source_page": { "type": "integer", "description": "来源页号" }
+      }
+    }
+  }
+}

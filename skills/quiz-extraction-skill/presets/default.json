@@ -1,0 +1,10 @@
+{
+  "preset_name": "default",
+  "description": "考试题默认配色（对齐培训主题）",
+  "choice": { "label": "单选题", "accent": "#2F5597", "bg": "#DEEBF7" },
+  "multiple": { "label": "多选题", "accent": "#375623", "bg": "#E2EFDA" },
+  "true_false": { "label": "判断题", "accent": "#BF8F00", "bg": "#FFF2CC" },
+  "fill_blank": { "label": "填空题", "accent": "#833C00", "bg": "#FCE4D6" },
+  "short_answer": { "label": "简答题", "accent": "#C00000", "bg": "#F8D7DA" },
+  "material": { "label": "材料/题组", "accent": "#7030A0", "bg": "#E4DFEC" }
+}

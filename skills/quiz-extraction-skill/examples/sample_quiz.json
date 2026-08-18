@@ -1,0 +1,107 @@
+{
+  "paper_title": "综合账户激活测试",
+  "source": {
+    "path": "examples/sample_source.md",
+    "format": "md",
+    "pages": 1
+  },
+  "metadata": {
+    "subject": "综合账户",
+    "difficulty": "medium",
+    "total_questions": 5,
+    "warnings": []
+  },
+  "groups": [
+    {
+      "group_id": "G1",
+      "section": "一、单选题",
+      "shared_stem": null,
+      "shared_image": null,
+      "source_pages": [1],
+      "questions": [
+        {
+          "qid": "G1-Q1",
+          "type": "single_choice",
+          "stem": "系统培训的主要目的是什么？",
+          "options": ["A. 提升操作规范性", "B. 增加成本", "C. 减少合规要求", "D. 提高风险"],
+          "answer": ["A"],
+          "analysis": "参训人员掌握标准操作流程",
+          "difficulty": "medium",
+          "score": 2,
+          "source_page": 1
+        },
+        {
+          "qid": "G1-Q2",
+          "type": "single_choice",
+          "stem": "以下哪项属于标准动作？",
+          "options": ["A. 随意跳步", "B. 按手册执行", "C. 凭经验操作", "D. 口头指导"],
+          "answer": ["B"],
+          "analysis": "强调按手册执行",
+          "difficulty": "medium",
+          "score": 2,
+          "source_page": 1
+        }
+      ]
+    },
+    {
+      "group_id": "G2",
+      "section": "二、判断题",
+      "shared_stem": null,
+      "shared_image": null,
+      "source_pages": [1],
+      "questions": [
+        {
+          "qid": "G2-Q1",
+          "type": "true_false",
+          "stem": "培训结束后无需考核。",
+          "options": [],
+          "answer": ["错误"],
+          "analysis": "必须考核验证效果",
+          "difficulty": "easy",
+          "score": 1,
+          "source_page": 1
+        }
+      ]
+    },
+    {
+      "group_id": "G3",
+      "section": "三、填空题",
+      "shared_stem": null,
+      "shared_image": null,
+      "source_pages": [1],
+      "questions": [
+        {
+          "qid": "G3-Q1",
+          "type": "fill_blank",
+          "stem": "签约流程包含____与____两个关键环节。",
+          "options": [],
+          "answer": ["尽调", "核验"],
+          "analysis": "关键环节",
+          "difficulty": "hard",
+          "score": 2,
+          "source_page": 1
+        }
+      ]
+    },
+    {
+      "group_id": "G4",
+      "section": "四、材料分析",
+      "shared_stem": "阅读以下案例：某网点未按手册操作导致风险事件。",
+      "shared_image": null,
+      "source_pages": [1],
+      "questions": [
+        {
+          "qid": "G4-Q1",
+          "type": "short_answer",
+          "stem": "结合案例简述风险成因。",
+          "options": [],
+          "answer": ["操作未标准化"],
+          "analysis": "应从流程与培训两方面整改",
+          "difficulty": "hard",
+          "score": 4,
+          "source_page": 1
+        }
+      ]
+    }
+  ]
+}
