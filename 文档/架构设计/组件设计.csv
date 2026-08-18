@@ -1,0 +1,13 @@
+﻿组件名称,职责描述,对外接口,依赖组件,生命周期,通信方式
+ThemeManager,管理主题加载/切换/验证,getTheme(name)/validateTheme(theme),SchemaValidator,应用生命周期,函数调用
+ThemeLoader,从文件系统读取主题JSON,loadTheme(path),fs模块,按需加载,文件读取
+ComponentLoader,动态加载components/目录组件,loadComponent(type),require(),按需加载,模块加载
+ComponentRenderer,调用组件render方法渲染内容,render(component,data),组件实例,每次渲染,函数调用
+SlideRenderer,遍历slide_plan调用对应组件渲染,renderSlide(slide,theme),ComponentLoader/ComponentRenderer,每次生成,函数调用
+FlowchartGenerator,生成流程图XML片段,generateXML(flowchartDef),无(零依赖),每次生成,子进程调用
+XMLSnippetBuilder,构建PPTX XML片段,buildXML(shapes),无,每次构建,函数调用
+SchemaValidator,验证JSON/YAML文件格式,validate(schema,data),ajv/yaml模块,每次验证,函数调用
+ConfigManager,读取和管理配置文件,getConfig()/setConfig(),ThemeManager/ThemeLoader,应用生命周期,函数调用
+Orchestrator,协调配置/主题/组件/输出的主控制器,generate(config),所有组件,每次生成,函数调用
+PPTXBuilder,组装最终PPTX文件,build(slides),pptxgenjs,每次构建,函数调用
+FileWriter,将生成结果写入文件系统,write(path,data),fs模块,每次写入,文件写入

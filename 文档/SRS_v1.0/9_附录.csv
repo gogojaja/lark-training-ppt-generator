@@ -1,0 +1,4 @@
+﻿附录类型,附录内容
+术语表,PPT：演示文稿；Skill：AI技能模块；Theme：视觉主题；Component：可复用组件；Flowchart：流程图；slide_plan：幻灯片规划
+参考文献,lark-training-ppt-generator SKILL.md v4.1.0；DevProjectTeamSkill v21.0.1；IEEE Std 830-1998
+示例配置,主题JSON示例；config.yaml示例；slide_plan.json示例

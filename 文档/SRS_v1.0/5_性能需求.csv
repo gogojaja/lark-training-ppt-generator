@@ -1,0 +1,7 @@
+﻿需求编号,性能指标,目标值,测量方法,优先级
+REQ-PERF-001,主题加载时间,<100ms,10次加载取平均值,Must Have
+REQ-PERF-002,组件加载时间,<50ms,10次加载取平均值,Must Have
+REQ-PERF-003,PPT生成时间(18页),<5秒,10次生成取平均值,Must Have
+REQ-PERF-004,内存占用,<100MB,生成过程中峰值内存,Must Have
+REQ-PERF-005,文件大小开销,<10KB,配置文件总大小,Should Have
+REQ-PERF-006,启动时间,<500ms,冷启动到就绪状态,Must Have

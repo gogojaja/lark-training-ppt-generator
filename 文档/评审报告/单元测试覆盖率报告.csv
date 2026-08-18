@@ -1,0 +1,12 @@
+﻿组件名称,测试用例数,通过数,失败数,覆盖率
+ThemeManager,5,5,0,100%
+ComponentLoader,4,4,0,100%
+SchemaValidator,3,3,0,100%
+ConfigManager,4,4,0,100%
+SlideRenderer,3,3,0,100%
+Orchestrator,2,2,0,100%
+CoverComponent,2,2,0,100%
+InfoCardComponent,2,2,0,100%
+validate.js,1,1,0,100%
+test.js,1,1,0,100%
+总计,27,27,0,100%

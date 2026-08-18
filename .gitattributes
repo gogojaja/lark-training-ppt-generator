@@ -1,0 +1,10 @@
+# LF 换行符统一（铁律§6）
+* text=auto eol=lf
+*.py text eol=lf
+*.md text eol=lf
+*.csv text eol=lf
+*.json text eol=lf
+*.bat text eol=crlf
+*.ps1 text eol=crlf
+*.pptx binary
+*.docx binary

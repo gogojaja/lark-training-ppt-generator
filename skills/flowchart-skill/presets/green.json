@@ -1,0 +1,11 @@
+{
+  "_说明": "清新绿 - 适合合规/风控/审计类流程图",
+  "main": {"fill": "C6EFCE", "text": "006100"},
+  "diamond": {"fill": "FFF2CC", "text": "7F6000"},
+  "branch": {"fill": "DDEBF7", "text": "1F3864"},
+  "error": {"fill": "FCE4EC", "text": "C00000"},
+  "title_bg": "1F3864",
+  "title_text": "FFFFFF",
+  "border": "808080",
+  "connector": "1F3864"
+}

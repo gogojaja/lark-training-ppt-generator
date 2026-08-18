@@ -1,0 +1,12 @@
+{
+  "title": "IT-04 流程图生成测试",
+  "steps": [
+    {"text": "开始"},
+    {"text": "输入数据"},
+    {"text": "数据是否有效", "branch": {"text": "返回重新输入", "label": "否", "kind": "err"}},
+    {"text": "处理数据"},
+    {"text": "是否需要审核", "branch": {"text": "提交审核", "label": "是", "kind": "br"}},
+    {"text": "生成报告"},
+    {"text": "结束"}
+  ]
+}

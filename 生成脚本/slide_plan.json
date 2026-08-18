@@ -1,0 +1,568 @@
+{
+  "deck_id": "handbook-deck-001",
+  "title": "综合个人开户 · 柜面操作培训",
+  "audience": "柜面业务人员",
+  "goal": "操作培训（会用）",
+  "total_pages": 18,
+  "visual_strategy": {
+    "selected_variant": "A",
+    "color_palette": {
+      "primary": "065A82",
+      "secondary": "1C7293",
+      "dark": "21295C",
+      "accent": "E86A33",
+      "bg": "F5F7FA",
+      "white": "FFFFFF",
+      "text": "1F2937",
+      "textLight": "6B7280",
+      "success": "2D9C5E",
+      "warning": "E8A838",
+      "danger": "DC2626"
+    },
+    "layout_template": "three_column",
+    "notice_style": "bottom_banner",
+    "motif": "step_number_circle + system_card_frame",
+    "font_heading": "Microsoft YaHei",
+    "font_body": "Microsoft YaHei",
+    "title_size": "20pt",
+    "body_size": "9-10pt",
+    "note_size": "8pt"
+  },
+  "pagination_plan": {
+    "strategy": "dynamic",
+    "rules_applied": [
+      {
+        "page_range": "P5-P6",
+        "decision": "split",
+        "reason": "业务流程10个环节，单页无法容纳5列卡片×2行，拆分为两页每页5环节",
+        "rule_ref": "§2.7 介质/选项数 > 4 且每种需展示字段 → 拆分"
+      },
+      {
+        "page_range": "P9-P10",
+        "decision": "split",
+        "reason": "步骤2注意事项≥4条（代理办理/未成年人/特殊客群），独立成页",
+        "rule_ref": "§2.7 单步注意事项 ≥4 条 → 注意事项独立成页"
+      },
+      {
+        "page_range": "P11-P12",
+        "decision": "split",
+        "reason": "步骤3含6种子选项（6种介质），拆分为两页每页3种",
+        "rule_ref": "§2.7 单步含子选项 → 拆分为多页，每页 2-3 个子项"
+      },
+      {
+        "page_range": "P16",
+        "decision": "merge",
+        "reason": "步骤6和步骤7操作说明各≤3行，合并为一页",
+        "rule_ref": "§2.7 单步操作说明 ≤3 行 + 无子项 → 可与相邻步骤合并"
+      }
+    ]
+  },
+  "slides": [
+    {
+      "page": 1,
+      "type": "cover",
+      "key_message": "综合个人开户 · 柜面操作培训",
+      "layout_type": "居中标题 + 副标题 + 底部信息栏",
+      "layout_template": "centered_cover",
+      "visual_focus": "主标题大字 + 蓝色渐变背景 + 橙色装饰线",
+      "text_density": "low",
+      "notice_style": "none",
+      "asset_need": {
+        "bg_image": "images/bg-cover_16x9.jpg",
+        "fallback_if_missing": "纯色渐变 fill"
+      },
+      "content_elements": {
+        "title": "综合个人开户",
+        "subtitle": "柜面操作培训手册",
+        "audience_label": "面向柜面业务人员 · 操作培训用",
+        "transaction_code": "030601",
+        "permission": "业务柜员"
+      },
+      "notice_items": []
+    },
+    {
+      "page": 2,
+      "type": "toc",
+      "key_message": "五大模块：场景概览 → 业务流程 → 操作步骤 → 特殊场景 → 速查表",
+      "layout_type": "5列卡片导航",
+      "layout_template": "card_navigation_5col",
+      "visual_focus": "5个编号圆环图标卡片",
+      "text_density": "medium",
+      "notice_style": "none",
+      "asset_need": {
+        "icons": ["场景", "流程", "步骤", "特殊场景", "速查表"],
+        "fallback_if_missing": "数字编号 + 色块"
+      },
+      "content_elements": {
+        "items": [
+          "01 场景说明与渠道对比",
+          "02 业务办理流程概述",
+          "03 柜面操作步骤详解",
+          "04 特殊场景与红线清单",
+          "05 操作速查表"
+        ]
+      },
+      "notice_items": []
+    },
+    {
+      "page": 3,
+      "type": "scene_description",
+      "key_message": "综合开户 = 开户 + 签约服务一站式办理，支持6种介质和结算/储蓄两类账户",
+      "layout_type": "双卡型（左场景定义 + 右账户类型）+ 底部核心要点通栏",
+      "layout_template": "dual_card_with_banner",
+      "visual_focus": "左右信息卡片 + 深色底部要点栏",
+      "text_density": "medium",
+      "notice_style": "none",
+      "asset_need": {
+        "fallback_if_missing": "色块 + 文字"
+      },
+      "content_elements": {
+        "scene_definition": "客户到我社办理银行卡、存折、存单开户业务",
+        "account_types": ["I类户", "II类户", "III类户", "储蓄账户"],
+        "key_points": [
+          "综合开户 = 开户 + 签约服务一站式办理",
+          "支持6种介质",
+          "结算账户与储蓄账户均可开立"
+        ]
+      },
+      "notice_items": []
+    },
+    {
+      "page": 4,
+      "type": "channel_comparison",
+      "key_message": "5种开户渠道对比，柜面渠道功能最全",
+      "layout_type": "表格型 + 底部注意事项通栏",
+      "layout_template": "table_with_notice",
+      "visual_focus": "5行4列对比表格 + 橙色注意事项栏",
+      "text_density": "high",
+      "notice_style": "bottom_banner",
+      "asset_need": {
+        "fallback_if_missing": "表格 shape"
+      },
+      "content_elements": {
+        "channels": ["智能柜员机", "移动PAD", "柜面", "社保卡特殊卡种", "手机银行"],
+        "columns": ["渠道", "办理方式", "可办介质", "账户类型"]
+      },
+      "notice_items": [
+        "柜面渠道功能最全，支持全部6种介质和全部账户类型",
+        "手机银行仅限已办理I类户的存量客户",
+        "社保卡特殊卡种需大堂经理在专用打印信息机上打印"
+      ]
+    },
+    {
+      "page": 5,
+      "type": "process_overview",
+      "key_message": "业务办理流程第1-5环节：客户到达 → 身份核实 → 信息维护 → 协议确认 → 账户关联",
+      "layout_type": "5列卡片 + 箭头连接",
+      "layout_template": "step_cards_5col",
+      "visual_focus": "5个编号圆环步骤卡片 + 橙色箭头",
+      "text_density": "high",
+      "notice_style": "none",
+      "asset_need": {
+        "fallback_if_missing": "编号圆环 + 文字"
+      },
+      "content_elements": {
+        "steps": [
+          "客户到达与身份识别",
+          "身份核实与确认",
+          "客户信息维护",
+          "协议确认与介质选择",
+          "账户关联与密码设置"
+        ]
+      },
+      "notice_items": []
+    },
+    {
+      "page": 6,
+      "type": "process_overview",
+      "key_message": "业务办理流程第6-10环节：签约服务 → 集中授权 → 电子签名 → 回单打印 → 凭证归档",
+      "layout_type": "5列卡片 + 箭头连接",
+      "layout_template": "step_cards_5col",
+      "visual_focus": "5个编号圆环步骤卡片 + 橙色箭头",
+      "text_density": "high",
+      "notice_style": "none",
+      "asset_need": {
+        "fallback_if_missing": "编号圆环 + 文字"
+      },
+      "content_elements": {
+        "steps": [
+          "签约服务选择",
+          "集中作业授权",
+          "电子签名确认",
+          "回单打印与评价",
+          "凭证质检与归档"
+        ]
+      },
+      "notice_items": []
+    },
+    {
+      "page": 7,
+      "type": "flowchart",
+      "key_message": "5角色泳道流程图：客户 → 厅堂人员 → 柜员 → 系统 → 授权人员",
+      "layout_type": "横向泳道图",
+      "layout_template": "horizontal_swimlane",
+      "visual_focus": "5行泳道 + 6个流程节点 + L型箭头 + 图例",
+      "text_density": "medium",
+      "notice_style": "none",
+      "asset_need": {
+        "fallback_if_missing": "shape 绘制泳道图"
+      },
+      "content_elements": {
+        "lanes": ["客户", "厅堂人员", "柜员", "系统", "授权人员"],
+        "lane_colors": ["2D9C5E", "E8A838", "065A82", "1C7293", "E86A33"],
+        "nodes": [
+          "客户到达网点",
+          "身份识别与分流",
+          "联网核查人脸识别",
+          "信息维护选介质设密码",
+          "大额授权(>50万/代理)",
+          "签名确认打印评价归档"
+        ],
+        "conditional_node": "大额授权(>50万/代理) — 椭圆虚线节点"
+      },
+      "notice_items": []
+    },
+    {
+      "page": 8,
+      "type": "operation_overview",
+      "key_message": "交易代码030601，业务柜员权限，7步操作流程总览",
+      "layout_type": "顶部信息栏 + 7列步骤卡片 + 底部箭头",
+      "layout_template": "info_bar_with_step_cards",
+      "visual_focus": "深色交易代码栏 + 7个编号步骤卡片",
+      "text_density": "medium",
+      "notice_style": "none",
+      "asset_need": {
+        "fallback_if_missing": "编号圆环 + 文字"
+      },
+      "content_elements": {
+        "transaction_code": "030601",
+        "permission": "业务柜员",
+        "steps": [
+          "进入交易", "证件识别", "选择介质", "密码设置",
+          "交易确认", "凭证打印", "客户评价"
+        ]
+      },
+      "notice_items": []
+    },
+    {
+      "page": 9,
+      "type": "step_detail",
+      "key_message": "步骤1-2：进入交易界面 + 证件识别与人脸识别（4种证件类型）",
+      "layout_type": "步骤徽章 + 操作说明卡 + 易错点卡 + 底部跨页提示",
+      "layout_template": "step_badge_dual_card",
+      "visual_focus": "步骤编号圆环 + 左操作说明 + 右易错点 + 底部橙色跨页提示",
+      "text_density": "high",
+      "notice_style": "bottom_banner",
+      "asset_need": {
+        "fallback_if_missing": "色块 + 文字"
+      },
+      "content_elements": {
+        "step_1": {
+          "title": "进入交易界面",
+          "operation": "输入交易代码030601或场景名称进入个人综合开户场景界面"
+        },
+        "step_2": {
+          "title": "证件识别与人脸识别",
+          "operation": "选择证件类型 → 读取证件 → 人脸识别 → 下一步",
+          "key_fields": ["二代身份证", "港澳台居民居住证", "外国人永久居留身份证", "其他证件"],
+          "error_prone": [
+            "证件类型选择错误导致读取失败",
+            "证件放置位置不正确",
+            "人脸识别不通过需上级审核"
+          ]
+        }
+      },
+      "notice_items": [
+        "步骤2注意事项较多（代理办理/未成年人/特殊客群），详见下一页"
+      ]
+    },
+    {
+      "page": 10,
+      "type": "step_precautions",
+      "key_message": "步骤2注意事项：代理办理、未满16周岁、特殊客群上门服务",
+      "layout_type": "三场景卡片（上2下1）+ 底部易错点",
+      "layout_template": "scenario_cards_3",
+      "visual_focus": "三色场景卡片 + 红色易错点提示",
+      "text_density": "high",
+      "notice_style": "bottom_banner",
+      "asset_need": {
+        "fallback_if_missing": "色块 + 文字"
+      },
+      "content_elements": {
+        "scenarios": [
+          {
+            "title": "代理人办理",
+            "items": ["授权委托书", "关系证明", "特殊情况证明", "双录", "留存人脸识别信息"]
+          },
+          {
+            "title": "未满16周岁人员开户",
+            "items": ["监护人代理办理", "监护人身份及监护关系证明"]
+          },
+          {
+            "title": "特殊情况（重病/行动不便/无自理能力）",
+            "items": ["上门服务", "或配偶/父母/成年子女代理", "委托书+关系证明+特殊情况证明"]
+          }
+        ]
+      },
+      "notice_items": [
+        "代理办理必须双录并留存人脸识别信息",
+        "三种特殊情况均需提供关系证明 + 特殊情况证明"
+      ]
+    },
+    {
+      "page": 11,
+      "type": "step_detail",
+      "key_message": "步骤3（一）：银行卡 / 存折 / 存单 三种介质操作说明与字段清单",
+      "layout_type": "3列介质卡片（操作步骤+关键字段+注意事项）",
+      "layout_template": "media_cards_3col",
+      "visual_focus": "三色介质卡片 + 字段清单 + 完成提示",
+      "text_density": "high",
+      "notice_style": "inline_note",
+      "asset_need": {
+        "fallback_if_missing": "色块 + 文字"
+      },
+      "content_elements": {
+        "step": 3,
+        "media_types": [
+          {
+            "name": "银行卡开户",
+            "operations": ["选择银行卡开户", "选择卡种", "IC卡读取"],
+            "fields": ["卡种"],
+            "completion": "协议签字确认 → 步骤4"
+          },
+          {
+            "name": "存折开户",
+            "operations": ["选择存折开户", "填写信息", "冠字号码录入"],
+            "fields": ["业务种类", "通兑标志", "支取方式", "开户金额", "凭证号码", "转存方式", "利率类型", "期限"],
+            "completion": "协议签字确认 → 步骤4"
+          },
+          {
+            "name": "存单开户",
+            "operations": ["选择存单开户", "填写信息", "冠字号码录入"],
+            "fields": ["业务种类", "通兑标志", "支取方式", "开户金额", "凭证号码", "转存方式", "利率类型", "期限"],
+            "completion": "下一步 → 步骤4"
+          }
+        ]
+      },
+      "notice_items": [
+        "银行卡：卡片信息读取成功后提醒客户阅读协议签字确认",
+        "存折：若开通一类户需提醒客户阅读协议签字确认",
+        "存单：填写完成后点击下一步"
+      ]
+    },
+    {
+      "page": 12,
+      "type": "step_detail",
+      "key_message": "步骤3（二）：大额存单 / 一本通 / 电子账户 三种介质操作说明与字段清单",
+      "layout_type": "3列介质卡片（操作步骤+关键字段+注意事项）",
+      "layout_template": "media_cards_3col",
+      "visual_focus": "三色介质卡片 + 字段清单 + 完成提示",
+      "text_density": "high",
+      "notice_style": "inline_note",
+      "asset_need": {
+        "fallback_if_missing": "色块 + 文字"
+      },
+      "content_elements": {
+        "step": 3,
+        "media_types": [
+          {
+            "name": "大额存单开户",
+            "operations": ["选择大额存单", "选产品类型", "选科目来源", "选存单形式"],
+            "fields": ["科目来源(现金/转账)", "存单形式(电子/纸质)", "凭证号码", "开户金额"],
+            "completion": "输入开户金额 → 下一步 → 步骤4"
+          },
+          {
+            "name": "一本通开户",
+            "operations": ["选择一本通开户", "填写信息", "下一步"],
+            "fields": ["通兑标志", "支取方式", "凭证号码"],
+            "completion": "步骤4"
+          },
+          {
+            "name": "电子账户开户",
+            "operations": ["选择电子账户开户", "填写信息", "IC卡读卡", "协议签字确认"],
+            "fields": ["卡种", "产品代码"],
+            "completion": "签字确认 → 下一步 → 步骤4"
+          }
+        ]
+      },
+      "notice_items": [
+        "大额存单：科目来源不同后续操作路径不同",
+        "电子账户：成功读取卡片信息后签字确认"
+      ]
+    },
+    {
+      "page": 13,
+      "type": "step_precautions",
+      "key_message": "步骤3注意事项：储蓄+存单必须资金存入 + 6种介质完成后均进入步骤4",
+      "layout_type": "顶部注意事项通栏 + 双卡（介质关联 + 流程汇总）+ 底部易错点",
+      "layout_template": "notice_banner_with_dual_card",
+      "visual_focus": "橙色注意事项通栏 + 左右信息卡 + 红色易错点",
+      "text_density": "high",
+      "notice_style": "bottom_banner",
+      "asset_need": {
+        "fallback_if_missing": "色块 + 文字"
+      },
+      "content_elements": {
+        "key_notice": "若客户开立储蓄账户且介质为存单，则客户必须进行资金存入",
+        "account_relation": {
+          "settlement": "不经过资金存入界面，支持零余额开户",
+          "savings": "弹出资金存入界面，必须存入"
+        },
+        "media_flow": ["银行卡→步骤4", "存折→步骤4", "存单→步骤4", "大额存单→步骤4", "一本通→步骤4", "电子账户→步骤4"]
+      },
+      "notice_items": [
+        "储蓄账户+存单组合容易遗漏资金存入步骤",
+        "存折和存单开户必须录入现金冠字号码",
+        "大额存单科目来源选择不同后续操作路径不同"
+      ]
+    },
+    {
+      "page": 14,
+      "type": "step_detail",
+      "key_message": "步骤4：密码设置（查询密码+取款密码，6位纯数字，30秒内）",
+      "layout_type": "双卡（操作说明+关键字段）+ 注意事项 + 易错点",
+      "layout_template": "dual_card_with_notice_error",
+      "visual_focus": "步骤徽章 + 左操作+右字段 + 底部注意事项+易错点双栏",
+      "text_density": "high",
+      "notice_style": "bottom_banner",
+      "asset_need": {
+        "fallback_if_missing": "色块 + 文字"
+      },
+      "content_elements": {
+        "step": 4,
+        "operation": ["选择密码支取方式", "输入查询密码和取款密码", "下一步"],
+        "key_fields": ["查询密码(查询用)", "取款密码(支取用)", "两种密码可相同或不同"],
+        "error_prone": [
+          "两次输入不一致需重新设置",
+          "超时30秒导致设置失败",
+          "简单密码被系统拒绝",
+          "查询密码与取款密码混淆"
+        ]
+      },
+      "notice_items": [
+        "密码设置必须输入两次且一致",
+        "两次密码输入不能超过30秒",
+        "取款密码必须为6位纯数字",
+        "不能为连续简单密码",
+        "系统同步提示密码复杂程度"
+      ]
+    },
+    {
+      "page": 15,
+      "type": "step_detail",
+      "key_message": "步骤5：交易确认与电子签名（柜外清正楷签名/指纹 + 存折写磁）",
+      "layout_type": "全宽操作说明 + 注意事项+易错点双栏 + 底部关键字段",
+      "layout_template": "full_width_with_dual_panel",
+      "visual_focus": "步骤徽章 + 操作说明 + 底部关键字段栏",
+      "text_density": "high",
+      "notice_style": "bottom_banner",
+      "asset_need": {
+        "fallback_if_missing": "色块 + 文字"
+      },
+      "content_elements": {
+        "step": 5,
+        "operation": [
+          "查看输入项无误后提交",
+          "柜外清交易确认+正楷签名(需柜员审核)",
+          "无法签名时指纹录入",
+          "存折类凭证写磁操作"
+        ],
+        "key_fields": ["交易确认界面", "柜外清签名/指纹", "交易结果", "存折写磁"],
+        "error_prone": [
+          "签名不符合要求需重新签字",
+          "指纹信息不清晰需重新录入",
+          "存折漏做写磁操作",
+          "未柜员审核确认直接进入下一步"
+        ]
+      },
+      "notice_items": [
+        "老年/无签字能力客群进行指纹签名",
+        "签名必须为本人或代理人",
+        "签字必须正楷，书写工整清晰"
+      ]
+    },
+    {
+      "page": 16,
+      "type": "step_detail",
+      "key_message": "步骤6-7：凭证打印（纸质/电子回单）+ 客户评价（4级）+ 系统归档",
+      "layout_type": "双步骤合并页（步骤6双卡 + 步骤7单卡 + 底部注意事项）",
+      "layout_template": "merged_steps_dual",
+      "visual_focus": "两个步骤徽章 + 操作说明卡 + 底部橙色注意事项",
+      "text_density": "high",
+      "notice_style": "bottom_banner",
+      "asset_need": {
+        "fallback_if_missing": "色块 + 文字"
+      },
+      "content_elements": {
+        "step_6": {
+          "title": "凭证及回单打印",
+          "operation": ["打印凭证及回单", "纸质回单打印", "电子回单手机银行扫码"],
+          "key_fields": ["纸质回单", "电子回单"]
+        },
+        "step_7": {
+          "title": "客户评价",
+          "operation": ["柜外清评价", "非常满意/满意/不满意", "不评价默认未评价"],
+          "key_fields": ["4级评价"]
+        }
+      },
+      "notice_items": [
+        "业务办理结束后系统对凭证进行质检并自动归档"
+      ]
+    },
+    {
+      "page": 17,
+      "type": "special_scenarios",
+      "key_message": "6类特殊场景红线清单：代理办理/未成年/特殊客群/大额授权/老年客群/密码红线",
+      "layout_type": "3×2风险卡片矩阵 + 底部红线通栏",
+      "layout_template": "risk_card_matrix_3x2",
+      "visual_focus": "六色风险卡片 + 深色红线提醒通栏",
+      "text_density": "high",
+      "notice_style": "bottom_banner",
+      "asset_need": {
+        "fallback_if_missing": "红橙色警示卡片"
+      },
+      "content_elements": {
+        "scenarios": [
+          { "title": "代理办理", "items": ["授权委托书+关系证明+特殊情况证明", "双录+留存人脸识别"] },
+          { "title": "未满16周岁", "items": ["监护人代理办理", "监护人身份及监护关系证明"] },
+          { "title": "特殊客群上门服务", "items": ["重病/行动不便/无自理能力", "上门服务或代理办理"] },
+          { "title": "大额授权", "items": ["存入资金超50万触发授权", "代理办理也触发授权"] },
+          { "title": "老年/无签字能力客群", "items": ["指纹签名", "签名正楷清晰", "柜员审核确认"] },
+          { "title": "密码设置红线", "items": ["6位纯数字", "两次一致30秒内", "非连续简单密码"] }
+        ]
+      },
+      "notice_items": [
+        "代理办理必须双录 + 留存人脸识别",
+        "大额（>50万）必须授权",
+        "密码不得为简单连续数字"
+      ]
+    },
+    {
+      "page": 18,
+      "type": "quick_reference_closing",
+      "key_message": "7步操作速查表 + 培训结束提醒",
+      "layout_type": "速查表 + 底部深色结束横幅",
+      "layout_template": "reference_table_with_closing",
+      "visual_focus": "4列7行速查表 + 深色结束横幅",
+      "text_density": "high",
+      "notice_style": "none",
+      "asset_need": {
+        "fallback_if_missing": "表格 shape"
+      },
+      "content_elements": {
+        "table_columns": ["步骤", "操作内容", "关键要点", "注意事项"],
+        "table_rows": [
+          ["1", "输入交易代码030601", "交易代码或场景名称", "—"],
+          ["2", "证件类型+读取+人脸识别", "4种证件类型", "代理办理需双录；未满16岁监护人代理"],
+          ["3", "选择6种介质并填写信息", "介质类型+字段清单", "储蓄+存单必须资金存入；录入冠字号码"],
+          ["4", "设置查询密码和取款密码", "6位纯数字×2", "两次一致；30秒内；非连续简单密码"],
+          ["5", "交易确认+签名/指纹", "柜外清正楷签名", "老年/无能力用指纹；存折需写磁"],
+          ["6", "凭证及回单打印", "纸质/电子回单", "电子回单可手机银行扫码查看"],
+          ["7", "客户评价", "4级评价", "不评价默认未评价；系统自动归档"]
+        ],
+        "closing_message": "培训结束 · 请在实际操作中严格遵守注意事项与红线要求"
+      },
+      "notice_items": []
+    }
+  ]
+}

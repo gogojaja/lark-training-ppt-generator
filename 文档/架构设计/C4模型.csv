@@ -1,0 +1,17 @@
+﻿C4层级,容器/组件名称,职责描述,技术栈,交互关系
+Context,用户,使用PPT生成skill的培训讲师/业务专家,CLI界面,调用PPT生成器
+Context,PPT生成器,培训课程PPT生成系统,Node.js/Python,读取配置/生成PPT
+Context,飞书平台,飞书文档和演示文稿平台,Cloud API,lark-cli集成
+Container,配置管理器,读取和管理YAML/JSON配置文件,Node.js/fs,读取config.yaml/themes/*.json
+Container,主题引擎,加载和应用视觉主题配置,Node.js,从配置管理器获取主题
+Container,组件调度器,根据slide_plan调度对应组件渲染,Node.js,从组件库加载组件
+Container,组件库,可复用的PPT组件集合,Node.js/pptxgenjs,渲染PPT元素
+Container,流程图生成器,生成流程图XML片段,Python(零依赖),输出XML字符串
+Container,PPTX构建器,组装最终PPTX文件,pptxgenjs,从组件调度器接收渲染结果
+Component,ThemeManager,管理主题加载/切换/验证,Node.js,提供主题配置对象
+Component,ComponentLoader,动态加载components/目录组件,Node.js/require,返回组件实例
+Component,SlideRenderer,遍历slide_plan调用组件渲染,Node.js,生成幻灯片内容
+Component,FlowchartXML,生成流程图XML片段,Python,返回XML字符串
+Component,SchemaValidator,验证JSON/YAML文件格式,Node.js,提供验证结果
+File System,配置文件,存储配置/主题/规划数据,YAML/JSON,读取配置数据
+File System,PPTX输出,生成的演示文稿文件,.pptx,输出生成结果

@@ -1,0 +1,27 @@
+/* 流程图样式定义 */
+
+/* 颜色定义 */
+--flow-primary: #1F3864;
+--flow-secondary: #2E75B6;
+--flow-success: #4CAF50;
+--flow-warning: #FF9800;
+--flow-error: #F44336;
+--flow-neutral: #9E9E9E;
+
+/* 字体定义 */
+--flow-font: 'Microsoft YaHei', '微软雅黑', sans-serif;
+
+/* 字号定义 */
+--flow-title-size: 28px;
+--flow-node-size: 20px;
+--flow-text-size: 18px;
+
+/* 间距定义 */
+--flow-title-spacing: 20px;
+--flow-node-spacing: 40px;
+--flow-node-padding: 15px 25px;
+
+/* 布局定义 */
+--flow-max-width: 900px;
+--flow-node-radius: 8px;
+--flow-line-width: 2px;

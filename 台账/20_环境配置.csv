@@ -1,0 +1,12 @@
+﻿环境名称,配置项,配置值/别名,密钥别名,备注,更新时间
+dev,Python版本,3.11.2,无,标准库即可运行，无第三方依赖,2026-08-11
+dev,Node.js版本,v20.11.1 LTS,无,zip免安装版，解压至%USERPROFILE%\node\node-v20.11.1-win-x64,2026-08-11
+dev,npm版本,10.2.4,无,随Node.js捆绑安装,2026-08-11
+dev,pptxgenjs,已安装(19 packages),无,generate.js依赖，npm install pptxgenjs,2026-08-11
+dev,操作系统,Windows/macOS 双平台兼容,无,双平台兼容约束已满足,2026-08-11
+dev,Tkinter,Python 内置,无,GUI 依赖标准库 tkinter,2026-08-11
+dev,Python PATH,Python311已写入用户PATH,无,C:\Users\gogoj\AppData\Local\Programs\Python\Python311,2026-08-11
+dev,Node.js PATH,node-v20.11.1-win-x64已写入用户PATH,无,C:\Users\gogoj\node\node-v20.11.1-win-x64,2026-08-11
+test,测试方式,手工冒烟测试+GUI冒烟,无,小工具GUI层手工验证+Python importlib验证,2026-08-11
+test,代码走查,迭代走查 CSV,无,Sprint-1~5 均有走查记录,2026-08-11
+prod,交付方式,源码+打包zip,无,自包含打包交付,2026-08-11

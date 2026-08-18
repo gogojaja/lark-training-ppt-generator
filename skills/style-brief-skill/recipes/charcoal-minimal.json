@@ -1,0 +1,124 @@
+{
+  "id": "charcoal-minimal",
+  "name": "炭灰极简",
+  "tagline": "沉稳、克制、权威",
+  "visualThesis": {
+    "adjectives": ["沉稳", "克制", "权威"],
+    "tension": "严肃但不压抑"
+  },
+  "characteristics": {
+    "visual": [
+      "深灰主色 + 琥珀黄强调色",
+      "侧边栏 motif + 章节编号",
+      "大量留白 + 极简装饰"
+    ],
+    "typography": [
+      "标题简洁有力",
+      "正文紧凑",
+      "表格和时间线为主"
+    ],
+    "layout": [
+      "侧边栏导航布局",
+      "表格和时间线为主",
+      "大量留白"
+    ]
+  },
+  "palette": {
+    "primary": { "value": "404040", "role": "深灰 - 主色调" },
+    "secondary": { "value": "808080", "role": "中灰 - 次要" },
+    "accent": { "value": "F59E0B", "role": "琥珀黄 - 强调" },
+    "background": { "value": "FFFFFF", "role": "白色背景" },
+    "text": { "value": "1F2937", "role": "近黑文字" },
+    "semantic": {
+      "success": "10B981",
+      "warning": "F59E0B",
+      "error": "EF4444"
+    }
+  },
+  "typography": {
+    "family": {
+      "heading": "Microsoft YaHei",
+      "body": "Microsoft YaHei",
+      "mono": "Consolas"
+    },
+    "roles": {
+      "claim": { "size": 28, "weight": "bold", "lineHeight": 1.2 },
+      "sectionLabel": { "size": 11, "weight": "normal", "lineHeight": 1.3 },
+      "body": { "size": 13, "weight": "normal", "lineHeight": 1.5 },
+      "annotation": { "size": 11, "weight": "normal", "lineHeight": 1.4 },
+      "source": { "size": 9, "weight": "normal", "lineHeight": 1.3 }
+    }
+  },
+  "layouts": [
+    {
+      "id": "cover",
+      "name": "封面页",
+      "description": "深灰背景 + 大号标题",
+      "useCase": "正式汇报封面"
+    },
+    {
+      "id": "sidebar",
+      "name": "侧边栏导航",
+      "description": "左侧导航 + 右侧内容",
+      "useCase": "章节内容"
+    },
+    {
+      "id": "table",
+      "name": "表格页",
+      "description": "紧凑表格 + 数据展示",
+      "useCase": "数据对比"
+    },
+    {
+      "id": "timeline",
+      "name": "时间线页",
+      "description": "垂直时间线 + 里程碑",
+      "useCase": "进度汇报"
+    },
+    {
+      "id": "matrix",
+      "name": "决策矩阵",
+      "description": "网格布局 + 决策点",
+      "useCase": "方案对比"
+    }
+  ],
+  "remixKnobs": [
+    {
+      "id": "gray-depth",
+      "name": "灰度深浅",
+      "description": "调节灰色主色调的深浅",
+      "range": ["浅灰(轻松)", "标准灰", "深灰(正式)"]
+    },
+    {
+      "id": "sidebar-width",
+      "name": "侧边栏宽度",
+      "description": "调节侧边栏宽度",
+      "range": ["窄栏", "标准", "宽栏"]
+    },
+    {
+      "id": "accent-saturation",
+      "name": "强调色饱和度",
+      "description": "调节强调色的饱和度",
+      "range": ["低饱和", "标准", "高饱和"]
+    },
+    {
+      "id": "whitespace",
+      "name": "留白比例",
+      "description": "控制页面留白",
+      "range": ["紧凑", "标准", "宽松"]
+    }
+  ],
+  "failureSignals": [
+    "标题主导页面，内容被压缩",
+    "行高很高但文字很小，阅读困难",
+    "正文紧跟标题下方，缺少停顿",
+    "下三分之一未使用，底部空白",
+    "过多圆角卡片让报告像仪表盘",
+    "状态颜色变成装饰而非语义"
+  ],
+  "scenarios": [
+    "合规培训",
+    "风控宣贯",
+    "管理层汇报",
+    "制度解读"
+  ]
+}

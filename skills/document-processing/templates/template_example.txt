@@ -1,0 +1,12 @@
+# document-processing 模板示例
+
+## 功能说明
+document-processing 模板
+
+## 使用方法
+1. 复制此模板
+2. 根据需要修改内容
+3. 使用技能包生成功能
+
+## 示例
+...

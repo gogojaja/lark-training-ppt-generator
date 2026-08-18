@@ -1,0 +1,5 @@
+theme: "ocean-gradient"
+export_format: "pptx"
+page_size: "16:9"
+brand_guideline: null
+output_dir: "生成产物"

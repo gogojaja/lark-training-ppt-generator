@@ -1,0 +1,8 @@
+﻿视图类型,视图名称,视图描述,关键元素,验证场景
+逻辑视图,主题配置系统,将硬编码的颜色/字体抽离为JSON配置文件支持多主题切换,ThemeManager/ThemeLoader/ThemeValidator,用户切换主题场景
+逻辑视图,组件化架构,将generate.js拆分为可复用组件建立组件调度器,ComponentLoader/ComponentRenderer/Orchestrator,生成PPT场景
+逻辑视图,流程图集成,流程图生成器支持XML片段输出可嵌入主PPT,FlowchartGenerator/XMLSnippetBuilder,PPT嵌入流程图场景
+进程视图,PPT生成进程,协调配置加载/组件调度/文件输出的主进程,MainProcess/ConfigProcess/GenerateProcess,单次PPT生成场景
+开发视图,模块化结构,组件化目录结构支持独立开发和测试,components/themes/config/schemas,新增组件开发场景
+物理视图,跨平台部署,支持Windows/Linux/macOS运行环境,Node.js/Python/FileSystem,多平台部署场景
+场景(+1),完整生成流程,从配置读取到PPT输出的端到端流程,Config→Theme→Plan→Components→PPT,用户完整使用场景

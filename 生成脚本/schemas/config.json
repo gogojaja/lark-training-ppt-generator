@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Config Schema",
+  "description": "config.yaml的验证Schema",
+  "type": "object",
+  "properties": {
+    "theme": {
+      "type": "string",
+      "description": "主题名称"
+    },
+    "export_format": {
+      "type": "string",
+      "enum": ["pptx", "pdf", "both"],
+      "description": "导出格式"
+    },
+    "page_size": {
+      "type": "string",
+      "enum": ["16:9", "4:3"],
+      "description": "页面尺寸"
+    },
+    "brand_guideline": {
+      "type": ["string", "null"],
+      "description": "品牌指南路径"
+    },
+    "output_dir": {
+      "type": "string",
+      "description": "输出目录"
+    }
+  }
+}

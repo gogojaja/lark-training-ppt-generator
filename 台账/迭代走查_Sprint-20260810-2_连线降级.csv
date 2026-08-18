@@ -1,0 +1,8 @@
+﻿评审对象,基线版本,检查点,结果,说明,时间
+gen_flowchart_branch.py 连线降级,Sprint-20260810-2,CLI --no-connectors 开关,通过,跳过edges渲染,2026-08-10
+gen_flowchart_branch.py 连线降级,Sprint-20260810-2,JSON draw_connectors=false 配置,通过,顶层配置关闭连线,2026-08-10
+gen_flowchart_branch.py 连线降级,Sprint-20260810-2,正常模式回归,通过,conn=34 label=4 不变,2026-08-10
+gen_flowchart_branch.py 连线降级,Sprint-20260810-2,无连线模式,通过,conn=0 label=0,2026-08-10
+gen_flowchart_branch.py 连线降级,Sprint-20260810-2,文本框保留,通过,sp=19=标题+14主节点+4分支,2026-08-10
+gen_flowchart_branch.py 连线降级,Sprint-20260810-2,文件完整性,通过,两产物zipok=True,2026-08-10
+gen_flowchart_branch.py 连线降级,Sprint-20260810-2,门禁(阻断缺陷),通过,0,2026-08-10

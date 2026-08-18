@@ -1,0 +1,11 @@
+{
+  "_说明": "商务蓝 - 适合业务/运营/技术类流程图",
+  "main": {"fill": "D6E4F0", "text": "1F3864"},
+  "diamond": {"fill": "FFF2CC", "text": "7F6000"},
+  "branch": {"fill": "E2EFDA", "text": "006100"},
+  "error": {"fill": "FCE4EC", "text": "C00000"},
+  "title_bg": "1F3864",
+  "title_text": "FFFFFF",
+  "border": "808080",
+  "connector": "1F3864"
+}

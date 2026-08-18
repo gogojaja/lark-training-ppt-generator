@@ -1,0 +1,11 @@
+﻿需求编号,需求描述,来源载体,功能维度,安全维度,数据维度,环境维度,非功能维度,接口维度
+REQ-001,主题配置系统-颜色抽离,技术约束,REQ-FUNC-001,REQ-SEC-001,REQ-DATA-001,REQ-ENV-001,无,无
+REQ-002,主题配置系统-config.yaml,技术约束,REQ-FUNC-003,REQ-SEC-002,REQ-DATA-002,无,无,无
+REQ-003,组件化架构-组件拆分,技术约束,REQ-FUNC-005,REQ-SEC-003,无,REQ-ENV-003,REQ-NFR-001,无
+REQ-004,组件化架构-调度器,技术约束,REQ-FUNC-007,REQ-SEC-004,REQ-DATA-004,REQ-ENV-004,REQ-NFR-002,无
+REQ-005,流程图集成-XML片段,技术约束,REQ-FUNC-009,REQ-SEC-005,无,REQ-ENV-005,无,REQ-IF-001
+REQ-006,SKILL.md简化,技术约束,REQ-FUNC-006,无,无,无,REQ-NFR-003,无
+REQ-007,多方案配置,技术约束,REQ-FUNC-011,无,无,无,无,无
+REQ-008,Schema验证,技术约束,REQ-FUNC-007,无,REQ-DATA-004,无,无,无
+REQ-009,预设主题库,技术约束,REQ-FUNC-001,无,REQ-DATA-001,无,REQ-NFR-004,无
+REQ-010,向后兼容,技术约束,REQ-FUNC-008,REQ-SEC-006,无,REQ-ENV-006,REQ-NFR-005,REQ-IF-002

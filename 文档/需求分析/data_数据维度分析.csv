@@ -1,0 +1,6 @@
+﻿需求编号,数据格式描述,数据验证要求,数据迁移要求,验收标准
+REQ-001,主题JSON文件格式,需定义JSON Schema验证主题文件格式,无数据迁移,主题文件格式验证通过
+REQ-002,config.yaml格式,需定义YAML Schema验证配置文件格式,无数据迁移,配置文件格式验证通过
+REQ-004,slide_plan.json格式,需定义JSON Schema验证slide_plan格式,无数据迁移,schema验证通过
+REQ-008,JSON Schema文件,需创建标准JSON Schema文件,无数据迁移,schema文件格式验证通过
+REQ-009,预设主题库格式,所有预设主题需遵循统一格式规范,无数据迁移,所有主题文件格式一致

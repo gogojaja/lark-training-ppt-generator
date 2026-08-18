@@ -1,0 +1,83 @@
+{
+  "_说明": "四色语义配色 v2.2 - 主流程淡绿 / 分支淡蓝 / 客户操作淡橙 / 异常淡红 / 判断淡黄",
+  "_版本": "v2.2",
+  "_日期": "2026-08-12",
+  "_配色语义": {
+    "main": "淡绿色 - 主线流程（柜员操作/系统处理）",
+    "customer": "淡橙色 - 客户操作（客户侧的动作步骤）",
+    "diamond": "淡黄色 - 判断/校验/条件分支",
+    "branch": "淡蓝色 - 正常分支流程",
+    "error": "淡红色 - 异常情况/错误处理"
+  },
+
+  "main": {"fill": "C6EFCE", "text": "006100"},
+  "customer": {"fill": "FCE4D6", "text": "833C0C"},
+  "diamond": {"fill": "FFF2CC", "text": "7F6000"},
+  "branch": {"fill": "DDEBF7", "text": "1F3864"},
+  "error": {"fill": "FCE4EC", "text": "C00000"},
+
+  "title_bg": "1F3864",
+  "title_text": "FFFFFF",
+  "title_sub": "93C5FD",
+  "border": "3B82F6",
+  "connector": "94A3B8",
+  "connector_err": "C00000",
+  "connector_customer": "833C0C",
+  "bg": "F8FAFC",
+  "accent": "60A5FA",
+  "muted": "6B7280",
+
+  "layout": {
+    "_说明": "v2.2 优化布局参数（左右两栏，精确间距，不重叠）",
+    "main_x_cm": 2.0,
+    "main_w_cm": 4.6,
+    "box_h_cm": 0.5,
+    "diamond_h_cm": 0.9,
+    "step_gap_cm": 0.32,
+    "branch_x_cm": 8.5,
+    "branch_w_cm": 4.0,
+    "elbow_offset_cm": 1.2,
+    "start_y_cm": 2.0,
+    "title_bar_h_cm": 1.3,
+    "deco_bar_w_cm": 0.1
+  },
+
+  "typography": {
+    "title_size_pt": 22,
+    "main_font_size_pt": 10,
+    "diamond_font_size_pt": 9,
+    "branch_font_size_pt": 9,
+    "customer_font_size_pt": 10,
+    "label_font_size_pt": 8,
+    "legend_font_size_pt": 9,
+    "font_name": "Microsoft YaHei"
+  },
+
+  "features": {
+    "_说明": "v2.2 特性开关",
+    "show_node_numbers": false,
+    "show_subtitle": false,
+    "show_legend": true,
+    "show_branch_labels": true,
+    "show_branch_codes": true,
+    "show_version_footer": true,
+    "legend_position": "top-right",
+    "branch_label_position": "elbow"
+  },
+
+  "node_types": {
+    "_说明": "支持的节点类型列表（供生成器和小工具使用）",
+    "main": "主线流程（柜员/系统操作，淡绿）",
+    "customer": "客户操作（客户侧动作，淡橙）",
+    "diamond": "判断校验（条件分支，淡黄菱形）",
+    "branch": "正常分支（淡蓝）",
+    "error": "异常分支（淡红）"
+  },
+
+  "_历史版本": [
+    "v1.0 经典绿（green.json）：单色调，仅区分主流程/判断/分支/异常",
+    "v2.1 business_blue_v2：商务蓝，左右两栏布局优化",
+    "v2.2 四色语义版：主流程绿 + 客户操作橙 + 判断黄 + 分支蓝 + 异常红"
+  ],
+  "_备份说明": "v1 经典样式参数备份于 _v1_classic_layout_backup.json 和 gen_flowchart_branch.py.bak_v1"
+}

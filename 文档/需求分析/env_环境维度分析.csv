@@ -1,0 +1,6 @@
+﻿需求编号,运行环境要求,依赖项,兼容性要求,验收标准
+REQ-001,Node.js 14+,pptxgenjs,需兼容现有Node.js版本,在Node.js 14+环境运行正常
+REQ-003,Node.js 14+,pptxgenjs,组件需兼容现有模块系统,组件加载测试通过
+REQ-004,Node.js 14+,fs/path,需兼容Windows/Linux/macOS,跨平台测试通过
+REQ-005,Python 3.6+,无外部依赖(零依赖),需兼容现有Python版本,Python脚本运行正常
+REQ-006,无特殊要求,无,文档格式兼容,文档格式验证通过

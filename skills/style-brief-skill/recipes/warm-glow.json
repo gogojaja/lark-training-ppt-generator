@@ -1,0 +1,123 @@
+{
+  "id": "warm-glow",
+  "name": "温暖橙光",
+  "tagline": "亲和、引导、鼓励",
+  "visualThesis": {
+    "adjectives": ["亲和", "引导", "鼓励"],
+    "tension": "温暖但不随意"
+  },
+  "characteristics": {
+    "visual": [
+      "暖橙主色 + 深绿辅助色",
+      "圆角卡片 + 柔和阴影",
+      "插画风格的图标和配图"
+    ],
+    "typography": [
+      "标题亲切友好",
+      "正文轻松易读",
+      "步骤进度条 motif"
+    ],
+    "layout": [
+      "卡片式布局为主",
+      "步骤进度条",
+      "插画配图"
+    ]
+  },
+  "palette": {
+    "primary": { "value": "F97316", "role": "暖橙 - 主色调" },
+    "secondary": { "value": "15803D", "role": "深绿 - 辅助色" },
+    "accent": { "value": "0EA5E9", "role": "天蓝 - 点缀" },
+    "background": { "value": "FFFAF5", "role": "暖白背景" },
+    "text": { "value": "374151", "role": "深灰文字" },
+    "semantic": {
+      "success": "10B981",
+      "warning": "F59E0B",
+      "error": "EF4444"
+    }
+  },
+  "typography": {
+    "family": {
+      "heading": "Microsoft YaHei",
+      "body": "Microsoft YaHei",
+      "mono": "Consolas"
+    },
+    "roles": {
+      "claim": { "size": 30, "weight": "bold", "lineHeight": 1.3 },
+      "sectionLabel": { "size": 12, "weight": "normal", "lineHeight": 1.4 },
+      "body": { "size": 14, "weight": "normal", "lineHeight": 1.6 },
+      "annotation": { "size": 12, "weight": "normal", "lineHeight": 1.5 },
+      "source": { "size": 10, "weight": "normal", "lineHeight": 1.4 }
+    }
+  },
+  "layouts": [
+    {
+      "id": "cover",
+      "name": "封面页",
+      "description": "暖橙背景 + 插画元素",
+      "useCase": "新员工培训封面"
+    },
+    {
+      "id": "card-grid",
+      "name": "卡片网格",
+      "description": "圆角卡片 + 图标",
+      "useCase": "功能介绍"
+    },
+    {
+      "id": "progress",
+      "name": "进度步骤",
+      "description": "进度条 + 步骤说明",
+      "useCase": "操作流程"
+    },
+    {
+      "id": "tip",
+      "name": "小贴士页",
+      "description": "对话框样式 + 友好提示",
+      "useCase": "温馨提醒"
+    },
+    {
+      "id": "summary",
+      "name": "总结页",
+      "description": "要点回顾 + 行动号召",
+      "useCase": "章节总结"
+    }
+  ],
+  "remixKnobs": [
+    {
+      "id": "orange-saturation",
+      "name": "橙色饱和度",
+      "description": "调节橙色主色调的饱和度",
+      "range": ["低饱和(柔和)", "标准", "高饱和(活力)"]
+    },
+    {
+      "id": "shadow-intensity",
+      "name": "卡片阴影",
+      "description": "调节卡片阴影强度",
+      "range": ["无阴影", "轻阴影", "重阴影"]
+    },
+    {
+      "id": "border-radius",
+      "name": "圆角大小",
+      "description": "调节圆角大小",
+      "range": ["小圆角", "标准", "大圆角"]
+    },
+    {
+      "id": "illustration",
+      "name": "插画元素",
+      "description": "控制插画元素的数量",
+      "range": ["简约", "标准", "丰富"]
+    }
+  ],
+  "failureSignals": [
+    "橙色过多导致视觉疲劳",
+    "插画元素喧宾夺主",
+    "圆角过大显得不够专业",
+    "阴影过重影响可读性",
+    "风格过于随意，缺乏权威感"
+  ],
+  "scenarios": [
+    "新员工培训",
+    "服务规范培训",
+    "全员宣贯",
+    "企业文化培训"
+  ]
+}

@@ -1,0 +1,27 @@
+/* 目录页样式定义 */
+
+/* 颜色定义 */
+--toc-primary: #1F3864;
+--toc-secondary: #2E75B6;
+--toc-text: #333333;
+--toc-light: #F5F7FA;
+--toc-border: #E0E0E0;
+
+/* 字体定义 */
+--toc-title-font: 'Microsoft YaHei', '微软雅黑', sans-serif;
+--toc-item-font: 'Microsoft YaHei', '微软雅黑', sans-serif;
+
+/* 字号定义 */
+--toc-title-size: 36px;
+--toc-item-size: 24px;
+--toc-page-size: 18px;
+
+/* 间距定义 */
+--toc-title-spacing: 40px;
+--toc-item-spacing: 12px;
+--toc-item-padding: 8px 12px;
+
+/* 布局定义 */
+--toc-column-count: 2;
+--toc-column-gap: 60px;
+--toc-content-width: 600px;

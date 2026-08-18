@@ -1,0 +1,26 @@
+{
+  "name": "Ocean Gradient",
+  "palette": {
+    "primary": "065A82",
+    "secondary": "1C7293",
+    "dark": "21295C",
+    "accent": "E86A33",
+    "bg": "F5F7FA",
+    "white": "FFFFFF",
+    "text": "1F2937",
+    "textLight": "6B7280",
+    "success": "2D9C5E",
+    "warning": "E8A838",
+    "danger": "DC2626"
+  },
+  "fonts": {
+    "heading": "Microsoft YaHei",
+    "body": "Microsoft YaHei"
+  },
+  "sizes": {
+    "title": "20pt",
+    "body": "9-10pt",
+    "note": "8pt"
+  },
+  "motif": "step_number_circle"
+}

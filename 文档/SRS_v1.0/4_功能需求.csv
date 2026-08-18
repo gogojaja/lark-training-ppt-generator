@@ -1,0 +1,13 @@
+﻿需求编号,功能描述,输入,处理逻辑,输出,优先级
+REQ-FUNC-001,主题配置系统-读取主题,主题JSON文件路径,读取并验证JSON格式,主题配置对象,Must Have
+REQ-FUNC-002,主题配置系统-切换主题,主题名称或路径,加载对应主题配置,当前活动主题,Must Have
+REQ-FUNC-003,配置管理-读取配置,config.yaml路径,读取并解析YAML格式,配置对象,Must Have
+REQ-FUNC-004,配置管理-默认配置,无,提供默认配置值,默认配置对象,Must Have
+REQ-FUNC-005,组件化架构-加载组件,组件类型名称,从components/目录加载对应组件,组件实例,Must Have
+REQ-FUNC-006,组件化架构-渲染组件,组件实例+数据,调用组件render方法,渲染结果,Must Have
+REQ-FUNC-007,调度器-解析规划,slide_plan.json路径,读取并验证JSON格式,规划对象,Must Have
+REQ-FUNC-008,调度器-生成PPT,规划对象+主题,遍历slides数组调用对应组件,PPTX文件,Must Have
+REQ-FUNC-009,流程图集成-生成XML片段,流程图定义JSON,调用flowchart组件生成XML,XML字符串,Should Have
+REQ-FUNC-010,流程图集成-嵌入PPT,XML片段+幻灯片,将XML片段插入幻灯片XML,更新后的幻灯片,Should Have
+REQ-FUNC-011,多方案配置-列出方案,无,扫描slide_plan*.json文件,方案列表,Could Have
+REQ-FUNC-012,多方案配置-指定方案,方案名称,加载对应slide_plan.json,指定方案规划,Could Have

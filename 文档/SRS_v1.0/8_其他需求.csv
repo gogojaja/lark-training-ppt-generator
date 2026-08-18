@@ -1,0 +1,6 @@
+﻿需求编号,其他需求描述,需求来源,优先级
+REQ-OTHER-001,预设主题库包含10+行业模板,用户需求,Should Have
+REQ-OTHER-002,配置文件支持注释说明,用户体验,Should Have
+REQ-OTHER-003,生成过程支持进度显示,用户体验,Could Have
+REQ-OTHER-004,错误信息提供修复建议,用户体验,Should Have
+REQ-OTHER-005,支持主题预览功能,用户需求,Could Have

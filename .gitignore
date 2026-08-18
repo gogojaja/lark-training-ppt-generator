@@ -1,0 +1,27 @@
+# 打包产物与归档（可经 tools/package_with_deps.py 重新生成，不入库）
+dist/
+*.zip
+
+# 用户输入文档（Word 源文件，不入库）
+输入文档/
+
+# 生成产物（PPT、拆分结果等，不入库）
+生成产物/
+
+# 临时/内部目录
+.lark-internal/
+.lark-slides/
+
+# 运行依赖
+node_modules/
+
+# Python 缓存
+__pycache__/
+*.pyc
+
+# Office 锁文件（PowerPoint/Word 打开时生成，不入库）
+~$*
+
+# 系统文件
+.DS_Store
+Thumbs.db

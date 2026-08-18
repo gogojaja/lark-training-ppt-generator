@@ -1,0 +1,11 @@
+{
+  "_说明": "温暖黄 - 适合培训/宣导/引导类流程图",
+  "main": {"fill": "FFF2CC", "text": "7F6000"},
+  "diamond": {"fill": "DDEBF7", "text": "1F3864"},
+  "branch": {"fill": "E2EFDA", "text": "006100"},
+  "error": {"fill": "FCE4EC", "text": "C00000"},
+  "title_bg": "7F6000",
+  "title_text": "FFFFFF",
+  "border": "808080",
+  "connector": "7F6000"
+}

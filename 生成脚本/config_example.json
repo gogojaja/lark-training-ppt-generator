@@ -1,0 +1,12 @@
+{
+  "colors": {
+    "cover_bg": "1F3864",
+    "cover_text": "FFFFFF",
+    "section_bg": "C6EFCE",
+    "section_text": "006100",
+    "flow_main": "C6EFCE",
+    "flow_decision": "FFF2CC",
+    "flow_branch": "DDEBF7",
+    "flow_error": "FCE4EC"
+  }
+}
