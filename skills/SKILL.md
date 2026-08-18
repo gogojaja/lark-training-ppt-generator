@@ -23,7 +23,9 @@ metadata:
 
 ### 可选读取说明（仅在飞书云端协同场景启用）
 
-若用户明确要求使用飞书云端文档/知识库/演示文稿协同，可按需读取：
+若用户明确要求使用飞书云端文档/知识库/演示文稿协同，可按需读取以下**外部独立技能**。
+这些技能由独立仓库管理维护（见 `../范围初定义说明书.md` §7 范围治理边界），使用前须先将
+对应独立仓库 clone 到本项目同级目录（如 `D:/trae/` 下），使 `../lark-*` 相对引用可用：
 - [`../lark-shared/SKILL.md`](../lark-shared/SKILL.md) — 认证、权限、JSON 契约与高风险审批
 - [`../lark-slides/SKILL.md`](../lark-slides/SKILL.md) — 幻灯片创建总入口
 - [`../lark-slides/references/xml-schema-quick-ref.md`](../lark-slides/references/xml-schema-quick-ref.md) — XML 协议唯一正确来源（仅云端生成时）
@@ -32,7 +34,7 @@ metadata:
 - [`../lark-slides/references/asset-planning.md`](../lark-slides/references/asset-planning.md) — 素材规划（仅云端生成时）
 - [`../lark-doc/SKILL.md`](../lark-doc/SKILL.md) 与 [`../lark-doc/references/lark-doc-fetch.md`](../lark-doc/references/lark-doc-fetch.md) — 仅在读取飞书文档时使用
 
-**注意**：这些文件属于云端适配层，不是本地主流程前置条件。
+**注意**：这些文件属于云端适配层，不是本地主流程前置条件；本项目不内嵌其源码副本。
 
 ## 扩展包入口
 
@@ -609,8 +611,8 @@ lark-cli slides +media-upload --as user --presentation "<xml_presentation_id>" -
 # 1. 回读全文 XML
 lark-cli slides xml_presentations get --as user --params '{"xml_presentation_id":"<YOUR_ID>"}'
 
-# 2. 静态检查文本重叠（优先用脚本）
-py -3 D:/trae/lark-slides/scripts/xml_text_overlap_check.py D:/trae/lark-training-ppt-generator/生成脚本
+# 2. 静态检查文本重叠（优先用脚本，脚本来自独立库 lark-slides，需先 clone 同级目录）
+py -3 ../lark-slides/scripts/xml_text_overlap_check.py 生成脚本
 ```
 
 **版面验证清单**：
@@ -876,6 +878,8 @@ py -3 D:/trae/lark-slides/scripts/xml_text_overlap_check.py D:/trae/lark-trainin
 - **工具先于模型** — 能用脚本/模板/规则完成的动作不依赖模型临场推理；模型输出不稳定时优先把该动作固化进工具
 
 ## 参考
+
+以下均为**外部独立技能**（独立仓库管理，需 clone 到项目同级目录后可用，见 `../范围初定义说明书.md` §7）：
 
 - [lark-shared](../lark-shared/SKILL.md) — 认证、权限、JSON 契约（必读）
 - [lark-doc](../lark-doc/SKILL.md) — `docs +fetch` 读取源文档

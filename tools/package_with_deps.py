@@ -5,9 +5,16 @@
 方案 A：源码保持单源，交付时把 5 个外部 lark-* 技能内嵌为 `_lark/` 副本，
 并改写 SKILL.md / 交接文档.md 中 ../lark-* 引用为项目内路径，产出自包含目录。
 
+范围治理边界（2026-08-18 固，见 范围初定义说明书.md §7）：
+- 本项目工作范围限定于本仓库，lark-* 5 技能由独立仓库管理维护；
+- 打包时仅将同级目录已克隆的 lark-* 独立技能副本内嵌进产物，不修改其源码；
+- 禁止硬编码平台绝对路径（如 D:\trae\...），外部技能根目录可经 --lark-root 指定，
+  缺省为本项目同级目录。
+
 用法（在项目根运行）:
     py -3 tools/package_with_deps.py                      # 打包到 dist/
     py -3 tools/package_with_deps.py --out D:/out/pkg     # 指定输出目录
+    py -3 tools/package_with_deps.py --lark-root D:/tools  # 指定外部技能根目录
 
 输出:
     dist/制度手册转宣讲PPT工作流_v4.1.0_自包含/       （目录，含内嵌 _lark/lark-*）
@@ -24,20 +31,23 @@ import shutil
 import zipfile
 
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-PARENT = os.path.dirname(PROJECT_ROOT)  # D:\trae
+PARENT = os.path.dirname(PROJECT_ROOT)  # 外部技能同级目录（可经 --lark-root 覆盖）
 VERSION = "v4.1.0"
 PACK_NAME = "制度手册转宣讲PPT工作流"
 EMBED_DIR = "_lark"  # 打包产物内 lark-* 副本目录名
 
-# 5 个外部 lark 技能（源码在 D:\trae\<name>）
+# 5 个外部 lark 技能（独立仓库管理，需先 clone 到 --lark-root 目录）
 LARK_DEPS = ["lark-shared", "lark-slides", "lark-doc", "lark-wiki", "lark-base"]
 
 # 参与打包的项目内容（相对项目根）
 INCLUDE_ITEMS = ["SKILL.md", "交接文档.md", "生成脚本", "素材", "台账"]
 
 
+LARK_ROOT = PARENT
+
+
 def lark_source_dir(name: str) -> str:
-    return os.path.join(PARENT, name)
+    return os.path.join(LARK_ROOT, name)
 
 
 def rewrite_embed_dir(m: re.Match) -> str:
@@ -114,7 +124,10 @@ def build_package(out_dir: str) -> str:
 def main():
     ap = argparse.ArgumentParser(description="自包含打包脚本")
     ap.add_argument("--out", default="dist", help="打包输出目录（相对项目根或绝对路径）")
+    ap.add_argument("--lark-root", default=PARENT, help="外部 lark-* 技能根目录（缺省=项目同级目录）")
     args = ap.parse_args()
+    global LARK_ROOT
+    LARK_ROOT = os.path.abspath(args.lark_root)
     out_dir = args.out if os.path.isabs(args.out) else os.path.join(PROJECT_ROOT, args.out)
     zip_path = build_package(out_dir)
     print("\n打包完成，产物：", zip_path)
