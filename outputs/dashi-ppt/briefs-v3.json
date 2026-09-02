@@ -1,0 +1,180 @@
+[
+{
+   "role": "cover",
+   "priority": "cover",
+   "content": {
+    "presentation": {
+     "title": "个人批量开户",
+     "titleShort": "个人批量开户",
+     "summary": "柜面业务操作培训",
+     "takeaway": "掌握业务流程与合规要点",
+     "meta": [
+      "交易代码 026401",
+      "Ⅰ类 / Ⅱ类 账户",
+      "242/292 证件",
+      "5 日内领取介质"
+     ]
+    },
+    "meta": {
+     "brand": "陕西农信",
+     "pageLabel": "业务培训",
+     "panelTitle": "个人批量开户"
+    }
+   }
+  },
+ {
+  "role": "statement",
+  "priority": "statement",
+  "content": {
+   "presentation": {
+    "title": "场景说明",
+    "titleShort": "场景说明",
+    "summary": "受单位委托批量开立个人银行账户",
+    "takeaway": "代理人经柜面办理",
+    "items": [
+     {"label": "借记卡", "value": "Ⅰ/Ⅱ类", "detail": "个人结算账户"},
+     {"label": "存折", "value": "结算户", "detail": "储蓄户开立"},
+     {"label": "存单", "value": "定期 / 活期", "detail": "开户金额 50 元以上"},
+     {"label": "开户方式", "value": "零余额 / 非零余额", "detail": "存单不支持零余额"}
+    ]
+   },
+   "meta": {
+    "panelTitle": "场景说明"
+   }
+  }
+ },
+ {
+  "role": "process",
+  "priority": "process",
+  "content": {
+   "presentation": {
+    "title": "柜面办理流程 ①",
+    "titleShort": "柜面办理流程 ①",
+    "summary": "交易代码 026401 · 业务柜员",
+    "takeaway": "步骤 1-6 · 登录至资料上传",
+    "items": [
+     {"label": "登录场景", "value": "01", "detail": "输入 026401 进入场景", "chartValue": 1},
+     {"label": "证件与人脸", "value": "02", "detail": "选证件类型，人脸识别", "chartValue": 2},
+     {"label": "企业核实", "value": "03", "detail": "填企业证件，核查请求", "chartValue": 3},
+     {"label": "核查结果", "value": "04", "detail": "确认无误后下一步", "chartValue": 4},
+     {"label": "协议维护", "value": "05", "detail": "查询、新增或编辑协议", "chartValue": 5},
+     {"label": "资料上传", "value": "06", "detail": "模版下载、文件检查", "chartValue": 6}
+    ]
+   },
+   "meta": {
+    "panelTitle": "柜面办理流程 ①"
+   }
+  }
+ },
+ {
+  "role": "process",
+  "priority": "process",
+  "content": {
+   "presentation": {
+    "title": "柜面办理流程 ②",
+    "titleShort": "柜面办理流程 ②",
+    "summary": "影像上传至凭证打印",
+    "takeaway": "步骤 7-11 · 集中作业后归档",
+    "items": [
+     {"label": "影像上传", "value": "07", "detail": "非财政补贴：高拍仪上传", "chartValue": 7},
+     {"label": "交易确认", "value": "08", "detail": "柜外清确认，签名或指纹", "chartValue": 8},
+     {"label": "集中作业", "value": "09", "detail": "提交影像，等待处理结果", "chartValue": 9},
+     {"label": "客户评价", "value": "10", "detail": "非常满意 / 满意 / 不满意", "chartValue": 10},
+     {"label": "凭证打印", "value": "11", "detail": "批次结果，凭证与回单", "chartValue": 11}
+    ]
+   },
+   "meta": {
+    "panelTitle": "柜面办理流程 ②"
+   }
+  }
+ },
+ {
+  "role": "risks",
+  "priority": "risks",
+  "content": {
+   "presentation": {
+    "title": "业务规则",
+    "titleShort": "业务规则",
+    "summary": "合规红线与操作要点",
+    "takeaway": "账户激活前只收不付",
+    "items": [
+     {"label": "数量控制", "value": "1 个", "detail": "同法人机构Ⅰ类户 1 个、Ⅱ类户 3 个"},
+     {"label": "特殊用途", "value": "可代理", "detail": "代发工资、社保医保等由单位代理"},
+     {"label": "激活限制", "value": "只收不付", "detail": "被代理人激活前账户只收不付"},
+     {"label": "实名核验", "value": "必核", "detail": "证件过期或核查不通过拒绝办理"},
+     {"label": "介质固定", "value": "不可混", "detail": "一次性固定介质与账户类型"},
+     {"label": "重空检查", "value": "前置", "detail": "办理前检查重空尾箱充足"}
+    ]
+   },
+   "meta": {
+    "panelTitle": "业务规则"
+   }
+  }
+ },
+ {
+  "role": "context",
+  "priority": "context",
+  "content": {
+   "presentation": {
+    "title": "字段输入规则",
+    "titleShort": "字段输入规则",
+    "summary": "关键字段枚举值对照",
+    "takeaway": "按系统枚举值录入",
+    "items": [
+     {"label": "证件类型", "value": "242 等", "detail": "242 统一社会信用代码、292 批文号"},
+     {"label": "业务类型", "value": "001-012", "detail": "001 存折、002 无折卡、012 二类户"},
+     {"label": "开户种类", "value": "0 / 非 0", "detail": "非 0 余额、0 余额开户"},
+     {"label": "财政补贴", "value": "01 / 02", "detail": "01 是、02 否"}
+    ]
+   },
+   "meta": {
+    "panelTitle": "字段输入规则"
+   }
+  }
+ },
+ {
+  "role": "case",
+  "priority": "case",
+  "content": {
+   "presentation": {
+    "title": "凭证与介质管理",
+    "titleShort": "凭证与介质管理",
+    "summary": "介质发放、回单打印与自动归档",
+    "takeaway": "介质业务开办起 5 日内领取",
+    "items": [
+     {"label": "介质发放", "value": "3 类", "detail": "银行卡、存折、存单，清单领取后发放"},
+     {"label": "领取期限", "value": "5 日", "detail": "支持当日领取与非当日领取"},
+     {"label": "领取人", "value": "代理人", "detail": "审核身份，签名或留存指纹"},
+     {"label": "凭证输出", "value": "双面", "detail": "客户回单 + 介质，行内电子凭证"},
+     {"label": "电子归档", "value": "自动", "detail": "无纸化档案系统自动归档"}
+    ]
+   },
+   "meta": {
+    "panelTitle": "凭证与介质管理"
+   }
+  }
+ },
+ {
+  "role": "closing",
+  "priority": "closing",
+  "content": {
+   "presentation": {
+    "title": "培训小结",
+    "titleShort": "培训小结",
+    "summary": "关键要点回顾",
+    "takeaway": "合规第一，流程熟练",
+    "items": [
+     {"label": "一条流程", "value": "8 步", "detail": "登录→证件→核实→协议→上传→确认→作业→归档"},
+     {"label": "两个必核", "value": "2 项", "detail": "人脸识别 + 联网核查"},
+     {"label": "三个关键", "value": "3 项", "detail": "协议完整、资料齐全、介质 5 日领取"},
+     {"label": "六项合规", "value": "6 项", "detail": "实名核验、数量上限、只收不付、固定介质、假币收缴、联社审批"}
+    ]
+   },
+   "meta": {
+    "brand": "陕西农信",
+    "pageLabel": "谢谢",
+    "panelTitle": "培训小结"
+   }
+  }
+ }
+]

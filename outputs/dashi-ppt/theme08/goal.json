@@ -1,0 +1,3755 @@
+{
+  "schemaVersion": 2,
+  "variantOutputMode": "comparison",
+  "title": "个人批量开户",
+  "goal": "柜面个人批量开户业务操作培训",
+  "themePack": "theme08",
+  "pageCount": 8,
+  "randomSeed": "3587455739",
+  "workflowRunId": "20260808150504503-0c4835af",
+  "slides": [
+    {
+      "content": {
+        "presentation": {
+          "title": "个人批量开户",
+          "titleShort": "个人批量开户",
+          "summary": "柜面业务操作培训",
+          "summaryShort": "个人批量开户",
+          "takeaway": "掌握业务流程与合规要点",
+          "items": [],
+          "coverLabels": [
+            "个人批量开户"
+          ],
+          "chartData": []
+        },
+        "media": [],
+        "meta": {
+          "brand": "陕西农信",
+          "pageLabel": "业务培训",
+          "unit": "",
+          "panelTitle": "个人批量开户",
+          "date": "",
+          "empty": ""
+        }
+      },
+      "selectedVariant": "v1",
+      "variants": [
+        {
+          "id": "v1",
+          "kind": "template",
+          "layout": "theme08_page003",
+          "props": {
+            "images": [],
+            "mediaCount": 0
+          },
+          "contentMap": {
+            "sloganLine1": "presentation.title",
+            "terms": {
+              "source": "presentation",
+              "derive": "cover-decoration-labels",
+              "maxChars": 18,
+              "limit": 3
+            },
+            "eyebrow": "presentation.coverLabels[0]",
+            "tag": "presentation.coverLabels[0]",
+            "sloganLine2": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "title",
+                "titleShort",
+                "takeaway",
+                "summaryShort"
+              ],
+              "maxChars": 18,
+              "index": 5,
+              "truncate": true
+            },
+            "standoutTag": "presentation.coverLabels[0]",
+            "handNote": "presentation.coverLabels[0]",
+            "indexNum": "presentation.coverLabels[0]",
+            "indexTotal": "presentation.coverLabels[0]",
+            "photos": "presentation.items"
+          }
+        },
+        {
+          "id": "v2",
+          "kind": "template",
+          "layout": "theme08_page001",
+          "props": {
+            "images": [],
+            "mediaCount": 0
+          },
+          "contentMap": {
+            "headlineHl": "presentation.title",
+            "subtitle": "presentation.summary",
+            "eyebrow": "presentation.coverLabels[0]",
+            "yearTag": "presentation.coverLabels[0]",
+            "headlineLine1": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "title",
+                "titleShort",
+                "takeaway",
+                "summaryShort"
+              ],
+              "maxChars": 18,
+              "index": 5,
+              "truncate": true
+            },
+            "headlineTail": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "title",
+                "titleShort",
+                "takeaway",
+                "summaryShort"
+              ],
+              "maxChars": 18,
+              "index": 7,
+              "truncate": true
+            },
+            "goldenLine": "presentation.coverLabels[0]",
+            "handNote": "presentation.coverLabels[0]",
+            "indexNum": "presentation.coverLabels[0]",
+            "indexTotal": "presentation.coverLabels[0]",
+            "photos": "presentation.items"
+          }
+        },
+        {
+          "id": "v3",
+          "kind": "template",
+          "layout": "theme08_page004",
+          "props": {
+            "images": [],
+            "mediaCount": 0
+          },
+          "contentMap": {
+            "sloganLine1": "presentation.title",
+            "eyebrow": "presentation.coverLabels[0]",
+            "kickerPre": "presentation.coverLabels[0]",
+            "kickerPost": "presentation.coverLabels[0]",
+            "sloganHl": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "title",
+                "titleShort",
+                "takeaway",
+                "summaryShort"
+              ],
+              "maxChars": 18,
+              "index": 7,
+              "truncate": true
+            },
+            "sticker": "presentation.coverLabels[0]"
+          }
+        },
+        {
+          "id": "v4",
+          "kind": "bespoke",
+          "adjustable": false,
+          "composition": {
+            "designIntent": {
+              "objective": "柜面个人批量开户业务操作培训",
+              "audience": "目标受众",
+              "narrativeRole": "cover",
+              "emphasis": "掌握业务流程与合规要点",
+              "rationale": "以单一主标题和非对称留白建立主张",
+              "compositionFamily": "hero"
+            },
+            "background": "dark",
+            "elements": [
+              {
+                "id": "page-kicker",
+                "type": "text",
+                "grid": {
+                  "column": 1,
+                  "row": 1,
+                  "width": 5,
+                  "height": 1
+                },
+                "role": "kicker",
+                "tone": "accent",
+                "align": "left",
+                "text": ""
+              },
+              {
+                "id": "page-label",
+                "type": "text",
+                "grid": {
+                  "column": 11,
+                  "row": 1,
+                  "width": 2,
+                  "height": 1
+                },
+                "role": "label",
+                "tone": "muted",
+                "align": "right",
+                "text": ""
+              },
+              {
+                "id": "page-title",
+                "type": "text",
+                "grid": {
+                  "column": 1,
+                  "row": 2,
+                  "width": 10,
+                  "height": 3
+                },
+                "role": "title",
+                "tone": "default",
+                "align": "left",
+                "text": ""
+              },
+              {
+                "id": "hero-summary",
+                "type": "text",
+                "grid": {
+                  "column": 1,
+                  "row": 6,
+                  "width": 7,
+                  "height": 2
+                },
+                "role": "subtitle",
+                "tone": "default",
+                "align": "left",
+                "text": ""
+              },
+              {
+                "id": "hero-takeaway",
+                "type": "text",
+                "grid": {
+                  "column": 9,
+                  "row": 6,
+                  "width": 4,
+                  "height": 2
+                },
+                "role": "body",
+                "tone": "accent",
+                "align": "left",
+                "text": ""
+              }
+            ]
+          },
+          "contentMap": {
+            "elements[0].text": "meta.panelTitle",
+            "elements[1].text": "meta.pageLabel",
+            "elements[2].text": "presentation.title",
+            "elements[3].text": "presentation.summary",
+            "elements[4].text": "presentation.takeaway"
+          }
+        }
+      ]
+    },
+    {
+      "content": {
+        "presentation": {
+          "title": "场景说明",
+          "titleShort": "场景说明",
+          "summary": "受单位委托批量开立个人银行账户",
+          "summaryShort": "场景说明",
+          "takeaway": "代理人经柜面办理",
+          "items": [
+            {
+              "label": "借记卡",
+              "value": "Ⅰ/Ⅱ类",
+              "detail": "个人结算账户",
+              "id": "item-1",
+              "unit": "",
+              "emptyText": "",
+              "focus": false,
+              "displayValue": "Ⅰ/Ⅱ类",
+              "valueText": "Ⅰ/Ⅱ类",
+              "labelWithValue": "Ⅰ/Ⅱ类 · 借记卡",
+              "labelWithSupporting": "借记卡：个人结算账户",
+              "labelWithValueAndSupporting": "Ⅰ/Ⅱ类 · 借记卡｜个人结算账户"
+            },
+            {
+              "label": "存折",
+              "value": "结算户",
+              "detail": "储蓄户开立",
+              "id": "item-2",
+              "unit": "",
+              "emptyText": "",
+              "focus": false,
+              "displayValue": "结算户",
+              "valueText": "结算户",
+              "labelWithValue": "结算户 · 存折",
+              "labelWithSupporting": "存折：储蓄户开立",
+              "labelWithValueAndSupporting": "结算户 · 存折｜储蓄户开立"
+            },
+            {
+              "label": "存单",
+              "value": "定期 / 活期",
+              "detail": "开户金额 50 元以上",
+              "id": "item-3",
+              "unit": "",
+              "emptyText": "",
+              "focus": false,
+              "displayValue": "定期 / 活期",
+              "valueText": "定期 / 活期",
+              "labelWithValue": "定期 / 活期 · 存单",
+              "labelWithSupporting": "存单：开户金额 50 元以上",
+              "labelWithValueAndSupporting": "定期 / 活期 · 存单｜开户金额 50 元以上"
+            },
+            {
+              "label": "开户方式",
+              "value": "零余额 / 非零余额",
+              "detail": "存单不支持零余额",
+              "id": "item-4",
+              "unit": "",
+              "emptyText": "",
+              "focus": false,
+              "displayValue": "零余额 / 非零余额",
+              "valueText": "零余额 / 非零余额",
+              "labelWithValue": "零余额 / 非零余额 · 开户方式",
+              "labelWithSupporting": "开户方式：存单不支持零余额",
+              "labelWithValueAndSupporting": "零余额 / 非零余额 · 开户方式｜存单不支持零余额"
+            }
+          ],
+          "coverLabels": [
+            "场景说明"
+          ],
+          "chartData": []
+        },
+        "media": [],
+        "meta": {
+          "brand": "",
+          "pageLabel": "",
+          "unit": "",
+          "panelTitle": "场景说明",
+          "date": "",
+          "empty": ""
+        }
+      },
+      "selectedVariant": "v1",
+      "variants": [
+        {
+          "id": "v1",
+          "kind": "template",
+          "layout": "theme08_page035",
+          "props": {
+            "supportCount": 3
+          },
+          "contentMap": {
+            "statement": "presentation.title",
+            "supports": {
+              "source": "presentation",
+              "derive": "template-items",
+              "includeTextFallback": true,
+              "group": 3,
+              "limit": 3,
+              "select": "labelWithValueAndSupporting"
+            },
+            "eyebrow": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "title",
+                "titleShort",
+                "takeaway",
+                "summaryShort"
+              ],
+              "maxChars": 29,
+              "index": 3,
+              "truncate": true
+            },
+            "kicker": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "title",
+                "titleShort",
+                "takeaway",
+                "summaryShort"
+              ],
+              "maxChars": 18,
+              "index": 4,
+              "truncate": true
+            },
+            "label": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "title",
+                "titleShort",
+                "takeaway",
+                "summaryShort"
+              ],
+              "maxChars": 18,
+              "index": 5,
+              "truncate": true
+            },
+            "backdrop": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "takeaway",
+                "summaryShort",
+                "summary",
+                "titleShort"
+              ],
+              "maxChars": 18,
+              "index": 6,
+              "truncate": true
+            },
+            "verdictStickerLabel": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "takeaway",
+                "summaryShort",
+                "summary",
+                "titleShort"
+              ],
+              "maxChars": 18,
+              "index": 7,
+              "truncate": true
+            },
+            "source": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "takeaway",
+                "summaryShort",
+                "summary",
+                "titleShort"
+              ],
+              "maxChars": 42,
+              "index": 8,
+              "truncate": true
+            }
+          }
+        },
+        {
+          "id": "v2",
+          "kind": "template",
+          "layout": "theme08_page074",
+          "props": {
+            "supportCount": 0,
+            "supports": []
+          },
+          "contentMap": {
+            "kicker": "presentation.title",
+            "lines": {
+              "source": "presentation",
+              "derive": "template-items",
+              "includeTextFallback": true,
+              "group": 2,
+              "limit": 2,
+              "select": "labelWithValue"
+            },
+            "source": {
+              "source": "presentation",
+              "derive": "supporting-summary"
+            },
+            "eyebrow": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "title",
+                "titleShort",
+                "takeaway",
+                "summaryShort"
+              ],
+              "maxChars": 18,
+              "index": 3,
+              "truncate": true
+            },
+            "label": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "title",
+                "titleShort",
+                "takeaway",
+                "summaryShort"
+              ],
+              "maxChars": 20,
+              "index": 4,
+              "truncate": true
+            },
+            "sealTop": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "takeaway",
+                "summaryShort",
+                "summary",
+                "titleShort"
+              ],
+              "maxChars": 18,
+              "index": 5,
+              "truncate": true
+            },
+            "sealBottom": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "takeaway",
+                "summaryShort",
+                "summary",
+                "titleShort"
+              ],
+              "maxChars": 18,
+              "index": 6,
+              "truncate": true
+            }
+          }
+        },
+        {
+          "id": "v3",
+          "kind": "template",
+          "layout": "theme08_page060",
+          "props": {
+            "pillarCount": 3
+          },
+          "contentMap": {
+            "headline": "presentation.title",
+            "pillars": {
+              "source": "presentation",
+              "derive": "template-items",
+              "includeTextFallback": true,
+              "group": 3,
+              "limit": 3,
+              "fields": {
+                "title": "labelWithValue",
+                "note": "labelWithSupporting"
+              }
+            },
+            "eyebrow": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "title",
+                "titleShort",
+                "takeaway",
+                "summaryShort"
+              ],
+              "maxChars": 24,
+              "index": 3,
+              "truncate": true
+            },
+            "kicker": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "title",
+                "titleShort",
+                "takeaway",
+                "summaryShort"
+              ],
+              "maxChars": 18,
+              "index": 4,
+              "truncate": true
+            },
+            "quote": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "takeaway",
+                "summaryShort",
+                "summary",
+                "titleShort"
+              ],
+              "maxChars": 36,
+              "index": 5,
+              "truncate": true
+            },
+            "backdropWord": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "takeaway",
+                "summaryShort",
+                "summary",
+                "titleShort"
+              ],
+              "maxChars": 18,
+              "index": 6,
+              "truncate": true
+            },
+            "battlegroundStickerLabel": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "title",
+                "titleShort",
+                "takeaway",
+                "summaryShort"
+              ],
+              "maxChars": 18,
+              "index": 7,
+              "truncate": true
+            },
+            "verdictStickerLabel": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "takeaway",
+                "summaryShort",
+                "summary",
+                "titleShort"
+              ],
+              "maxChars": 18,
+              "index": 8,
+              "truncate": true
+            },
+            "source": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "takeaway",
+                "summaryShort",
+                "summary",
+                "titleShort"
+              ],
+              "maxChars": 42,
+              "index": 9,
+              "truncate": true
+            }
+          }
+        },
+        {
+          "id": "v4",
+          "kind": "bespoke",
+          "adjustable": false,
+          "composition": {
+            "designIntent": {
+              "objective": "柜面个人批量开户业务操作培训",
+              "audience": "目标受众",
+              "narrativeRole": "statement",
+              "emphasis": "代理人经柜面办理",
+              "rationale": "以非对称双栏分离结论与支撑信息",
+              "compositionFamily": "split"
+            },
+            "background": "default",
+            "elements": [
+              {
+                "id": "page-kicker",
+                "type": "text",
+                "grid": {
+                  "column": 1,
+                  "row": 1,
+                  "width": 5,
+                  "height": 1
+                },
+                "role": "kicker",
+                "tone": "accent",
+                "align": "left",
+                "text": ""
+              },
+              {
+                "id": "page-title",
+                "type": "text",
+                "grid": {
+                  "column": 1,
+                  "row": 2,
+                  "width": 10,
+                  "height": 2
+                },
+                "role": "title",
+                "tone": "default",
+                "align": "left",
+                "text": ""
+              },
+              {
+                "id": "split-summary",
+                "type": "text",
+                "grid": {
+                  "column": 1,
+                  "row": 4,
+                  "width": 5,
+                  "height": 2
+                },
+                "role": "subtitle",
+                "tone": "default",
+                "align": "left",
+                "text": ""
+              },
+              {
+                "id": "split-takeaway",
+                "type": "text",
+                "grid": {
+                  "column": 1,
+                  "row": 7,
+                  "width": 5,
+                  "height": 2
+                },
+                "role": "body",
+                "tone": "accent",
+                "align": "left",
+                "text": ""
+              },
+              {
+                "id": "split-items",
+                "type": "list",
+                "grid": {
+                  "column": 6,
+                  "row": 4,
+                  "width": 7,
+                  "height": 5
+                },
+                "ordered": false,
+                "tone": "default",
+                "items": []
+              }
+            ]
+          },
+          "contentMap": {
+            "elements[0].text": "meta.panelTitle",
+            "elements[1].text": "presentation.title",
+            "elements[2].text": "presentation.summary",
+            "elements[3].text": "presentation.takeaway",
+            "elements[4].items": {
+              "source": "presentation.items",
+              "fields": {
+                "title": "labelWithValue",
+                "body": "detail"
+              },
+              "limit": 4
+            }
+          }
+        }
+      ]
+    },
+    {
+      "content": {
+        "presentation": {
+          "title": "柜面办理流程 ①",
+          "titleShort": "柜面办理流程 ①",
+          "summary": "交易代码 026401 · 业务柜员",
+          "summaryShort": "柜面办理流程 ①",
+          "takeaway": "步骤 1-6 · 登录至资料上传",
+          "items": [
+            {
+              "label": "登录场景",
+              "value": "01",
+              "detail": "输入 026401 进入场景",
+              "chartValue": 1,
+              "id": "item-1",
+              "unit": "",
+              "emptyText": "",
+              "focus": false,
+              "displayValue": "01",
+              "valueText": "01",
+              "labelWithValue": "01 · 登录场景",
+              "labelWithSupporting": "登录场景：输入 026401 进入场景",
+              "labelWithValueAndSupporting": "01 · 登录场景｜输入 026401 进入场景",
+              "chartUnit": "number"
+            },
+            {
+              "label": "证件与人脸",
+              "value": "02",
+              "detail": "选证件类型，人脸识别",
+              "chartValue": 2,
+              "id": "item-2",
+              "unit": "",
+              "emptyText": "",
+              "focus": false,
+              "displayValue": "02",
+              "valueText": "02",
+              "labelWithValue": "02 · 证件与人脸",
+              "labelWithSupporting": "证件与人脸：选证件类型，人脸识别",
+              "labelWithValueAndSupporting": "02 · 证件与人脸｜选证件类型，人脸识别",
+              "chartUnit": "number"
+            },
+            {
+              "label": "企业核实",
+              "value": "03",
+              "detail": "填企业证件，核查请求",
+              "chartValue": 3,
+              "id": "item-3",
+              "unit": "",
+              "emptyText": "",
+              "focus": false,
+              "displayValue": "03",
+              "valueText": "03",
+              "labelWithValue": "03 · 企业核实",
+              "labelWithSupporting": "企业核实：填企业证件，核查请求",
+              "labelWithValueAndSupporting": "03 · 企业核实｜填企业证件，核查请求",
+              "chartUnit": "number"
+            },
+            {
+              "label": "核查结果",
+              "value": "04",
+              "detail": "确认无误后下一步",
+              "chartValue": 4,
+              "id": "item-4",
+              "unit": "",
+              "emptyText": "",
+              "focus": false,
+              "displayValue": "04",
+              "valueText": "04",
+              "labelWithValue": "04 · 核查结果",
+              "labelWithSupporting": "核查结果：确认无误后下一步",
+              "labelWithValueAndSupporting": "04 · 核查结果｜确认无误后下一步",
+              "chartUnit": "number"
+            },
+            {
+              "label": "协议维护",
+              "value": "05",
+              "detail": "查询、新增或编辑协议",
+              "chartValue": 5,
+              "id": "item-5",
+              "unit": "",
+              "emptyText": "",
+              "focus": false,
+              "displayValue": "05",
+              "valueText": "05",
+              "labelWithValue": "05 · 协议维护",
+              "labelWithSupporting": "协议维护：查询、新增或编辑协议",
+              "labelWithValueAndSupporting": "05 · 协议维护｜查询、新增或编辑协议",
+              "chartUnit": "number"
+            },
+            {
+              "label": "资料上传",
+              "value": "06",
+              "detail": "模版下载、文件检查",
+              "chartValue": 6,
+              "id": "item-6",
+              "unit": "",
+              "emptyText": "",
+              "focus": false,
+              "displayValue": "06",
+              "valueText": "06",
+              "labelWithValue": "06 · 资料上传",
+              "labelWithSupporting": "资料上传：模版下载、文件检查",
+              "labelWithValueAndSupporting": "06 · 资料上传｜模版下载、文件检查",
+              "chartUnit": "number"
+            }
+          ],
+          "coverLabels": [
+            "柜面办理流程 ①"
+          ],
+          "chartData": [
+            {
+              "id": "item-1",
+              "label": "登录场景",
+              "value": 1,
+              "displayValue": "01",
+              "unit": "",
+              "chartUnit": "number"
+            },
+            {
+              "id": "item-2",
+              "label": "证件与人脸",
+              "value": 2,
+              "displayValue": "02",
+              "unit": "",
+              "chartUnit": "number"
+            },
+            {
+              "id": "item-3",
+              "label": "企业核实",
+              "value": 3,
+              "displayValue": "03",
+              "unit": "",
+              "chartUnit": "number"
+            },
+            {
+              "id": "item-4",
+              "label": "核查结果",
+              "value": 4,
+              "displayValue": "04",
+              "unit": "",
+              "chartUnit": "number"
+            },
+            {
+              "id": "item-5",
+              "label": "协议维护",
+              "value": 5,
+              "displayValue": "05",
+              "unit": "",
+              "chartUnit": "number"
+            },
+            {
+              "id": "item-6",
+              "label": "资料上传",
+              "value": 6,
+              "displayValue": "06",
+              "unit": "",
+              "chartUnit": "number"
+            }
+          ]
+        },
+        "media": [],
+        "meta": {
+          "brand": "",
+          "pageLabel": "",
+          "unit": "",
+          "panelTitle": "柜面办理流程 ①",
+          "date": "",
+          "empty": ""
+        }
+      },
+      "selectedVariant": "v1",
+      "variants": [
+        {
+          "id": "v1",
+          "kind": "template",
+          "layout": "theme08_page080",
+          "props": {
+            "segmentCount": 6,
+            "refValue": 0
+          },
+          "contentMap": {
+            "headline": "presentation.title",
+            "summary": "presentation.summary",
+            "items": {
+              "source": "presentation",
+              "derive": "template-items",
+              "includeTextFallback": true,
+              "filter": "value-bearing",
+              "limit": 6,
+              "fields": {
+                "name": "label",
+                "note": "labelWithSupporting",
+                "low": "chartValue",
+                "high": "chartValue"
+              }
+            },
+            "eyebrow": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "title",
+                "titleShort",
+                "takeaway",
+                "summaryShort"
+              ],
+              "maxChars": 18,
+              "index": 3,
+              "truncate": true
+            },
+            "subheadline": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "summary",
+                "summaryShort",
+                "takeaway",
+                "titleShort"
+              ],
+              "maxChars": 22,
+              "index": 4,
+              "truncate": true
+            },
+            "lowLabel": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "title",
+                "titleShort",
+                "takeaway",
+                "summaryShort"
+              ],
+              "maxChars": 18,
+              "index": 5,
+              "truncate": true
+            },
+            "highLabel": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "title",
+                "titleShort",
+                "takeaway",
+                "summaryShort"
+              ],
+              "maxChars": 18,
+              "index": 6,
+              "truncate": true
+            },
+            "valueUnit": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "summaryShort",
+                "takeaway",
+                "titleShort"
+              ],
+              "maxChars": 18,
+              "index": 7,
+              "truncate": true
+            },
+            "refLabel": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "title",
+                "titleShort",
+                "takeaway",
+                "summaryShort"
+              ],
+              "maxChars": 18,
+              "index": 8,
+              "truncate": true
+            },
+            "spreadLegendLabel": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "title",
+                "titleShort",
+                "takeaway",
+                "summaryShort"
+              ],
+              "maxChars": 18,
+              "index": 9,
+              "truncate": true
+            },
+            "spreadBadgeLabel": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "title",
+                "titleShort",
+                "takeaway",
+                "summaryShort"
+              ],
+              "maxChars": 18,
+              "index": 10,
+              "truncate": true
+            },
+            "insightStickerLabel": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "takeaway",
+                "summaryShort",
+                "summary",
+                "titleShort"
+              ],
+              "maxChars": 18,
+              "index": 11,
+              "truncate": true
+            },
+            "closingLine": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "takeaway",
+                "summaryShort",
+                "summary",
+                "titleShort"
+              ],
+              "maxChars": 42,
+              "index": 13,
+              "truncate": true
+            }
+          }
+        },
+        {
+          "id": "v2",
+          "kind": "template",
+          "layout": "theme08_page022",
+          "props": {
+            "nodeCount": 4
+          },
+          "contentMap": {
+            "headline": "presentation.title",
+            "summary": "presentation.summary",
+            "nodes": {
+              "source": "presentation",
+              "derive": "template-items",
+              "includeTextFallback": true,
+              "filter": "value-bearing",
+              "group": 4,
+              "limit": 4,
+              "fields": {
+                "label": "labelWithValue",
+                "note": "labelWithSupporting",
+                "v": "chartValue",
+                "delta": "chartValue"
+              }
+            },
+            "eyebrow": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "title",
+                "titleShort",
+                "takeaway",
+                "summaryShort"
+              ],
+              "maxChars": 18,
+              "index": 3,
+              "truncate": true
+            },
+            "subheadline": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "summary",
+                "summaryShort",
+                "takeaway",
+                "titleShort"
+              ],
+              "maxChars": 18,
+              "index": 4,
+              "truncate": true
+            },
+            "unit": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "summaryShort",
+                "takeaway",
+                "titleShort"
+              ],
+              "maxChars": 18,
+              "index": 5,
+              "truncate": true
+            },
+            "deltaSuffix": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "takeaway",
+                "summaryShort",
+                "summary",
+                "titleShort"
+              ],
+              "maxChars": 18,
+              "index": 6,
+              "truncate": true
+            },
+            "deckNote": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "summary",
+                "summaryShort",
+                "takeaway",
+                "titleShort"
+              ],
+              "maxChars": 18,
+              "index": 7,
+              "truncate": true
+            },
+            "closingLine": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "takeaway",
+                "summaryShort",
+                "summary",
+                "titleShort"
+              ],
+              "maxChars": 27,
+              "index": 8,
+              "truncate": true
+            }
+          }
+        },
+        {
+          "id": "v3",
+          "kind": "template",
+          "layout": "theme08_page023",
+          "props": {
+            "barCount": 6
+          },
+          "contentMap": {
+            "headline": "presentation.title",
+            "summary": "presentation.summary",
+            "series": {
+              "source": "presentation",
+              "derive": "template-items",
+              "includeTextFallback": true,
+              "filter": "value-bearing",
+              "limit": 6,
+              "fields": {
+                "label": "label",
+                "v": "chartValue"
+              }
+            },
+            "eyebrow": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "title",
+                "titleShort",
+                "takeaway",
+                "summaryShort"
+              ],
+              "maxChars": 18,
+              "index": 3,
+              "truncate": true
+            },
+            "subheadline": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "summary",
+                "summaryShort",
+                "takeaway",
+                "titleShort"
+              ],
+              "maxChars": 18,
+              "index": 4,
+              "truncate": true
+            },
+            "unit": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "summaryShort",
+                "takeaway",
+                "titleShort"
+              ],
+              "maxChars": 18,
+              "index": 5,
+              "truncate": true
+            },
+            "peakNote": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "summary",
+                "summaryShort",
+                "takeaway",
+                "titleShort"
+              ],
+              "maxChars": 18,
+              "index": 6,
+              "truncate": true
+            },
+            "troughNote": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "summary",
+                "summaryShort",
+                "takeaway",
+                "titleShort"
+              ],
+              "maxChars": 18,
+              "index": 7,
+              "truncate": true
+            },
+            "closingLine": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "takeaway",
+                "summaryShort",
+                "summary",
+                "titleShort"
+              ],
+              "maxChars": 33,
+              "index": 8,
+              "truncate": true
+            },
+            "legendHigh": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "takeaway",
+                "summaryShort",
+                "summary",
+                "titleShort"
+              ],
+              "maxChars": 18,
+              "index": 9,
+              "truncate": true
+            },
+            "legendLow": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "takeaway",
+                "summaryShort",
+                "summary",
+                "titleShort"
+              ],
+              "maxChars": 18,
+              "index": 10,
+              "truncate": true
+            },
+            "legendBase": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "takeaway",
+                "summaryShort",
+                "summary",
+                "titleShort"
+              ],
+              "maxChars": 18,
+              "index": 11,
+              "truncate": true
+            },
+            "insightCaption": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "takeaway",
+                "summaryShort",
+                "summary",
+                "titleShort"
+              ],
+              "maxChars": 18,
+              "index": 12,
+              "truncate": true
+            },
+            "footerStickerLabel": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "title",
+                "titleShort",
+                "takeaway",
+                "summaryShort"
+              ],
+              "maxChars": 18,
+              "index": 13,
+              "truncate": true
+            },
+            "footerStickerSub": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "takeaway",
+                "summaryShort",
+                "summary",
+                "titleShort"
+              ],
+              "maxChars": 18,
+              "index": 14,
+              "truncate": true
+            }
+          }
+        },
+        {
+          "id": "v4",
+          "kind": "bespoke",
+          "adjustable": false,
+          "composition": {
+            "designIntent": {
+              "objective": "柜面个人批量开户业务操作培训",
+              "audience": "目标受众",
+              "narrativeRole": "process",
+              "emphasis": "步骤 1-6 · 登录至资料上传",
+              "rationale": "以垂直时间轴表达先后关系和推进节奏",
+              "compositionFamily": "timeline"
+            },
+            "background": "default",
+            "elements": [
+              {
+                "id": "page-kicker",
+                "type": "text",
+                "grid": {
+                  "column": 1,
+                  "row": 1,
+                  "width": 5,
+                  "height": 1
+                },
+                "role": "kicker",
+                "tone": "accent",
+                "align": "left",
+                "text": ""
+              },
+              {
+                "id": "page-title",
+                "type": "text",
+                "grid": {
+                  "column": 1,
+                  "row": 2,
+                  "width": 10,
+                  "height": 2
+                },
+                "role": "title",
+                "tone": "default",
+                "align": "left",
+                "text": ""
+              },
+              {
+                "id": "timeline-items",
+                "type": "list",
+                "grid": {
+                  "column": 1,
+                  "row": 4,
+                  "width": 12,
+                  "height": 5
+                },
+                "ordered": true,
+                "tone": "accent",
+                "items": []
+              }
+            ]
+          },
+          "contentMap": {
+            "elements[0].text": "meta.panelTitle",
+            "elements[1].text": "presentation.title",
+            "elements[2].items": {
+              "source": "presentation.items",
+              "fields": {
+                "title": "labelWithValue",
+                "body": "detail"
+              },
+              "limit": 6
+            }
+          }
+        }
+      ]
+    },
+    {
+      "content": {
+        "presentation": {
+          "title": "柜面办理流程 ②",
+          "titleShort": "柜面办理流程 ②",
+          "summary": "影像上传至凭证打印",
+          "summaryShort": "柜面办理流程 ②",
+          "takeaway": "步骤 7-11 · 集中作业后归档",
+          "items": [
+            {
+              "label": "影像上传",
+              "value": "07",
+              "detail": "非财政补贴：高拍仪上传",
+              "chartValue": 7,
+              "id": "item-1",
+              "unit": "",
+              "emptyText": "",
+              "focus": false,
+              "displayValue": "07",
+              "valueText": "07",
+              "labelWithValue": "07 · 影像上传",
+              "labelWithSupporting": "影像上传：非财政补贴：高拍仪上传",
+              "labelWithValueAndSupporting": "07 · 影像上传｜非财政补贴：高拍仪上传",
+              "chartUnit": "number"
+            },
+            {
+              "label": "交易确认",
+              "value": "08",
+              "detail": "柜外清确认，签名或指纹",
+              "chartValue": 8,
+              "id": "item-2",
+              "unit": "",
+              "emptyText": "",
+              "focus": false,
+              "displayValue": "08",
+              "valueText": "08",
+              "labelWithValue": "08 · 交易确认",
+              "labelWithSupporting": "交易确认：柜外清确认，签名或指纹",
+              "labelWithValueAndSupporting": "08 · 交易确认｜柜外清确认，签名或指纹",
+              "chartUnit": "number"
+            },
+            {
+              "label": "集中作业",
+              "value": "09",
+              "detail": "提交影像，等待处理结果",
+              "chartValue": 9,
+              "id": "item-3",
+              "unit": "",
+              "emptyText": "",
+              "focus": false,
+              "displayValue": "09",
+              "valueText": "09",
+              "labelWithValue": "09 · 集中作业",
+              "labelWithSupporting": "集中作业：提交影像，等待处理结果",
+              "labelWithValueAndSupporting": "09 · 集中作业｜提交影像，等待处理结果",
+              "chartUnit": "number"
+            },
+            {
+              "label": "客户评价",
+              "value": "10",
+              "detail": "非常满意 / 满意 / 不满意",
+              "chartValue": 10,
+              "id": "item-4",
+              "unit": "",
+              "emptyText": "",
+              "focus": false,
+              "displayValue": "10",
+              "valueText": "10",
+              "labelWithValue": "10 · 客户评价",
+              "labelWithSupporting": "客户评价：非常满意 / 满意 / 不满意",
+              "labelWithValueAndSupporting": "10 · 客户评价｜非常满意 / 满意 / 不满意",
+              "chartUnit": "number"
+            },
+            {
+              "label": "凭证打印",
+              "value": "11",
+              "detail": "批次结果，凭证与回单",
+              "chartValue": 11,
+              "id": "item-5",
+              "unit": "",
+              "emptyText": "",
+              "focus": false,
+              "displayValue": "11",
+              "valueText": "11",
+              "labelWithValue": "11 · 凭证打印",
+              "labelWithSupporting": "凭证打印：批次结果，凭证与回单",
+              "labelWithValueAndSupporting": "11 · 凭证打印｜批次结果，凭证与回单",
+              "chartUnit": "number"
+            }
+          ],
+          "coverLabels": [
+            "柜面办理流程 ②"
+          ],
+          "chartData": [
+            {
+              "id": "item-1",
+              "label": "影像上传",
+              "value": 7,
+              "displayValue": "07",
+              "unit": "",
+              "chartUnit": "number"
+            },
+            {
+              "id": "item-2",
+              "label": "交易确认",
+              "value": 8,
+              "displayValue": "08",
+              "unit": "",
+              "chartUnit": "number"
+            },
+            {
+              "id": "item-3",
+              "label": "集中作业",
+              "value": 9,
+              "displayValue": "09",
+              "unit": "",
+              "chartUnit": "number"
+            },
+            {
+              "id": "item-4",
+              "label": "客户评价",
+              "value": 10,
+              "displayValue": "10",
+              "unit": "",
+              "chartUnit": "number"
+            },
+            {
+              "id": "item-5",
+              "label": "凭证打印",
+              "value": 11,
+              "displayValue": "11",
+              "unit": "",
+              "chartUnit": "number"
+            }
+          ]
+        },
+        "media": [],
+        "meta": {
+          "brand": "",
+          "pageLabel": "",
+          "unit": "",
+          "panelTitle": "柜面办理流程 ②",
+          "date": "",
+          "empty": ""
+        }
+      },
+      "selectedVariant": "v1",
+      "variants": [
+        {
+          "id": "v1",
+          "kind": "template",
+          "layout": "theme08_page025",
+          "props": {
+            "bandCount": 4
+          },
+          "contentMap": {
+            "headline": "presentation.title",
+            "summary": "presentation.summary",
+            "bands": {
+              "source": "presentation",
+              "derive": "template-items",
+              "includeTextFallback": true,
+              "filter": "value-bearing",
+              "group": 4,
+              "limit": 4,
+              "fields": {
+                "label": "labelWithValue",
+                "en": "label",
+                "count": "chartValue",
+                "value": "chartValue"
+              }
+            },
+            "closingLine": {
+              "source": "presentation",
+              "derive": "supporting-summary"
+            },
+            "eyebrow": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "title",
+                "titleShort",
+                "takeaway",
+                "summaryShort"
+              ],
+              "maxChars": 18,
+              "index": 3,
+              "truncate": true
+            },
+            "subheadline": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "summary",
+                "summaryShort",
+                "takeaway",
+                "titleShort"
+              ],
+              "maxChars": 18,
+              "index": 4,
+              "truncate": true
+            },
+            "countLabel": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "title",
+                "titleShort",
+                "takeaway",
+                "summaryShort"
+              ],
+              "maxChars": 18,
+              "index": 5,
+              "truncate": true
+            },
+            "valueLabel": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "title",
+                "titleShort",
+                "takeaway",
+                "summaryShort"
+              ],
+              "maxChars": 18,
+              "index": 6,
+              "truncate": true
+            },
+            "countUnit": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "summaryShort",
+                "takeaway",
+                "titleShort"
+              ],
+              "maxChars": 18,
+              "index": 7,
+              "truncate": true
+            },
+            "valueUnit": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "summaryShort",
+                "takeaway",
+                "titleShort"
+              ],
+              "maxChars": 18,
+              "index": 8,
+              "truncate": true
+            },
+            "bandColumnLabel": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "title",
+                "titleShort",
+                "takeaway",
+                "summaryShort"
+              ],
+              "maxChars": 18,
+              "index": 9,
+              "truncate": true
+            },
+            "footerStickerLabel": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "title",
+                "titleShort",
+                "takeaway",
+                "summaryShort"
+              ],
+              "maxChars": 18,
+              "index": 10,
+              "truncate": true
+            },
+            "footerStickerSub": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "takeaway",
+                "summaryShort",
+                "summary",
+                "titleShort"
+              ],
+              "maxChars": 18,
+              "index": 11,
+              "truncate": true
+            }
+          }
+        },
+        {
+          "id": "v2",
+          "kind": "template",
+          "layout": "theme08_page027",
+          "props": {
+            "nodeCount": 5
+          },
+          "contentMap": {
+            "headline": "presentation.title",
+            "summary": "presentation.summary",
+            "nodes": {
+              "source": "presentation",
+              "derive": "template-items",
+              "includeTextFallback": true,
+              "filter": "value-bearing",
+              "limit": 5,
+              "fields": {
+                "label": "label",
+                "sub": "labelWithSupporting",
+                "v": "chartValue"
+              }
+            },
+            "eyebrow": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "title",
+                "titleShort",
+                "takeaway",
+                "summaryShort"
+              ],
+              "maxChars": 18,
+              "index": 3,
+              "truncate": true
+            },
+            "subheadline": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "summary",
+                "summaryShort",
+                "takeaway",
+                "titleShort"
+              ],
+              "maxChars": 18,
+              "index": 4,
+              "truncate": true
+            },
+            "axisXLabel": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "title",
+                "titleShort",
+                "takeaway",
+                "summaryShort"
+              ],
+              "maxChars": 18,
+              "index": 5,
+              "truncate": true
+            },
+            "axisYLabel": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "title",
+                "titleShort",
+                "takeaway",
+                "summaryShort"
+              ],
+              "maxChars": 18,
+              "index": 6,
+              "truncate": true
+            },
+            "valueUnit": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "summaryShort",
+                "takeaway",
+                "titleShort"
+              ],
+              "maxChars": 18,
+              "index": 7,
+              "truncate": true
+            },
+            "focusNote": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "summary",
+                "summaryShort",
+                "takeaway",
+                "titleShort"
+              ],
+              "maxChars": 18,
+              "index": 8,
+              "truncate": true
+            },
+            "closingLine": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "takeaway",
+                "summaryShort",
+                "summary",
+                "titleShort"
+              ],
+              "maxChars": 22,
+              "index": 11,
+              "truncate": true
+            },
+            "baselineLegendLabel": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "title",
+                "titleShort",
+                "takeaway",
+                "summaryShort"
+              ],
+              "maxChars": 18,
+              "index": 10,
+              "truncate": true
+            }
+          }
+        },
+        {
+          "id": "v3",
+          "kind": "template",
+          "layout": "theme08_page024",
+          "props": {
+            "stepCount": 5
+          },
+          "contentMap": {
+            "headline": "presentation.title",
+            "summary": "presentation.summary",
+            "steps": {
+              "source": "presentation",
+              "derive": "template-items",
+              "includeTextFallback": true,
+              "filter": "value-bearing",
+              "limit": 5,
+              "fields": {
+                "label": "label",
+                "en": "projectionLabel",
+                "v": "chartValue"
+              }
+            },
+            "eyebrow": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "title",
+                "titleShort",
+                "takeaway",
+                "summaryShort"
+              ],
+              "maxChars": 18,
+              "index": 3,
+              "truncate": true
+            },
+            "subheadline": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "summary",
+                "summaryShort",
+                "takeaway",
+                "titleShort"
+              ],
+              "maxChars": 18,
+              "index": 4,
+              "truncate": true
+            },
+            "unit": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "summaryShort",
+                "takeaway",
+                "titleShort"
+              ],
+              "maxChars": 18,
+              "index": 5,
+              "truncate": true
+            },
+            "totalLabel": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "title",
+                "titleShort",
+                "takeaway",
+                "summaryShort"
+              ],
+              "maxChars": 18,
+              "index": 6,
+              "truncate": true
+            },
+            "totalColumnLabel": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "title",
+                "titleShort",
+                "takeaway",
+                "summaryShort"
+              ],
+              "maxChars": 18,
+              "index": 7,
+              "truncate": true
+            },
+            "totalColumnLabelEn": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "title",
+                "titleShort",
+                "takeaway",
+                "summaryShort"
+              ],
+              "maxChars": 18,
+              "index": 8,
+              "truncate": true
+            },
+            "footerStickerLabel": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "title",
+                "titleShort",
+                "takeaway",
+                "summaryShort"
+              ],
+              "maxChars": 18,
+              "index": 9,
+              "truncate": true
+            },
+            "footerStickerSub": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "takeaway",
+                "summaryShort",
+                "summary",
+                "titleShort"
+              ],
+              "maxChars": 18,
+              "index": 10,
+              "truncate": true
+            },
+            "closingLine": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "takeaway",
+                "summaryShort",
+                "summary",
+                "titleShort"
+              ],
+              "maxChars": 36,
+              "index": 13,
+              "truncate": true
+            }
+          }
+        },
+        {
+          "id": "v4",
+          "kind": "bespoke",
+          "adjustable": false,
+          "composition": {
+            "designIntent": {
+              "objective": "柜面个人批量开户业务操作培训",
+              "audience": "目标受众",
+              "narrativeRole": "process",
+              "emphasis": "步骤 7-11 · 集中作业后归档",
+              "rationale": "以横向路径串联步骤和行动顺序",
+              "compositionFamily": "process"
+            },
+            "background": "default",
+            "elements": [
+              {
+                "id": "page-kicker",
+                "type": "text",
+                "grid": {
+                  "column": 1,
+                  "row": 1,
+                  "width": 5,
+                  "height": 1
+                },
+                "role": "kicker",
+                "tone": "accent",
+                "align": "left",
+                "text": ""
+              },
+              {
+                "id": "page-title",
+                "type": "text",
+                "grid": {
+                  "column": 1,
+                  "row": 2,
+                  "width": 10,
+                  "height": 2
+                },
+                "role": "title",
+                "tone": "default",
+                "align": "left",
+                "text": ""
+              },
+              {
+                "id": "process-items",
+                "type": "list",
+                "grid": {
+                  "column": 1,
+                  "row": 4,
+                  "width": 12,
+                  "height": 5
+                },
+                "ordered": true,
+                "tone": "accent",
+                "items": []
+              }
+            ]
+          },
+          "contentMap": {
+            "elements[0].text": "meta.panelTitle",
+            "elements[1].text": "presentation.title",
+            "elements[2].items": {
+              "source": "presentation.items",
+              "fields": {
+                "title": "labelWithValue",
+                "body": "detail"
+              },
+              "limit": 5
+            }
+          }
+        }
+      ]
+    },
+    {
+      "content": {
+        "presentation": {
+          "title": "业务规则",
+          "titleShort": "业务规则",
+          "summary": "合规红线与操作要点",
+          "summaryShort": "业务规则",
+          "takeaway": "账户激活前只收不付",
+          "items": [
+            {
+              "label": "数量控制",
+              "value": "1 个",
+              "detail": "同法人机构Ⅰ类户 1 个、Ⅱ类户 3 个",
+              "id": "item-1",
+              "unit": "",
+              "emptyText": "",
+              "focus": false,
+              "displayValue": "1 个",
+              "valueText": "1 个",
+              "labelWithValue": "1 个 · 数量控制",
+              "labelWithSupporting": "数量控制：同法人机构Ⅰ类户 1 个、Ⅱ类户 3 个",
+              "labelWithValueAndSupporting": "1 个 · 数量控制｜同法人机构Ⅰ类户 1 个、Ⅱ类户 3 个"
+            },
+            {
+              "label": "特殊用途",
+              "value": "可代理",
+              "detail": "代发工资、社保医保等由单位代理",
+              "id": "item-2",
+              "unit": "",
+              "emptyText": "",
+              "focus": false,
+              "displayValue": "可代理",
+              "valueText": "可代理",
+              "labelWithValue": "可代理 · 特殊用途",
+              "labelWithSupporting": "特殊用途：代发工资、社保医保等由单位代理",
+              "labelWithValueAndSupporting": "可代理 · 特殊用途｜代发工资、社保医保等由单位代理"
+            },
+            {
+              "label": "激活限制",
+              "value": "只收不付",
+              "detail": "被代理人激活前账户只收不付",
+              "id": "item-3",
+              "unit": "",
+              "emptyText": "",
+              "focus": false,
+              "displayValue": "只收不付",
+              "valueText": "只收不付",
+              "labelWithValue": "只收不付 · 激活限制",
+              "labelWithSupporting": "激活限制：被代理人激活前账户只收不付",
+              "labelWithValueAndSupporting": "只收不付 · 激活限制｜被代理人激活前账户只收不付"
+            },
+            {
+              "label": "实名核验",
+              "value": "必核",
+              "detail": "证件过期或核查不通过拒绝办理",
+              "id": "item-4",
+              "unit": "",
+              "emptyText": "",
+              "focus": false,
+              "displayValue": "必核",
+              "valueText": "必核",
+              "labelWithValue": "必核 · 实名核验",
+              "labelWithSupporting": "实名核验：证件过期或核查不通过拒绝办理",
+              "labelWithValueAndSupporting": "必核 · 实名核验｜证件过期或核查不通过拒绝办理"
+            },
+            {
+              "label": "介质固定",
+              "value": "不可混",
+              "detail": "一次性固定介质与账户类型",
+              "id": "item-5",
+              "unit": "",
+              "emptyText": "",
+              "focus": false,
+              "displayValue": "不可混",
+              "valueText": "不可混",
+              "labelWithValue": "不可混 · 介质固定",
+              "labelWithSupporting": "介质固定：一次性固定介质与账户类型",
+              "labelWithValueAndSupporting": "不可混 · 介质固定｜一次性固定介质与账户类型"
+            },
+            {
+              "label": "重空检查",
+              "value": "前置",
+              "detail": "办理前检查重空尾箱充足",
+              "id": "item-6",
+              "unit": "",
+              "emptyText": "",
+              "focus": false,
+              "displayValue": "前置",
+              "valueText": "前置",
+              "labelWithValue": "前置 · 重空检查",
+              "labelWithSupporting": "重空检查：办理前检查重空尾箱充足",
+              "labelWithValueAndSupporting": "前置 · 重空检查｜办理前检查重空尾箱充足"
+            }
+          ],
+          "coverLabels": [
+            "业务规则"
+          ],
+          "chartData": []
+        },
+        "media": [],
+        "meta": {
+          "brand": "",
+          "pageLabel": "",
+          "unit": "",
+          "panelTitle": "业务规则",
+          "date": "",
+          "empty": ""
+        }
+      },
+      "selectedVariant": "v1",
+      "variants": [
+        {
+          "id": "v1",
+          "kind": "template",
+          "layout": "theme08_page060",
+          "props": {
+            "pillarCount": 3
+          },
+          "contentMap": {
+            "headline": "presentation.title",
+            "pillars": {
+              "source": "presentation",
+              "derive": "template-items",
+              "includeTextFallback": true,
+              "group": 3,
+              "limit": 3,
+              "fields": {
+                "title": "labelWithValue",
+                "note": "labelWithSupporting"
+              }
+            },
+            "eyebrow": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "title",
+                "titleShort",
+                "takeaway",
+                "summaryShort"
+              ],
+              "maxChars": 24,
+              "index": 3,
+              "truncate": true
+            },
+            "kicker": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "title",
+                "titleShort",
+                "takeaway",
+                "summaryShort"
+              ],
+              "maxChars": 18,
+              "index": 4,
+              "truncate": true
+            },
+            "quote": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "takeaway",
+                "summaryShort",
+                "summary",
+                "titleShort"
+              ],
+              "maxChars": 36,
+              "index": 5,
+              "truncate": true
+            },
+            "backdropWord": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "takeaway",
+                "summaryShort",
+                "summary",
+                "titleShort"
+              ],
+              "maxChars": 18,
+              "index": 6,
+              "truncate": true
+            },
+            "battlegroundStickerLabel": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "title",
+                "titleShort",
+                "takeaway",
+                "summaryShort"
+              ],
+              "maxChars": 18,
+              "index": 7,
+              "truncate": true
+            },
+            "verdictStickerLabel": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "takeaway",
+                "summaryShort",
+                "summary",
+                "titleShort"
+              ],
+              "maxChars": 18,
+              "index": 8,
+              "truncate": true
+            },
+            "source": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "takeaway",
+                "summaryShort",
+                "summary",
+                "titleShort"
+              ],
+              "maxChars": 42,
+              "index": 9,
+              "truncate": true
+            }
+          }
+        },
+        {
+          "id": "v2",
+          "kind": "template",
+          "layout": "theme08_page016",
+          "props": {
+            "supportCount": 3
+          },
+          "contentMap": {
+            "headline": "presentation.title",
+            "supports": {
+              "source": "presentation",
+              "derive": "template-items",
+              "includeTextFallback": true,
+              "group": 3,
+              "limit": 3,
+              "select": "labelWithValueAndSupporting"
+            },
+            "eyebrow": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "title",
+                "titleShort",
+                "takeaway",
+                "summaryShort"
+              ],
+              "maxChars": 26,
+              "index": 3,
+              "truncate": true
+            },
+            "kicker": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "title",
+                "titleShort",
+                "takeaway",
+                "summaryShort"
+              ],
+              "maxChars": 18,
+              "index": 4,
+              "truncate": true
+            },
+            "quote": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "takeaway",
+                "summaryShort",
+                "summary",
+                "titleShort"
+              ],
+              "maxChars": 36,
+              "index": 5,
+              "truncate": true
+            },
+            "source": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "takeaway",
+                "summaryShort",
+                "summary",
+                "titleShort"
+              ],
+              "maxChars": 42,
+              "index": 7,
+              "truncate": true
+            },
+            "judgmentBadgeLabel": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "title",
+                "titleShort",
+                "takeaway",
+                "summaryShort"
+              ],
+              "maxChars": 18,
+              "index": 7,
+              "truncate": true
+            }
+          }
+        },
+        {
+          "id": "v3",
+          "kind": "template",
+          "layout": "theme08_page007",
+          "props": {
+            "cardCount": 6
+          },
+          "contentMap": {
+            "headline": "presentation.title",
+            "chapters": {
+              "source": "presentation",
+              "derive": "template-items",
+              "includeTextFallback": true,
+              "limit": 6,
+              "fields": {
+                "name": "label",
+                "en": "projectionLabel"
+              }
+            },
+            "eyebrow": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "title",
+                "titleShort",
+                "takeaway",
+                "summaryShort"
+              ],
+              "maxChars": 18,
+              "index": 3,
+              "truncate": true
+            },
+            "subheadline": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "summary",
+                "summaryShort",
+                "takeaway",
+                "titleShort"
+              ],
+              "maxChars": 20,
+              "index": 4,
+              "truncate": true
+            },
+            "closingLine": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "takeaway",
+                "summaryShort",
+                "summary",
+                "titleShort"
+              ],
+              "maxChars": 27,
+              "index": 7,
+              "truncate": true
+            },
+            "focusBadgeLabel": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "title",
+                "titleShort",
+                "takeaway",
+                "summaryShort"
+              ],
+              "maxChars": 18,
+              "index": 6,
+              "truncate": true
+            }
+          }
+        },
+        {
+          "id": "v4",
+          "kind": "bespoke",
+          "adjustable": false,
+          "composition": {
+            "designIntent": {
+              "objective": "柜面个人批量开户业务操作培训",
+              "audience": "目标受众",
+              "narrativeRole": "risks",
+              "emphasis": "账户激活前只收不付",
+              "rationale": "以二维分区并列展示同层级信息",
+              "compositionFamily": "matrix"
+            },
+            "background": "default",
+            "elements": [
+              {
+                "id": "page-kicker",
+                "type": "text",
+                "grid": {
+                  "column": 1,
+                  "row": 1,
+                  "width": 5,
+                  "height": 1
+                },
+                "role": "kicker",
+                "tone": "accent",
+                "align": "left",
+                "text": ""
+              },
+              {
+                "id": "page-title",
+                "type": "text",
+                "grid": {
+                  "column": 1,
+                  "row": 2,
+                  "width": 10,
+                  "height": 2
+                },
+                "role": "title",
+                "tone": "default",
+                "align": "left",
+                "text": ""
+              },
+              {
+                "id": "matrix-cell-1",
+                "type": "quote",
+                "grid": {
+                  "column": 1,
+                  "row": 4,
+                  "width": 6,
+                  "height": 2
+                },
+                "tone": "accent",
+                "quote": ""
+              },
+              {
+                "id": "matrix-cell-2",
+                "type": "quote",
+                "grid": {
+                  "column": 7,
+                  "row": 4,
+                  "width": 6,
+                  "height": 2
+                },
+                "tone": "default",
+                "quote": ""
+              },
+              {
+                "id": "matrix-cell-3",
+                "type": "quote",
+                "grid": {
+                  "column": 1,
+                  "row": 7,
+                  "width": 6,
+                  "height": 2
+                },
+                "tone": "default",
+                "quote": ""
+              },
+              {
+                "id": "matrix-cell-4",
+                "type": "quote",
+                "grid": {
+                  "column": 7,
+                  "row": 7,
+                  "width": 6,
+                  "height": 2
+                },
+                "tone": "default",
+                "quote": ""
+              }
+            ]
+          },
+          "contentMap": {
+            "elements[0].text": "meta.panelTitle",
+            "elements[1].text": "presentation.title",
+            "elements[2].quote": "presentation.items[0].labelWithValue",
+            "elements[2].attribution": "presentation.items[0].detail",
+            "elements[3].quote": "presentation.items[1].labelWithValue",
+            "elements[3].attribution": "presentation.items[1].detail",
+            "elements[4].quote": "presentation.items[2].labelWithValue",
+            "elements[4].attribution": "presentation.items[2].detail",
+            "elements[5].quote": "presentation.items[3].labelWithValue",
+            "elements[5].attribution": "presentation.items[3].detail"
+          }
+        }
+      ]
+    },
+    {
+      "content": {
+        "presentation": {
+          "title": "字段输入规则",
+          "titleShort": "字段输入规则",
+          "summary": "关键字段枚举值对照",
+          "summaryShort": "字段输入规则",
+          "takeaway": "按系统枚举值录入",
+          "items": [
+            {
+              "label": "证件类型",
+              "value": "242 等",
+              "detail": "242 统一社会信用代码、292 批文号",
+              "id": "item-1",
+              "unit": "",
+              "emptyText": "",
+              "focus": false,
+              "displayValue": "242 等",
+              "valueText": "242 等",
+              "labelWithValue": "242 等 · 证件类型",
+              "labelWithSupporting": "证件类型：242 统一社会信用代码、292 批文号",
+              "labelWithValueAndSupporting": "242 等 · 证件类型｜242 统一社会信用代码、292 批文号"
+            },
+            {
+              "label": "业务类型",
+              "value": "001-012",
+              "detail": "001 存折、002 无折卡、012 二类户",
+              "id": "item-2",
+              "unit": "",
+              "emptyText": "",
+              "focus": false,
+              "displayValue": "001-012",
+              "valueText": "001-012",
+              "labelWithValue": "001-012 · 业务类型",
+              "labelWithSupporting": "业务类型：001 存折、002 无折卡、012 二类户",
+              "labelWithValueAndSupporting": "001-012 · 业务类型｜001 存折、002 无折卡、012 二类户"
+            },
+            {
+              "label": "开户种类",
+              "value": "0 / 非 0",
+              "detail": "非 0 余额、0 余额开户",
+              "id": "item-3",
+              "unit": "",
+              "emptyText": "",
+              "focus": false,
+              "displayValue": "0 / 非 0",
+              "valueText": "0 / 非 0",
+              "labelWithValue": "0 / 非 0 · 开户种类",
+              "labelWithSupporting": "开户种类：非 0 余额、0 余额开户",
+              "labelWithValueAndSupporting": "0 / 非 0 · 开户种类｜非 0 余额、0 余额开户"
+            },
+            {
+              "label": "财政补贴",
+              "value": "01 / 02",
+              "detail": "01 是、02 否",
+              "id": "item-4",
+              "unit": "",
+              "emptyText": "",
+              "focus": false,
+              "displayValue": "01 / 02",
+              "valueText": "01 / 02",
+              "labelWithValue": "01 / 02 · 财政补贴",
+              "labelWithSupporting": "财政补贴：01 是、02 否",
+              "labelWithValueAndSupporting": "01 / 02 · 财政补贴｜01 是、02 否"
+            }
+          ],
+          "coverLabels": [
+            "字段输入规则"
+          ],
+          "chartData": []
+        },
+        "media": [],
+        "meta": {
+          "brand": "",
+          "pageLabel": "",
+          "unit": "",
+          "panelTitle": "字段输入规则",
+          "date": "",
+          "empty": ""
+        }
+      },
+      "selectedVariant": "v1",
+      "variants": [
+        {
+          "id": "v1",
+          "kind": "template",
+          "layout": "theme08_page084",
+          "props": {
+            "supportCount": 0,
+            "supports": []
+          },
+          "contentMap": {
+            "kicker": "presentation.title",
+            "lines": {
+              "source": "presentation",
+              "derive": "template-items",
+              "includeTextFallback": true,
+              "group": 3,
+              "limit": 3,
+              "select": "labelWithValue"
+            },
+            "source": {
+              "source": "presentation",
+              "derive": "supporting-summary"
+            },
+            "eyebrow": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "title",
+                "titleShort",
+                "takeaway",
+                "summaryShort"
+              ],
+              "maxChars": 18,
+              "index": 3,
+              "truncate": true
+            },
+            "label": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "title",
+                "titleShort",
+                "takeaway",
+                "summaryShort"
+              ],
+              "maxChars": 18,
+              "index": 4,
+              "truncate": true
+            }
+          }
+        },
+        {
+          "id": "v2",
+          "kind": "template",
+          "layout": "theme08_page016",
+          "props": {
+            "supportCount": 3
+          },
+          "contentMap": {
+            "headline": "presentation.title",
+            "supports": {
+              "source": "presentation",
+              "derive": "template-items",
+              "includeTextFallback": true,
+              "group": 3,
+              "limit": 3,
+              "select": "labelWithValueAndSupporting"
+            },
+            "eyebrow": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "title",
+                "titleShort",
+                "takeaway",
+                "summaryShort"
+              ],
+              "maxChars": 26,
+              "index": 3,
+              "truncate": true
+            },
+            "kicker": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "title",
+                "titleShort",
+                "takeaway",
+                "summaryShort"
+              ],
+              "maxChars": 18,
+              "index": 4,
+              "truncate": true
+            },
+            "quote": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "takeaway",
+                "summaryShort",
+                "summary",
+                "titleShort"
+              ],
+              "maxChars": 36,
+              "index": 5,
+              "truncate": true
+            },
+            "source": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "takeaway",
+                "summaryShort",
+                "summary",
+                "titleShort"
+              ],
+              "maxChars": 42,
+              "index": 7,
+              "truncate": true
+            },
+            "judgmentBadgeLabel": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "title",
+                "titleShort",
+                "takeaway",
+                "summaryShort"
+              ],
+              "maxChars": 18,
+              "index": 7,
+              "truncate": true
+            }
+          }
+        },
+        {
+          "id": "v3",
+          "kind": "template",
+          "layout": "theme08_page074",
+          "props": {
+            "supportCount": 0,
+            "supports": []
+          },
+          "contentMap": {
+            "kicker": "presentation.title",
+            "lines": {
+              "source": "presentation",
+              "derive": "template-items",
+              "includeTextFallback": true,
+              "group": 2,
+              "limit": 2,
+              "select": "labelWithValue"
+            },
+            "source": {
+              "source": "presentation",
+              "derive": "supporting-summary"
+            },
+            "eyebrow": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "title",
+                "titleShort",
+                "takeaway",
+                "summaryShort"
+              ],
+              "maxChars": 18,
+              "index": 3,
+              "truncate": true
+            },
+            "label": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "title",
+                "titleShort",
+                "takeaway",
+                "summaryShort"
+              ],
+              "maxChars": 20,
+              "index": 4,
+              "truncate": true
+            },
+            "sealTop": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "takeaway",
+                "summaryShort",
+                "summary",
+                "titleShort"
+              ],
+              "maxChars": 18,
+              "index": 5,
+              "truncate": true
+            },
+            "sealBottom": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "takeaway",
+                "summaryShort",
+                "summary",
+                "titleShort"
+              ],
+              "maxChars": 18,
+              "index": 6,
+              "truncate": true
+            }
+          }
+        },
+        {
+          "id": "v4",
+          "kind": "bespoke",
+          "adjustable": false,
+          "composition": {
+            "designIntent": {
+              "objective": "柜面个人批量开户业务操作培训",
+              "audience": "目标受众",
+              "narrativeRole": "context",
+              "emphasis": "按系统枚举值录入",
+              "rationale": "以大标题、引语和窄栏列表建立杂志式层级",
+              "compositionFamily": "editorial"
+            },
+            "background": "default",
+            "elements": [
+              {
+                "id": "page-kicker",
+                "type": "text",
+                "grid": {
+                  "column": 1,
+                  "row": 1,
+                  "width": 5,
+                  "height": 1
+                },
+                "role": "kicker",
+                "tone": "accent",
+                "align": "left",
+                "text": ""
+              },
+              {
+                "id": "page-title",
+                "type": "text",
+                "grid": {
+                  "column": 1,
+                  "row": 2,
+                  "width": 10,
+                  "height": 2
+                },
+                "role": "title",
+                "tone": "default",
+                "align": "left",
+                "text": ""
+              },
+              {
+                "id": "editorial-takeaway",
+                "type": "quote",
+                "grid": {
+                  "column": 1,
+                  "row": 4,
+                  "width": 7,
+                  "height": 5
+                },
+                "tone": "accent",
+                "quote": ""
+              },
+              {
+                "id": "editorial-items",
+                "type": "list",
+                "grid": {
+                  "column": 9,
+                  "row": 4,
+                  "width": 4,
+                  "height": 5
+                },
+                "ordered": false,
+                "tone": "default",
+                "items": []
+              }
+            ]
+          },
+          "contentMap": {
+            "elements[0].text": "meta.panelTitle",
+            "elements[1].text": "presentation.title",
+            "elements[2].quote": "presentation.takeaway",
+            "elements[3].items": {
+              "source": "presentation.items",
+              "fields": {
+                "title": "labelWithValue",
+                "body": "detail"
+              },
+              "limit": 4
+            }
+          }
+        }
+      ]
+    },
+    {
+      "content": {
+        "presentation": {
+          "title": "凭证与介质管理",
+          "titleShort": "凭证与介质管理",
+          "summary": "介质发放、回单打印与自动归档",
+          "summaryShort": "凭证与介质管理",
+          "takeaway": "介质业务开办起 5 日内领取",
+          "items": [
+            {
+              "label": "介质发放",
+              "value": "3 类",
+              "detail": "银行卡、存折、存单，清单领取后发放",
+              "id": "item-1",
+              "unit": "",
+              "emptyText": "",
+              "focus": false,
+              "displayValue": "3 类",
+              "valueText": "3 类",
+              "labelWithValue": "3 类 · 介质发放",
+              "labelWithSupporting": "介质发放：银行卡、存折、存单，清单领取后发放",
+              "labelWithValueAndSupporting": "3 类 · 介质发放｜银行卡、存折、存单，清单领取后发放"
+            },
+            {
+              "label": "领取期限",
+              "value": "5 日",
+              "detail": "支持当日领取与非当日领取",
+              "id": "item-2",
+              "unit": "",
+              "emptyText": "",
+              "focus": false,
+              "displayValue": "5 日",
+              "valueText": "5 日",
+              "labelWithValue": "5 日 · 领取期限",
+              "labelWithSupporting": "领取期限：支持当日领取与非当日领取",
+              "labelWithValueAndSupporting": "5 日 · 领取期限｜支持当日领取与非当日领取"
+            },
+            {
+              "label": "领取人",
+              "value": "代理人",
+              "detail": "审核身份，签名或留存指纹",
+              "id": "item-3",
+              "unit": "",
+              "emptyText": "",
+              "focus": false,
+              "displayValue": "代理人",
+              "valueText": "代理人",
+              "labelWithValue": "代理人 · 领取人",
+              "labelWithSupporting": "领取人：审核身份，签名或留存指纹",
+              "labelWithValueAndSupporting": "代理人 · 领取人｜审核身份，签名或留存指纹"
+            },
+            {
+              "label": "凭证输出",
+              "value": "双面",
+              "detail": "客户回单 + 介质，行内电子凭证",
+              "id": "item-4",
+              "unit": "",
+              "emptyText": "",
+              "focus": false,
+              "displayValue": "双面",
+              "valueText": "双面",
+              "labelWithValue": "双面 · 凭证输出",
+              "labelWithSupporting": "凭证输出：客户回单 + 介质，行内电子凭证",
+              "labelWithValueAndSupporting": "双面 · 凭证输出｜客户回单 + 介质，行内电子凭证"
+            },
+            {
+              "label": "电子归档",
+              "value": "自动",
+              "detail": "无纸化档案系统自动归档",
+              "id": "item-5",
+              "unit": "",
+              "emptyText": "",
+              "focus": false,
+              "displayValue": "自动",
+              "valueText": "自动",
+              "labelWithValue": "自动 · 电子归档",
+              "labelWithSupporting": "电子归档：无纸化档案系统自动归档",
+              "labelWithValueAndSupporting": "自动 · 电子归档｜无纸化档案系统自动归档"
+            }
+          ],
+          "coverLabels": [
+            "凭证与介质管理"
+          ],
+          "chartData": []
+        },
+        "media": [],
+        "meta": {
+          "brand": "",
+          "pageLabel": "",
+          "unit": "",
+          "panelTitle": "凭证与介质管理",
+          "date": "",
+          "empty": ""
+        }
+      },
+      "selectedVariant": "v1",
+      "variants": [
+        {
+          "id": "v1",
+          "kind": "template",
+          "layout": "theme08_page007",
+          "props": {
+            "cardCount": 5
+          },
+          "contentMap": {
+            "headline": "presentation.title",
+            "chapters": {
+              "source": "presentation",
+              "derive": "template-items",
+              "includeTextFallback": true,
+              "limit": 5,
+              "fields": {
+                "name": "label",
+                "en": "projectionLabel"
+              }
+            },
+            "eyebrow": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "title",
+                "titleShort",
+                "takeaway",
+                "summaryShort"
+              ],
+              "maxChars": 18,
+              "index": 3,
+              "truncate": true
+            },
+            "subheadline": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "summary",
+                "summaryShort",
+                "takeaway",
+                "titleShort"
+              ],
+              "maxChars": 20,
+              "index": 4,
+              "truncate": true
+            },
+            "closingLine": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "takeaway",
+                "summaryShort",
+                "summary",
+                "titleShort"
+              ],
+              "maxChars": 27,
+              "index": 7,
+              "truncate": true
+            },
+            "focusBadgeLabel": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "title",
+                "titleShort",
+                "takeaway",
+                "summaryShort"
+              ],
+              "maxChars": 18,
+              "index": 6,
+              "truncate": true
+            }
+          }
+        },
+        {
+          "id": "v2",
+          "kind": "template",
+          "layout": "theme08_page084",
+          "props": {
+            "supportCount": 0,
+            "supports": []
+          },
+          "contentMap": {
+            "kicker": "presentation.title",
+            "lines": {
+              "source": "presentation",
+              "derive": "template-items",
+              "includeTextFallback": true,
+              "group": 3,
+              "limit": 3,
+              "select": "labelWithValue"
+            },
+            "source": {
+              "source": "presentation",
+              "derive": "supporting-summary"
+            },
+            "eyebrow": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "title",
+                "titleShort",
+                "takeaway",
+                "summaryShort"
+              ],
+              "maxChars": 18,
+              "index": 3,
+              "truncate": true
+            },
+            "label": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "title",
+                "titleShort",
+                "takeaway",
+                "summaryShort"
+              ],
+              "maxChars": 18,
+              "index": 4,
+              "truncate": true
+            }
+          }
+        },
+        {
+          "id": "v3",
+          "kind": "template",
+          "layout": "theme08_page035",
+          "props": {
+            "supportCount": 3
+          },
+          "contentMap": {
+            "statement": "presentation.title",
+            "supports": {
+              "source": "presentation",
+              "derive": "template-items",
+              "includeTextFallback": true,
+              "group": 3,
+              "limit": 3,
+              "select": "labelWithValueAndSupporting"
+            },
+            "eyebrow": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "title",
+                "titleShort",
+                "takeaway",
+                "summaryShort"
+              ],
+              "maxChars": 29,
+              "index": 3,
+              "truncate": true
+            },
+            "kicker": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "title",
+                "titleShort",
+                "takeaway",
+                "summaryShort"
+              ],
+              "maxChars": 18,
+              "index": 4,
+              "truncate": true
+            },
+            "label": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "title",
+                "titleShort",
+                "takeaway",
+                "summaryShort"
+              ],
+              "maxChars": 18,
+              "index": 5,
+              "truncate": true
+            },
+            "backdrop": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "takeaway",
+                "summaryShort",
+                "summary",
+                "titleShort"
+              ],
+              "maxChars": 18,
+              "index": 6,
+              "truncate": true
+            },
+            "verdictStickerLabel": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "takeaway",
+                "summaryShort",
+                "summary",
+                "titleShort"
+              ],
+              "maxChars": 18,
+              "index": 7,
+              "truncate": true
+            },
+            "source": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "takeaway",
+                "summaryShort",
+                "summary",
+                "titleShort"
+              ],
+              "maxChars": 42,
+              "index": 8,
+              "truncate": true
+            }
+          }
+        },
+        {
+          "id": "v4",
+          "kind": "bespoke",
+          "adjustable": false,
+          "composition": {
+            "designIntent": {
+              "objective": "柜面个人批量开户业务操作培训",
+              "audience": "目标受众",
+              "narrativeRole": "case",
+              "emphasis": "介质业务开办起 5 日内领取",
+              "rationale": "以单一主标题和非对称留白建立主张",
+              "compositionFamily": "hero"
+            },
+            "background": "dark",
+            "elements": [
+              {
+                "id": "page-kicker",
+                "type": "text",
+                "grid": {
+                  "column": 1,
+                  "row": 1,
+                  "width": 5,
+                  "height": 1
+                },
+                "role": "kicker",
+                "tone": "accent",
+                "align": "left",
+                "text": ""
+              },
+              {
+                "id": "page-title",
+                "type": "text",
+                "grid": {
+                  "column": 1,
+                  "row": 2,
+                  "width": 10,
+                  "height": 3
+                },
+                "role": "title",
+                "tone": "default",
+                "align": "left",
+                "text": ""
+              },
+              {
+                "id": "hero-summary",
+                "type": "text",
+                "grid": {
+                  "column": 1,
+                  "row": 6,
+                  "width": 7,
+                  "height": 2
+                },
+                "role": "subtitle",
+                "tone": "default",
+                "align": "left",
+                "text": ""
+              },
+              {
+                "id": "hero-takeaway",
+                "type": "text",
+                "grid": {
+                  "column": 9,
+                  "row": 6,
+                  "width": 4,
+                  "height": 2
+                },
+                "role": "body",
+                "tone": "accent",
+                "align": "left",
+                "text": ""
+              }
+            ]
+          },
+          "contentMap": {
+            "elements[0].text": "meta.panelTitle",
+            "elements[1].text": "presentation.title",
+            "elements[2].text": "presentation.summary",
+            "elements[3].text": "presentation.takeaway"
+          }
+        }
+      ]
+    },
+    {
+      "content": {
+        "presentation": {
+          "title": "培训小结",
+          "titleShort": "培训小结",
+          "summary": "关键要点回顾",
+          "summaryShort": "培训小结",
+          "takeaway": "合规第一，流程熟练",
+          "items": [
+            {
+              "label": "一条流程",
+              "value": "8 步",
+              "detail": "登录→证件→核实→协议→上传→确认→作业→归档",
+              "id": "item-1",
+              "unit": "",
+              "emptyText": "",
+              "focus": false,
+              "displayValue": "8 步",
+              "valueText": "8 步",
+              "labelWithValue": "8 步 · 一条流程",
+              "labelWithSupporting": "一条流程：登录→证件→核实→协议→上传→确认→作业→归档",
+              "labelWithValueAndSupporting": "8 步 · 一条流程｜登录→证件→核实→协议→上传→确认→作业→归档"
+            },
+            {
+              "label": "两个必核",
+              "value": "2 项",
+              "detail": "人脸识别 + 联网核查",
+              "id": "item-2",
+              "unit": "",
+              "emptyText": "",
+              "focus": false,
+              "displayValue": "2 项",
+              "valueText": "2 项",
+              "labelWithValue": "2 项 · 两个必核",
+              "labelWithSupporting": "两个必核：人脸识别 + 联网核查",
+              "labelWithValueAndSupporting": "2 项 · 两个必核｜人脸识别 + 联网核查"
+            },
+            {
+              "label": "三个关键",
+              "value": "3 项",
+              "detail": "协议完整、资料齐全、介质 5 日领取",
+              "id": "item-3",
+              "unit": "",
+              "emptyText": "",
+              "focus": false,
+              "displayValue": "3 项",
+              "valueText": "3 项",
+              "labelWithValue": "3 项 · 三个关键",
+              "labelWithSupporting": "三个关键：协议完整、资料齐全、介质 5 日领取",
+              "labelWithValueAndSupporting": "3 项 · 三个关键｜协议完整、资料齐全、介质 5 日领取"
+            },
+            {
+              "label": "六项合规",
+              "value": "6 项",
+              "detail": "实名核验、数量上限、只收不付、固定介质、假币收缴、联社审批",
+              "id": "item-4",
+              "unit": "",
+              "emptyText": "",
+              "focus": false,
+              "displayValue": "6 项",
+              "valueText": "6 项",
+              "labelWithValue": "6 项 · 六项合规",
+              "labelWithSupporting": "六项合规：实名核验、数量上限、只收不付、固定介质、假币收缴、联社审批",
+              "labelWithValueAndSupporting": "6 项 · 六项合规｜实名核验、数量上限、只收不付、固定介质、假币收缴、联社审批"
+            }
+          ],
+          "coverLabels": [
+            "培训小结"
+          ],
+          "chartData": []
+        },
+        "media": [],
+        "meta": {
+          "brand": "陕西农信",
+          "pageLabel": "谢谢",
+          "unit": "",
+          "panelTitle": "培训小结",
+          "date": "",
+          "empty": ""
+        }
+      },
+      "selectedVariant": "v1",
+      "variants": [
+        {
+          "id": "v1",
+          "kind": "template",
+          "layout": "theme08_page074",
+          "props": {
+            "supportCount": 0,
+            "supports": []
+          },
+          "contentMap": {
+            "kicker": "presentation.title",
+            "lines": {
+              "source": "presentation",
+              "derive": "template-items",
+              "includeTextFallback": true,
+              "group": 2,
+              "limit": 2,
+              "select": "labelWithValue"
+            },
+            "source": {
+              "source": "presentation",
+              "derive": "supporting-summary"
+            },
+            "eyebrow": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "title",
+                "titleShort",
+                "takeaway",
+                "summaryShort"
+              ],
+              "maxChars": 18,
+              "index": 3,
+              "truncate": true
+            },
+            "label": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "title",
+                "titleShort",
+                "takeaway",
+                "summaryShort"
+              ],
+              "maxChars": 20,
+              "index": 4,
+              "truncate": true
+            },
+            "sealTop": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "takeaway",
+                "summaryShort",
+                "summary",
+                "titleShort"
+              ],
+              "maxChars": 18,
+              "index": 5,
+              "truncate": true
+            },
+            "sealBottom": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "takeaway",
+                "summaryShort",
+                "summary",
+                "titleShort"
+              ],
+              "maxChars": 18,
+              "index": 6,
+              "truncate": true
+            }
+          }
+        },
+        {
+          "id": "v2",
+          "kind": "template",
+          "layout": "theme08_page007",
+          "props": {
+            "cardCount": 4
+          },
+          "contentMap": {
+            "headline": "presentation.title",
+            "chapters": {
+              "source": "presentation",
+              "derive": "template-items",
+              "includeTextFallback": true,
+              "limit": 4,
+              "fields": {
+                "name": "label",
+                "en": "projectionLabel"
+              }
+            },
+            "eyebrow": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "title",
+                "titleShort",
+                "takeaway",
+                "summaryShort"
+              ],
+              "maxChars": 18,
+              "index": 3,
+              "truncate": true
+            },
+            "subheadline": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "summary",
+                "summaryShort",
+                "takeaway",
+                "titleShort"
+              ],
+              "maxChars": 20,
+              "index": 4,
+              "truncate": true
+            },
+            "closingLine": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "takeaway",
+                "summaryShort",
+                "summary",
+                "titleShort"
+              ],
+              "maxChars": 27,
+              "index": 6,
+              "truncate": true
+            },
+            "focusBadgeLabel": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "title",
+                "titleShort",
+                "takeaway",
+                "summaryShort"
+              ],
+              "maxChars": 18,
+              "index": 6,
+              "truncate": true
+            }
+          }
+        },
+        {
+          "id": "v3",
+          "kind": "template",
+          "layout": "theme08_page060",
+          "props": {
+            "pillarCount": 3
+          },
+          "contentMap": {
+            "headline": "presentation.title",
+            "pillars": {
+              "source": "presentation",
+              "derive": "template-items",
+              "includeTextFallback": true,
+              "group": 3,
+              "limit": 3,
+              "fields": {
+                "title": "labelWithValue",
+                "note": "projectionDetail"
+              }
+            },
+            "source": {
+              "source": "presentation",
+              "derive": "supporting-summary"
+            },
+            "eyebrow": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "title",
+                "titleShort",
+                "takeaway",
+                "summaryShort"
+              ],
+              "maxChars": 24,
+              "index": 3,
+              "truncate": true
+            },
+            "kicker": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "title",
+                "titleShort",
+                "takeaway",
+                "summaryShort"
+              ],
+              "maxChars": 18,
+              "index": 4,
+              "truncate": true
+            },
+            "quote": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "takeaway",
+                "summaryShort",
+                "summary",
+                "titleShort"
+              ],
+              "maxChars": 36,
+              "index": 7,
+              "truncate": true
+            },
+            "backdropWord": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "takeaway",
+                "summaryShort",
+                "summary",
+                "titleShort"
+              ],
+              "maxChars": 18,
+              "index": 6,
+              "truncate": true
+            },
+            "battlegroundStickerLabel": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "title",
+                "titleShort",
+                "takeaway",
+                "summaryShort"
+              ],
+              "maxChars": 18,
+              "index": 7,
+              "truncate": true
+            },
+            "verdictStickerLabel": {
+              "source": "presentation",
+              "derive": "projection-text",
+              "preferred": [
+                "takeaway",
+                "summaryShort",
+                "summary",
+                "titleShort"
+              ],
+              "maxChars": 18,
+              "index": 8,
+              "truncate": true
+            }
+          }
+        },
+        {
+          "id": "v4",
+          "kind": "bespoke",
+          "adjustable": false,
+          "composition": {
+            "designIntent": {
+              "objective": "柜面个人批量开户业务操作培训",
+              "audience": "目标受众",
+              "narrativeRole": "closing",
+              "emphasis": "合规第一，流程熟练",
+              "rationale": "以非对称双栏分离结论与支撑信息",
+              "compositionFamily": "split"
+            },
+            "background": "default",
+            "elements": [
+              {
+                "id": "page-kicker",
+                "type": "text",
+                "grid": {
+                  "column": 1,
+                  "row": 1,
+                  "width": 5,
+                  "height": 1
+                },
+                "role": "kicker",
+                "tone": "accent",
+                "align": "left",
+                "text": ""
+              },
+              {
+                "id": "page-label",
+                "type": "text",
+                "grid": {
+                  "column": 11,
+                  "row": 1,
+                  "width": 2,
+                  "height": 1
+                },
+                "role": "label",
+                "tone": "muted",
+                "align": "right",
+                "text": ""
+              },
+              {
+                "id": "page-title",
+                "type": "text",
+                "grid": {
+                  "column": 1,
+                  "row": 2,
+                  "width": 10,
+                  "height": 2
+                },
+                "role": "title",
+                "tone": "default",
+                "align": "left",
+                "text": ""
+              },
+              {
+                "id": "split-summary",
+                "type": "text",
+                "grid": {
+                  "column": 1,
+                  "row": 4,
+                  "width": 5,
+                  "height": 2
+                },
+                "role": "subtitle",
+                "tone": "default",
+                "align": "left",
+                "text": ""
+              },
+              {
+                "id": "split-takeaway",
+                "type": "text",
+                "grid": {
+                  "column": 1,
+                  "row": 7,
+                  "width": 5,
+                  "height": 2
+                },
+                "role": "body",
+                "tone": "accent",
+                "align": "left",
+                "text": ""
+              },
+              {
+                "id": "split-items",
+                "type": "list",
+                "grid": {
+                  "column": 6,
+                  "row": 4,
+                  "width": 7,
+                  "height": 5
+                },
+                "ordered": false,
+                "tone": "default",
+                "items": []
+              }
+            ]
+          },
+          "contentMap": {
+            "elements[0].text": "meta.panelTitle",
+            "elements[1].text": "meta.pageLabel",
+            "elements[2].text": "presentation.title",
+            "elements[3].text": "presentation.summary",
+            "elements[4].text": "presentation.takeaway",
+            "elements[5].items": {
+              "source": "presentation.items",
+              "fields": {
+                "title": "labelWithValue",
+                "body": "detail"
+              },
+              "limit": 4
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
